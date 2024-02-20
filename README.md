@@ -54,19 +54,16 @@ This guide will walk you through setting up the project environment for [course-
      ```
    - Replace `.venv` with your virtual environment's name if it differs.
 
+4. **change directory in the course_project_group_3 folder**:
+   - In the command line, run:
+     ```
+     cd course_project_group_3
+     ```
+
 ## Running the Program
 
 1. **Ensure the virtual environment is activated**.
-2. Run the program using the PyCharm built-in command line:
-   - Type the command to run your program (e.g., `python script.py`) in the terminal within PyCharm.
-   - Replace `script.py` with the path to the main script of your project.
-
-## Additional Notes
-
-- If you encounter any issues with the virtual environment, ensure that you have Python installed and that PyCharm is configured to use the correct interpreter.
-- For detailed documentation on PyCharm's features and settings, refer to the [PyCharm Documentation](https://www.jetbrains.com/pycharm/documentation/).
-
----
+2. If you encounter any issues with the virtual environment, ensure that you have Python installed and that PyCharm is configured to use the correct interpreter.
 
 To run a Django server and view your project in a browser, you would typically follow these steps after setting up your project environment in PyCharm and activating your virtual environment. Here are the additional commands and steps needed:
 
