@@ -110,6 +110,13 @@ After starting the development server:
 
 This will open the home page of your Django project. From here, you can navigate through your site based on the URLs you've defined in your project.
 
+To SHUT DOWN the development server:
+
+1. **Returm to the command-line** of your IDE of choice where the project is open.
+2. **Press** `CONTROL+C` and hit ENTER.
+
+This will deactivate the virtual environment and shut down the development server.
+
 ### Additional Commands
 
 - **Creating a superuser** for Django admin:
