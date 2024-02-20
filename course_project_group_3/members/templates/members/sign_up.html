@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+</head>
+<body>
+
+<!-- ST66/ST-68 TODO: Update html document by adding UI customization (CSS, BootStrap, Js, React)  -->
+
+<h1>Sign Up</h1>
+<form action="{% url 'members:sign_up' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Sign Up</button>
+</form>
+<p>Already have an account? <a href="{% url 'members:sign_in' %}">Log In</a></p>
+
+</body>
+</html>
