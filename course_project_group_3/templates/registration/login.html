@@ -1,0 +1,80 @@
+
+<!-- This is a login page, note that it needs styling -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+}
+
+.banner h1, .banner img {
+  margin: 0 10px;
+}
+
+form {
+  width: 300px;
+  margin: 0 auto;
+}
+
+form div {
+  margin-bottom: 20px;
+}
+
+form input[type="text"], form input[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+</style>
+</head>
+<body>
+
+<div class="banner">
+  <h1>Website Name TBD</h1>
+  <!-- You can add your logo image here -->
+  <img src="logo.png" alt="Logo">
+</div>
+
+<h2>Log In</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form }}
+  <button type="submit">Log In</button>
+</form>
+
+</body>
+</html>
