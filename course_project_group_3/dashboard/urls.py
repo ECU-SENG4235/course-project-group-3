@@ -15,10 +15,29 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-
-from course_project_group_3.dashboard import views
+from django.urls import path, include
+from users import views as user_views
+from accounts import views as account_views
+from transactions import views as transaction_views
+from credit_cards import views as credit_card_views
+from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('admin/', admin.site.urls),
+
+    # Users URLs
+    path('user-profile/', login_required(user_views.user_profile), name='user_profile'),
+    path('user-settings/', login_required(user_views.user_settings), name='user_settings'),
+
+    # Accounts URLs
+    path('account/<int:account_id>/', login_required(account_views.account_details), name='account_details'),
+
+    # Transactions URLs
+    path('recent-transactions/<int:account_id>/', login_required(transaction_views.recent_transactions), name='recent_transactions'),
+
+    # Credit Cards URLs
+    path('credit-card-details/', login_required(credit_card_views.credit_card_details), name='credit_card_details'),
+
+    # Add more URLs as needed    # Include the URLs from the dashboard app
+    path('dashboard/', include('dashboard.urls')),
 ]
