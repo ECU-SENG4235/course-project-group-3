@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<h2>Sign up</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.username.label_tag }}<br>
+  {{ form.username }}<br>
+  {{ form.first_name.label_tag }}<br>
+  {{ form.first_name }}<br>
+  {{ form.last_name.label_tag }}<br>
+  {{ form.last_name }}<br>
+  {{ form.email.label_tag }}<br>
+  {{ form.email }}<br>
+  {{ form.password1.label_tag }}<br>
+  {{ form.password1 }}<br>
+  <small>Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, and one number.</small><br>
+  <div style="margin-top: 20px;">
+    {{ form.password2.label_tag }}<br>
+    {{ form.password2 }}<br>
+  </div>
+  <button type="submit">Sign Up</button>
+</form>
+{% endblock %}
