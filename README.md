@@ -1,7 +1,7 @@
 # Team Number 3
 
 ## Members
-1. Kamron Hopkin
+1. Kamron Hopkins
 2. Jeremiah Teele
 3. Curtis Moore
 
@@ -38,7 +38,7 @@ This guide will walk you through setting up the project environment for [course-
 3. **Navigate to the cloned repository** folder on your computer and select the project folder.
 4. Click `OK` to open the project in PyCharm.
 
-## Activating the Virtual Environment
+## (IF NOT ACTIVE) Activate the Virtual Environment
 
 1. **Open the PyCharm Terminal**:
    - In PyCharm, find the Terminal tab at the bottom of the window and click it to open the command line within PyCharm.
