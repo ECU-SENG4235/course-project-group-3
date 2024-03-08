@@ -24,7 +24,7 @@ app_name = 'dash'  # ensure this line is here, the value should match the namesp
 
 
 urlpatterns = [
-    path('', views.index, name='dashboard'),  # django will match this to 'dash:dashboard'
+    path('', views.dashboard, name='dashboard'),  # django will match this to 'dash:dashboard'
 
 ]
 

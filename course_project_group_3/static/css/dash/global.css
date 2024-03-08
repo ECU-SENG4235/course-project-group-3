@@ -1,0 +1,21 @@
+.bg-gradient-primary {
+  background-color: rebeccapurple;
+  background-image: linear-gradient(180deg, #663399 10%, #663399 100%);
+  background-size: cover;
+}
+
+@media (min-width: 992px) {
+  .col-vertical {
+    width: 30px !important;
+  }
+}
+
+@media (min-width: 992px) {
+  hr.vertical {
+    width: 1px;
+    height: 100px;
+    background-color: #000;
+    writing-mode: vertical-rl;
+  }
+}
+
