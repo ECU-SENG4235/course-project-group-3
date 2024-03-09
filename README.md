@@ -5,6 +5,16 @@
 2. Jeremiah Teele
 3. Curtis Moore
 
+
+---
+![Dashboard View](course_project_group_3/static/imgs/Dash-1.png "Dashboard View")
+![Wallet View](course_project_group_3/static/imgs/Dash-2.png "Wallet View")
+![Profile View](course_project_group_3/static/imgs/Dash-4.png "Profile View")
+![Login View](course_project_group_3/static/imgs/Dash-3.png "Login View")
+---
+
+
+
 ## Project Management Tools
 Jira Project Management Link - https://seng4235-team3.atlassian.net/jira/software/projects/ST/boards/1
 
@@ -122,10 +132,5 @@ This will deactivate the virtual environment and shut down the development serve
   ```
   Follow the prompts to create a user. You can then access the Django admin by navigating to `/admin` on your site.
 
-- **Collecting static files** (if your project uses them):
-  ```sh
-  python manage.py collectstatic
-  ```
-  This command collects all static files from your apps (and any other locations specified by the STATICFILES_DIRS setting) into the STATIC_ROOT directory.
 
 These commands will help you get your Django project running on your local development server and allow you to view and interact with it in a web browser.
