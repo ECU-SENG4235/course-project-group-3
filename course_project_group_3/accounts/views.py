@@ -20,7 +20,7 @@ class SignUpView(generic.CreateView):
 # @login_required
 def wallet(request):
     # Fetch the user object from the database
-    member = User.objects.get(username=request.user)
+    member = request.user
 
     # Pass the user object to the template
     context = {'member': member}
