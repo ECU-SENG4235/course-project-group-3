@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0993659f-da7c-4240-bad4-279b4c8fb233" name="Changes" comment="Remove unused static files from the project&#10;&#10;A bulk of static files were removed in this commit. These files primarily include aspects of the admin interface design and JavaScript code, as well as the i18n localization data. They were no longer needed or used in the application, hence the removal, which leads to cleaner project structure and lower overall project size.">
+    <list default="true" id="0993659f-da7c-4240-bad4-279b4c8fb233" name="Changes" comment="Optimize 'request.user' object retrieval method&#10;&#10;The 'request.user' object is now directly assigned to 'member', instead of separately fetching it from the database. This change benefits the application by reducing database calls, hence optimizing performance. Few static and template files were also modified as part of project structure refinement.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +96,7 @@
       <workItem from="1709507607986" duration="80000" />
       <workItem from="1709859230374" duration="10997000" />
       <workItem from="1709954830022" duration="6658000" />
-      <workItem from="1710032615904" duration="9180000" />
+      <workItem from="1710032615904" duration="10007000" />
     </task>
     <task id="LOCAL-00001" summary="Update .gitignore file&#10;&#10;Added new entries to the .gitignore file to exclude commonly unwanted directories and files. This will prevent them from being tracked by git, simplifying the development process.">
       <option name="closed" value="true" />
@@ -132,7 +130,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709959737164</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Optimize 'request.user' object retrieval method&#10;&#10;The 'request.user' object is now directly assigned to 'member', instead of separately fetching it from the database. This change benefits the application by reducing database calls, hence optimizing performance. Few static and template files were also modified as part of project structure refinement.">
+      <option name="closed" value="true" />
+      <created>1710051114753</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1710051114753</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,6 +149,7 @@
     <MESSAGE value="Unintended committed files&#10;&#10;Two apps were added. Not having the proper .gitignore attributes, thousands of .venv files were also added." />
     <MESSAGE value="Remove unnecessary files from commit&#10;&#10;Cleared unwanted files that were mistakenly added to the repository due to the absence of proper .gitignore attributes. Specifically, these were thousands of .venv files. Also, two unintended apps were included and subsequently removed." />
     <MESSAGE value="Remove unused static files from the project&#10;&#10;A bulk of static files were removed in this commit. These files primarily include aspects of the admin interface design and JavaScript code, as well as the i18n localization data. They were no longer needed or used in the application, hence the removal, which leads to cleaner project structure and lower overall project size." />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove unused static files from the project&#10;&#10;A bulk of static files were removed in this commit. These files primarily include aspects of the admin interface design and JavaScript code, as well as the i18n localization data. They were no longer needed or used in the application, hence the removal, which leads to cleaner project structure and lower overall project size." />
+    <MESSAGE value="Optimize 'request.user' object retrieval method&#10;&#10;The 'request.user' object is now directly assigned to 'member', instead of separately fetching it from the database. This change benefits the application by reducing database calls, hence optimizing performance. Few static and template files were also modified as part of project structure refinement." />
+    <option name="LAST_COMMIT_MESSAGE" value="Optimize 'request.user' object retrieval method&#10;&#10;The 'request.user' object is now directly assigned to 'member', instead of separately fetching it from the database. This change benefits the application by reducing database calls, hence optimizing performance. Few static and template files were also modified as part of project structure refinement." />
   </component>
 </project>
