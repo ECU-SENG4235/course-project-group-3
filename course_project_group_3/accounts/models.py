@@ -49,6 +49,9 @@ class Account(models.Model):
     transaction_limit = models.DecimalField(max_digits=10, decimal_places=2, default=1000.00)
     overdraft_limit = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     last_transaction_date = models.DateTimeField(null=True, blank=True)
+    monthly_income = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
+    annual_income = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
+    spending_limit = models.DecimalField(max_digits=5, decimal_places=2, default=0.0)
     # Additional Banking Attributes
     interest_rate = models.DecimalField(max_digits=5, decimal_places=2, default=0.0)
     monthly_fee = models.DecimalField(max_digits=8, decimal_places=2, default=0.0)
