@@ -2,6 +2,8 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
+from accounts.models import UserSetting, Account
+
 
 class CustomUserCreationForm(UserCreationForm):
     first_name = forms.CharField(max_length=30, required=True, help_text='Required.')
@@ -11,3 +13,10 @@ class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2',)
+
+
+def create_user(self, username, email, password, **extra_fields):
+    user = super().create_user(username, email, password, **extra_fields)
+    UserSetting.objects.create(user=user)
+    Account.objects.create(user=user, account_type='checking')  # Set a default account type
+    return user

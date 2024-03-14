@@ -60,12 +60,6 @@ class Account(models.Model):
     joint_account_users = models.ManyToManyField('auth.User', related_name='joint_accounts', blank=True)
 
     # TODO: ST-2/ST-3  Add more settings attributes here!!!
-
-    class Meta:
-        db_table = 'accounts'
-        verbose_name = 'Account'
-        verbose_name_plural = 'Accounts'
-
     def clean(self):
         if self.balance < 0:
             raise ValidationError('Balance cannot be negative.')
