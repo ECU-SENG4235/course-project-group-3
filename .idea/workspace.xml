@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0993659f-da7c-4240-bad4-279b4c8fb233" name="Changes" comment="Update views, database settings and page layouts&#10;&#10;Expanded and refactored several views in accounts/views.py, including the addition of a new login() function. Updated database connection settings in settings.py for improved security. Large-scale changes made to the home.html template in the accounts application, with many new features added. A considerable number of new static files were also included alongside these changes.">
+    <list default="true" id="0993659f-da7c-4240-bad4-279b4c8fb233" name="Changes" comment="Implement user authentication logic and improve routes&#10;&#10;Improved login and logout logic in account views, adjusted URLs for better navigation. Created suitable name attributes for input fields and form submission in home.html. Also, fixed paths for carousel images in base_2.html template.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/base_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/base_2.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_project_group_3/course_project_group_3/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/course_project_group_3/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +104,7 @@
       <workItem from="1710051923856" duration="200000" />
       <workItem from="1710286932842" duration="3359000" />
       <workItem from="1710363069252" duration="5215000" />
-      <workItem from="1710368718496" duration="14113000" />
+      <workItem from="1710368718496" duration="15806000" />
     </task>
     <task id="LOCAL-00001" summary="Update .gitignore file&#10;&#10;Added new entries to the .gitignore file to exclude commonly unwanted directories and files. This will prevent them from being tracked by git, simplifying the development process.">
       <option name="closed" value="true" />
@@ -182,7 +178,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710374972326</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Implement user authentication logic and improve routes&#10;&#10;Improved login and logout logic in account views, adjusted URLs for better navigation. Created suitable name attributes for input fields and form submission in home.html. Also, fixed paths for carousel images in base_2.html template.">
+      <option name="closed" value="true" />
+      <created>1710383738051</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1710383738051</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -210,6 +214,7 @@
     <MESSAGE value="Refactor model declarations with improved structure&#10;&#10;The model classes and admin site registrations have been shuffled between accounts and dash applications to follow a more logical structure. This commit moves Account, UserSetting, CreditCard, and Transaction models from the dash app to the accounts app and updates the corresponding imports in the admin. The admin registrations for these models are accordingly updated in both apps. Furthermore, Password and Port fields for the database connection in settings.py were modified." />
     <MESSAGE value="Update application layout, database settings, and import declarations&#10;&#10;Application layout is realigned by moving Account, UserSetting, CreditCard, and Transaction models from the dash app to the accounts app, simultaneously updating corresponding imports in the admin. Additionally, Password and Port fields for the database connection are adjusted in settings.py to improve security and maintain coherent code structure." />
     <MESSAGE value="Update views, database settings and page layouts&#10;&#10;Expanded and refactored several views in accounts/views.py, including the addition of a new login() function. Updated database connection settings in settings.py for improved security. Large-scale changes made to the home.html template in the accounts application, with many new features added. A considerable number of new static files were also included alongside these changes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update views, database settings and page layouts&#10;&#10;Expanded and refactored several views in accounts/views.py, including the addition of a new login() function. Updated database connection settings in settings.py for improved security. Large-scale changes made to the home.html template in the accounts application, with many new features added. A considerable number of new static files were also included alongside these changes." />
+    <MESSAGE value="Implement user authentication logic and improve routes&#10;&#10;Improved login and logout logic in account views, adjusted URLs for better navigation. Created suitable name attributes for input fields and form submission in home.html. Also, fixed paths for carousel images in base_2.html template." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement user authentication logic and improve routes&#10;&#10;Improved login and logout logic in account views, adjusted URLs for better navigation. Created suitable name attributes for input fields and form submission in home.html. Also, fixed paths for carousel images in base_2.html template." />
   </component>
 </project>

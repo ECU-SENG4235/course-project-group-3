@@ -17,13 +17,13 @@
         <div class="text">
             <div class="row">
                 <div class="col-sm-8 offset-sm-2">
-                    <h2 class="mt-5">Lorem ipsum dolor sit amet.</h2>
+                    <h5 class="my-5">Manage your money, grow your savings, and achieve your financial goals with our secure and easy-to-use online banking platform.</h5>
                     <form action="{% url 'accounts:login_user' %}" method="POST">
                         {% csrf_token %}
                         <div class="card">
                             <div class="card-header">
                                 <header>
-                                    <p>Sign In Now</p>
+                                    <p class="fw-bold">Sign In Now</p>
                                 </header>
                             </div>
                             <div class="card-body">
@@ -41,7 +41,8 @@
                             </div>
                         </div>
                     </form>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p><button class="btn btn-outline-light btn-lg mb-3" type="button">Learn More</button>
+<!--                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>-->
+                    <button class="btn btn-outline-light btn-lg my-3" type="button">Learn More</button>
                 </div>
             </div>
         </div>
@@ -57,7 +58,10 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-4 col-sm-4 col-md-4 col-lg-4 d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center">
-                                            <picture><img alt="brown wallet" src="{% static 'img/photo-1560472355-536de3962603-1.jpg' %}" style="width: 40px;height: 40px;"></picture>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-houses-fill" viewBox="0 0 16 16">
+                                              <path d="M7.207 1a1 1 0 0 0-1.414 0L.146 6.646a.5.5 0 0 0 .708.708L1 7.207V12.5A1.5 1.5 0 0 0 2.5 14h.55a2.5 2.5 0 0 1-.05-.5V9.415a1.5 1.5 0 0 1-.56-2.475l5.353-5.354z"/>
+                                              <path d="M8.793 2a1 1 0 0 1 1.414 0L12 3.793V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v3.293l1.854 1.853a.5.5 0 0 1-.708.708L15 8.207V13.5a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 4 13.5V8.207l-.146.147a.5.5 0 1 1-.708-.708z"/>
+                                            </svg>
                                         </div>
                                         <div class="col-8 col-sm-8 col-lg-8">
                                             <div class="row">
@@ -72,7 +76,7 @@
                                     </div>
                                 </div>
                                 <div class="card-footer">
-                                    <h5>4.341% APR</h5>
+                                    <h5>14.341% APR</h5>
                                 </div>
                             </div>
                         </div>
@@ -83,7 +87,10 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-4 col-sm-4 col-lg-4 d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center">
-                                            <picture><img alt="brown wallet" src="{% static 'img/photo-1560472355-536de3962603-1.jpg' %}" style="width: 40px;height: 40px;"></picture>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-car-front" viewBox="0 0 16 16">
+                                              <path d="M4 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0m10 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0M6 8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2zM4.862 4.276 3.906 6.19a.51.51 0 0 0 .497.731c.91-.073 2.35-.17 3.597-.17s2.688.097 3.597.17a.51.51 0 0 0 .497-.731l-.956-1.913A.5.5 0 0 0 10.691 4H5.309a.5.5 0 0 0-.447.276"/>
+                                              <path d="M2.52 3.515A2.5 2.5 0 0 1 4.82 2h6.362c1 0 1.904.596 2.298 1.515l.792 1.848c.075.175.21.319.38.404.5.25.855.715.965 1.262l.335 1.679q.05.242.049.49v.413c0 .814-.39 1.543-1 1.997V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.338c-1.292.048-2.745.088-4 .088s-2.708-.04-4-.088V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.892c-.61-.454-1-1.183-1-1.997v-.413a2.5 2.5 0 0 1 .049-.49l.335-1.68c.11-.546.465-1.012.964-1.261a.8.8 0 0 0 .381-.404l.792-1.848ZM4.82 3a1.5 1.5 0 0 0-1.379.91l-.792 1.847a1.8 1.8 0 0 1-.853.904.8.8 0 0 0-.43.564L1.03 8.904a1.5 1.5 0 0 0-.03.294v.413c0 .796.62 1.448 1.408 1.484 1.555.07 3.786.155 5.592.155s4.037-.084 5.592-.155A1.48 1.48 0 0 0 15 9.611v-.413q0-.148-.03-.294l-.335-1.68a.8.8 0 0 0-.43-.563 1.8 1.8 0 0 1-.853-.904l-.792-1.848A1.5 1.5 0 0 0 11.18 3z"/>
+                                            </svg>
                                         </div>
                                         <div class="col-8 col-sm-8 col-lg-8">
                                             <div class="row">
@@ -98,7 +105,7 @@
                                     </div>
                                 </div>
                                 <div class="card-footer">
-                                    <h5>4.341% APR</h5>
+                                    <h5>8.31% APR</h5>
                                 </div>
                             </div>
                         </div>
@@ -109,7 +116,9 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-4 col-md-5 col-lg-4 d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center">
-                                            <picture><img alt="brown wallet" src="{% static 'img/photo-1560472355-536de3962603-1.jpg' %}" style="width: 40px;height: 40px;"></picture>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-credit-card-2-back-fill" viewBox="0 0 16 16">
+                                              <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5H0zm11.5 1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM0 11v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1z"/>
+                                            </svg>
                                         </div>
                                         <div class="col-8 col-md-7 col-lg-8">
                                             <div class="row">
@@ -124,7 +133,7 @@
                                     </div>
                                 </div>
                                 <div class="card-footer">
-                                    <h5>4.341% APR</h5>
+                                    <h5>2.41% APR</h5>
                                 </div>
                             </div>
                         </div>
@@ -135,22 +144,27 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-4 col-md-5 col-lg-4 d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center">
-                                            <picture><img alt="brown wallet" src="{% static 'img/photo-1560472355-536de3962603-1.jpg' %}" style="width: 40px;height: 40px;"></picture>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-cash-coin" viewBox="0 0 16 16">
+                                              <path fill-rule="evenodd" d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8m5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0"/>
+                                              <path d="M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195z"/>
+                                              <path d="M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083q.088-.517.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1z"/>
+                                              <path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 6 6 0 0 1 3.13-1.567"/>
+                                            </svg>
                                         </div>
                                         <div class="col-8 col-md-7 col-lg-8">
                                             <div class="row">
                                                 <div class="col-12 text-start">
-                                                    <h6>Credit Cards</h6>
+                                                    <h6>Certificates</h6>
                                                 </div>
                                                 <div class="col text-start">
-                                                    <p>as low as</p>
+                                                    <p>as high as</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-footer">
-                                    <h5>4.341% APR</h5>
+                                    <h5>0.871% APR</h5>
                                 </div>
                             </div>
                         </div>

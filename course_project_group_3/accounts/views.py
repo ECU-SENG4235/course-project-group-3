@@ -10,7 +10,6 @@ from django.contrib import messages  # for messages
 from django.contrib.auth import authenticate, logout, login
 
 
-
 # Create your views here.
 
 
@@ -54,6 +53,17 @@ def profile(request):
 
 
 def register(request):
+    # TODO: Add a check to see if the user is already logged in
+    # TODO: VERIFY THAT THE CURRENT BELOW CODE WORKS BEFORE EDITING
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            print('User was created successfully')
+            messages.success(request, 'User was created successfully')
+            return redirect('accounts:landing_page')
+    else:
+        form = CustomUserCreationForm()  # An unbound form
     return render(request, 'accounts/register.html')
 
 
