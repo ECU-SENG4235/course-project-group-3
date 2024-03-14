@@ -18,7 +18,9 @@
             <div class="row">
                 <div class="col-sm-8 offset-sm-2">
                     <h5 class="my-5">Manage your money, grow your savings, and achieve your financial goals with our secure and easy-to-use online banking platform.</h5>
-                    <form action="{% url 'accounts:login_user' %}" method="POST">
+
+                    {% if not user.is_authenticated %}
+                        <form action="{% url 'accounts:login_user' %}" method="POST">
                         {% csrf_token %}
                         <div class="card">
                             <div class="card-header">
@@ -41,6 +43,8 @@
                             </div>
                         </div>
                     </form>
+                    {% endif %}
+
 <!--                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>-->
                     <button class="btn btn-outline-light btn-lg my-3" type="button">Learn More</button>
                 </div>
@@ -200,21 +204,21 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
             </div>
             <div class="row justify-content-center">
+                <div class="col-md-5 feature-box"><i class="icon-refresh icon"></i>
+                    <h4>Simplify Your Everyday Banking</h4>
+                    <p>Manage your finances effortlessly with online bill pay, mobile banking, and secure money transfers.</p>
+                </div>
                 <div class="col-md-5 feature-box"><i class="icon-star icon"></i>
-                    <h4>Bootstrap 5</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
+                    <h4>Low Rates, Big Dreams</h4>
+                    <p>Get the financing you need for your dream home with our competitive mortgage rates.</p>
                 </div>
                 <div class="col-md-5 feature-box"><i class="icon-pencil icon"></i>
-                    <h4>Customizable</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
+                    <h4>Reward Yourself with Every Swipe</h4>
+                    <p>Earn rewards on everyday purchases with our flexible credit card options.</p>
                 </div>
                 <div class="col-md-5 feature-box"><i class="icon-screen-smartphone icon"></i>
-                    <h4>Responsive</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
-                </div>
-                <div class="col-md-5 feature-box"><i class="icon-refresh icon"></i>
-                    <h4>All Browser Compatibility</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
+                    <h4>Grow Your Savings Securely</h4>
+                    <p>Earn guaranteed interest rates with our Certificates of Deposit.</p>
                 </div>
             </div>
         </div>
