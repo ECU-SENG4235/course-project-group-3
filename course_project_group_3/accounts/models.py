@@ -1,5 +1,9 @@
+from datetime import datetime
+
+from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.db import models
+from django.utils.crypto import get_random_string
 
 
 # Create your models here.
@@ -10,8 +14,8 @@ class UserSetting(models.Model):
     language = models.CharField(max_length=100, default='en')
     is_notifications_enabled = models.BooleanField(default=True)
     font_size = models.IntegerField(default=12)
+    profile_img_url = models.URLField(null=True, blank=True)
 
-    # TODO:  ST-2/ST-3  Add more settings attributes here!!!
     timezone = models.CharField(max_length=50, default='UTC')
     preferred_currency = models.CharField(max_length=3, default='USD')
     email_notifications = models.BooleanField(default=True)
@@ -19,7 +23,20 @@ class UserSetting(models.Model):
     dark_mode_end_time = models.TimeField(null=True, blank=True)
     show_balance_on_dashboard = models.BooleanField(default=True)
 
-    # Add more user settings attributes here!!!
+    monthly_income = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
+    # monthly_expenses = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
+    # monthly_savings = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
+    # monthly_debt = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
+    # monthly_investments = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
+    # monthly_retirement = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
+
+    credit_score = models.IntegerField(default=0)
+    # credit_limit = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
+    # credit_utilization = models.DecimalField(max_digits=5, decimal_places=2, default=0.0)
+    # credit_card_debt = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
+    # credit_card_interest_rate = models.DecimalField(max_digits=5, decimal_places=2, default=0.0)
+
+    phone_number = models.CharField(max_length=15, null=True, blank=True)
 
     class Meta:
         db_table = 'user_settings'
@@ -41,35 +58,45 @@ ACCOUNT_TYPE_CHOICES = [
 ]
 
 
-class Account(models.Model):
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+class BankAccount(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='bank_accounts')
+    account_number = models.PositiveIntegerField(unique=True, blank=True)
     balance = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     account_type = models.CharField(max_length=50, choices=ACCOUNT_TYPE_CHOICES, default='checking')
     is_active = models.BooleanField(default=True)
+
     transaction_limit = models.DecimalField(max_digits=10, decimal_places=2, default=1000.00)
     overdraft_limit = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     last_transaction_date = models.DateTimeField(null=True, blank=True)
+
     # Additional Banking Attributes
     interest_rate = models.DecimalField(max_digits=5, decimal_places=2, default=0.0)
     monthly_fee = models.DecimalField(max_digits=8, decimal_places=2, default=0.0)
     withdrawal_fee = models.DecimalField(max_digits=8, decimal_places=2, default=0.0)
     minimum_balance = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
-    account_opening_date = models.DateField()
-    account_closure_date = models.DateField(null=True, blank=True)
-    is_joint_account = models.BooleanField(default=False)
-    joint_account_users = models.ManyToManyField('auth.User', related_name='joint_accounts', blank=True)
 
-    # TODO: ST-2/ST-3  Add more settings attributes here!!!
+    account_opening_date = models.DateField(default=datetime.now)
+    account_closure_date = models.DateField(null=True, blank=True)
+
+    is_joint_account = models.BooleanField(default=False)
+
+    # joint_account_users = models.ManyToManyField('User', related_name='joint_accounts', blank=True)
+
+    # def save(self, *args, **kwargs):
+    #     if self.pk is None:  # Check if it's a new object
+    #         self.account_number = _generate_unique_account_number()
+    #     super().save(*args, **kwargs)  # Call the original save method
+
     def clean(self):
         if self.balance < 0:
             raise ValidationError('Balance cannot be negative.')
 
     def __str__(self):
-        return f"{self.user.username}'s {self.account_type} Account"
+        return f"{self.user}'s {self.account_type} Account"
 
 
 class Transaction(models.Model):
-    account = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='transactions')
+    account = models.ForeignKey(BankAccount, on_delete=models.CASCADE, related_name='transactions')
     transaction_type = models.CharField(max_length=50, choices=[('deposit', 'Deposit'), ('withdrawal', 'Withdrawal')])
     transaction_limit = models.DecimalField(max_digits=10, decimal_places=2, default=1000.00)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
@@ -88,7 +115,7 @@ class Transaction(models.Model):
 
 
 class CreditCard(models.Model):
-    account = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='credit_cards')
+    account = models.ForeignKey(BankAccount, on_delete=models.CASCADE, related_name='credit_cards')
     credit_limit = models.DecimalField(max_digits=10, decimal_places=2)
     available_credit = models.DecimalField(max_digits=10, decimal_places=2)
     due_date = models.DateField(null=True, blank=True)

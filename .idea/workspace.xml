@@ -4,9 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0993659f-da7c-4240-bad4-279b4c8fb233" name="Changes" comment="Implement user authentication logic and improve routes&#10;&#10;Improved login and logout logic in account views, adjusted URLs for better navigation. Created suitable name attributes for input fields and form submission in home.html. Also, fixed paths for carousel images in base_2.html template.">
+    <list default="true" id="0993659f-da7c-4240-bad4-279b4c8fb233" name="Changes" comment="Restructure home page and update user login form handling&#10;&#10;This commit includes major change in the structure and content of the home.html template. Specifically, the login form is now only displayed if the user is not authenticated. Additionally, placeholder texts and headings have been replaced with relevant banking-related content to provide a more complete and user-friendly interface. Unnecessary changes in workspace.xml have been cleaned up as well.">
+      <change afterPath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/membership.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/signals.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/wallet.html" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/wallet.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course_project_group_3/course_project_group_3/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/course_project_group_3/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,13 +57,13 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;wallet-management&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/Users/Kamron/Documents/GitHub/course-project-group-3&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Users/Kamron/Documents/GitHub/course-project-group-3/course_project_group_3/accounts/templates/accounts&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;DotEnv.SettingsForm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;a.a.a.g.b&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -104,6 +112,9 @@
       <workItem from="1710286932842" duration="3359000" />
       <workItem from="1710363069252" duration="5215000" />
       <workItem from="1710368718496" duration="15806000" />
+      <workItem from="1710436044597" duration="1922000" />
+      <workItem from="1710438162678" duration="12411000" />
+      <workItem from="1710450633307" duration="996000" />
     </task>
     <task id="LOCAL-00001" summary="Update .gitignore file&#10;&#10;Added new entries to the .gitignore file to exclude commonly unwanted directories and files. This will prevent them from being tracked by git, simplifying the development process.">
       <option name="closed" value="true" />
@@ -185,7 +196,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710383738051</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Restructure home page and update user login form handling&#10;&#10;This commit includes major change in the structure and content of the home.html template. Specifically, the login form is now only displayed if the user is not authenticated. Additionally, placeholder texts and headings have been replaced with relevant banking-related content to provide a more complete and user-friendly interface. Unnecessary changes in workspace.xml have been cleaned up as well.">
+      <option name="closed" value="true" />
+      <created>1710388521603</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1710388521603</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -214,6 +233,8 @@
     <MESSAGE value="Update application layout, database settings, and import declarations&#10;&#10;Application layout is realigned by moving Account, UserSetting, CreditCard, and Transaction models from the dash app to the accounts app, simultaneously updating corresponding imports in the admin. Additionally, Password and Port fields for the database connection are adjusted in settings.py to improve security and maintain coherent code structure." />
     <MESSAGE value="Update views, database settings and page layouts&#10;&#10;Expanded and refactored several views in accounts/views.py, including the addition of a new login() function. Updated database connection settings in settings.py for improved security. Large-scale changes made to the home.html template in the accounts application, with many new features added. A considerable number of new static files were also included alongside these changes." />
     <MESSAGE value="Implement user authentication logic and improve routes&#10;&#10;Improved login and logout logic in account views, adjusted URLs for better navigation. Created suitable name attributes for input fields and form submission in home.html. Also, fixed paths for carousel images in base_2.html template." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement user authentication logic and improve routes&#10;&#10;Improved login and logout logic in account views, adjusted URLs for better navigation. Created suitable name attributes for input fields and form submission in home.html. Also, fixed paths for carousel images in base_2.html template." />
+    <MESSAGE value="Update website content and aesthetics&#10;&#10;Redesigned the content and imagery on the home page and updated annual percentage rates. Implemented new user registration logic in the account views and improved navigation routes on the website." />
+    <MESSAGE value="Restructure home page and update user login form handling&#10;&#10;This commit includes major change in the structure and content of the home.html template. Specifically, the login form is now only displayed if the user is not authenticated. Additionally, placeholder texts and headings have been replaced with relevant banking-related content to provide a more complete and user-friendly interface. Unnecessary changes in workspace.xml have been cleaned up as well." />
+    <option name="LAST_COMMIT_MESSAGE" value="Restructure home page and update user login form handling&#10;&#10;This commit includes major change in the structure and content of the home.html template. Specifically, the login form is now only displayed if the user is not authenticated. Additionally, placeholder texts and headings have been replaced with relevant banking-related content to provide a more complete and user-friendly interface. Unnecessary changes in workspace.xml have been cleaned up as well." />
   </component>
 </project>

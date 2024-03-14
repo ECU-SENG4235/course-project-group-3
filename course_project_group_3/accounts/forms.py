@@ -1,8 +1,11 @@
+import random
+import string
+
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-from accounts.models import UserSetting, Account
+from accounts.models import UserSetting, BankAccount
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -15,8 +18,20 @@ class CustomUserCreationForm(UserCreationForm):
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2',)
 
 
-def create_user(self, username, email, password, **extra_fields):
-    user = super().create_user(username, email, password, **extra_fields)
-    UserSetting.objects.create(user=user)
-    Account.objects.create(user=user, account_type='checking')  # Set a default account type
-    return user
+def generate_unique_account_number():
+    digits = string.digits  # String containing digits (0-9)
+    account_number = ''.join(random.choice(digits) for _ in range(8))
+    while BankAccount.objects.filter(account_number=account_number).exists():
+        account_number = ''.join(random.choice(digits) for _ in range(8))
+    return int(account_number)
+
+
+# def create_user(self, username, email, password, **extra_fields):
+#     user = super().create_user(username, email, password, **extra_fields)
+#     # Create a user setting and bank account for the new user
+#     settings = UserSetting.objects.create(user=user)
+#     settings.save()
+#     account = BankAccount.objects.create(account_number=generate_unique_account_number())
+#     account.save()
+#
+#     return user

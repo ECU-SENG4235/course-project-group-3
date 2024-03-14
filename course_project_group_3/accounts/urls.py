@@ -11,7 +11,11 @@ urlpatterns = [
     path('accounts/', views.wallet, name='wallet'),
     path('login/', views.login_user, name='login_user'),
     path('profile/', views.profile, name='profile'),
-    path('register/', views.register, name='register'),
+    path('register/', views.membership, name='register'),
     path('settings/', views.settings, name='settings'),
     path('logout/', views.logout_view, name='logout'),
+
+    # Transaction URLs
+    path('create_deposit_transaction/', views.create_deposit_transaction, name='create_deposit_transaction'),
+    path('create_new_account/', views.membership, name='membership'),
 ]

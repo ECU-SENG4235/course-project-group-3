@@ -19,11 +19,37 @@
 
 {% block content %}
 
+{% if messages %}
+<!-- TODO: FIX ERROR HANDLING AND DISPLAYING FEATURES TO DISPLAY SEPERATE DIV TYPES WITH THE INCLUDED MESSAGES AS A LIST INSIDE OF THE DIV -->
+    {% for message in messages %}
+
+    {% endfor %}
+  <div class="alert alert-danger m-5" role="alert">
+    There are errors:
+    <ul>
+        {% if message.tags == 'error' %}
+          <li>{{ message }}</li>
+        {% endif %}
+    </ul>
+  </div>
+{% endif %}
+
 <div class="row">
     <div class="col-md-10 col-xxl-8 offset-md-1 offset-xxl-2">
         <h3 class="text-dark my-4">Checking, Savings, &amp; Credit</h3>
-        <div class="alert alert-success" role="alert" id="alert-deposit"><span><strong>Deposit&nbsp;</strong>was a success. Please allow 3-5 business days.</span></div>
-        <div class="alert alert-danger" role="alert" id="alert-deposit-1"><span><strong>Deposit&nbsp;</strong>was a un-successful. Please allow 3-5min and try again.</span></div>
+
+        {% if messages %}
+            <ul>
+                There are errors:
+              {% for message in messages %}
+                {% if message.tags == 'error' %}
+                    <div class="alert danger" role="alert" id="alert-error"><span>{{ message }}</span></div>
+                {% elif message.tags == 'success' %}
+                    <div class="alert alert-success" role="alert" id="alert-success"><span>{{ message }}</span></div>
+                {% endif %}
+              {% endfor %}
+            </ul>
+        {% endif %}
         <div class="accordion my-5" role="tablist" id="accordion-1">
             <div class="accordion-item">
                 <h2 class="accordion-header" role="tab"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-1 .item-1" aria-expanded="true" aria-controls="accordion-1 .item-1">(....4687) Checking</button></h2>
@@ -53,40 +79,61 @@
                                                         <h4 class="modal-title">Deposit</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form>
+                                                        <form action="{% url 'accounts:create_deposit_transaction' %}" method="POST">
+                                                            {% csrf_token %}
+                                                            <input type="hidden" name="user_id" value="{{ request.user.id }}">
                                                             <div class="row">
                                                                 <div class="col-xxl-12 my-2">
-                                                                    <header></header><label class="form-label">Amount</label><input class="form-control" type="number">
+                                                                    <header></header><label class="form-label">Amount</label><input class="form-control" name="amount" type="number">
                                                                 </div>
                                                                 <div class="col-xxl-12 my-2">
-                                                                    <header></header><label class="form-label">Into Account</label><select class="form-select">
-                                                                        <optgroup label="Checking">
-                                                                            <option value="12" selected="">Account Ending in (0909)</option>
-                                                                            <option value="5674">Account Ending in (5674)</option>
-                                                                            <option value="8789">Account Ending in (8789)</option>
-                                                                        </optgroup>
-                                                                        <optgroup label="Savings">
-                                                                            <option value="5544">Account Ending in (5544)</option>
-                                                                        </optgroup>
-                                                                        <optgroup label="Credit">
-                                                                            <option value="6987">Account Ending in (6987)</option>
-                                                                        </optgroup>
+                                                                    <header></header><label class="form-label">Into Account</label><label>
+                                                                    <select class="form-select" name="transaction_type">
+                                                                    {% if accounts %}
+                                                                        {% for account in accounts %}
+                                                                            {% if account.account_type == 'Checking' %}
+                                                                                <option value="{{ account.id }}">{{ account.account_number }}</option>
+                                                                            {% elif account.account_type == 'Savings' %}
+                                                                                <option value="{{ account.id }}">{{ account.account_number }}</option>
+                                                                            {% elif account.account_type == 'Credit' %}
+                                                                                <option value="{{ account.id }}">{{ account.account_number }}</option>
+                                                                            {% endif %}
+                                                                        {% endfor %}
+                                                                    {% else %}
+                                                                         <!-- TODO: Create optional selector for each account type in case that no accounts exist -->
+                                                                        <h1>WE HAVE TO DO SOMETHING HERE!!!!!!!!!</h1>
+                                                                    {% endif %}
                                                                     </select>
+                                                                </label>
                                                                 </div>
                                                                 <div class="col-xxl-12 my-2">
-                                                                    <header></header><label class="form-label">Note</label><input class="form-control" type="text">
+                                                                    <header></header><label class="form-label">Note</label><input class="form-control" type="text" name="description">
                                                                 </div>
                                                                 <div class="col-xxl-12">
                                                                     <div class="form-check my-3"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Are you sure you want to perform this action ?</label></div>
                                                                 </div>
                                                             </div>
-                                                            <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Deposit</button></div>
-                                                        </form>
+                                                            <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Deposit</button></div>                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
+<!--                                    <optgroup label="Checking">-->
+<!--                                        <option value="12" selected="">Account Ending in (0909)</option>-->
+<!--                                        <option value="5674">Account Ending in (5674)</option>-->
+<!--                                        <option value="8789">Account Ending in (8789)</option>-->
+<!--                                    </optgroup>-->
+<!--                                    <optgroup label="Savings">-->
+<!--                                        <option value="5544">Account Ending in (5544)</option>-->
+<!--                                    </optgroup>-->
+<!--                                    <optgroup label="Credit">-->
+<!--                                        <option value="6987">Account Ending in (6987)</option>-->
+<!--                                    </optgroup>-->
+
+
+
                                     <div class="col-6 col-sm-4 col-lg-3 offset-0 d-flex justify-content-center"><button class="btn btn-primary my-2 send-btn" type="button" data-bs-target="#modal-transfer" data-bs-toggle="modal">Transfer</button>
                                         <div class="modal fade" role="dialog" tabindex="-1" id="modal-transfer">
                                             <div class="modal-dialog" role="document">
