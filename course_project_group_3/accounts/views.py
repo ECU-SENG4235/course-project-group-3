@@ -1,14 +1,14 @@
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
-from django import forms
 from django.contrib.auth.models import User
 from django.views import generic
 from .forms import CustomUserCreationForm
-from django.contrib.auth import authenticate, login as auth_login
+from django.contrib import messages  # for messages
+from django.contrib.auth import authenticate, logout, login
+
 
 
 # Create your views here.
@@ -57,34 +57,34 @@ def register(request):
     return render(request, 'accounts/register.html')
 
 
-def login(request):
-    username = request.POST.get("username")
-    password = request.POST.get("password")
-
-    if username is None or password is None:
-        # TODO: Return an 'invalid username or password' error message.
-        pass
-
-    try:
+def login_user(request):
+    member = request.user
+    context = {'member': member}
+    if request.method == 'POST':
+        print('POST request received')
+        username = request.POST['Username']
+        password = request.POST['Password']
         user = authenticate(request, username=username, password=password)
         if user is not None:
-            auth_login(request, user)
-            # TODO: Redirect to a success page.
-            # return redirect('success_page')
+            login(request, user)
+            print('Successful Login!')
+            messages.success(request, 'Successful Login!')
+            return render(request, 'dash/dashboard.html', context)  # Redirect to the home page
         else:
-            # TODO: Return an 'invalid login' error message.
-            pass
-    except Exception as e:
-        # TODO Handle exception here, possibly return an 'internal server error' message.
-        pass
+            print('ERROR: No username or password, please try again..')
+            messages.error(request, 'ERROR: No username or password, please try again..')
+            return render(request, 'accounts/home.html')  # Correct path to your login template
+    else:
+        print('ERROR: No username or password, please try again..')
+        return render(request, 'accounts/home.html')  # Correct path to your login template
 
-    return render(request, 'accounts/login.html')
 
-
-def logout(request):
+def logout_view(request):
+    # Log the user out
     logout(request)
-    # Redirect to a success page.
-    return render(request, 'accounts/logout.html')
+    print('Logout was Successful !')
+    messages.success(request, 'Logout was Successful !')
+    return redirect('accounts:landing_page')  # Redirect to the home page
 
 
 def settings(request):

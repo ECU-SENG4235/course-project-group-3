@@ -25,23 +25,52 @@
 
 <body>
     <nav class="navbar navbar-expand-lg fixed-top bg-body clean-navbar navbar-light">
-        <div class="container"><a class="navbar-brand logo fw-bold" href="#">Heritage Banking</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand logo fw-bold" href="{% url 'accounts:landing_page' %}">Heritage Banking</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link active" href="{% url 'accounts:landing_page' %}">Home</a></li>
+                    <!--  If user is authenticated, show the 'dashboard' link  -->
+                    {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'dash:dashboard' %}">Dashboard</a></li>
+                    {% else %}
+                    {% endif %}
+
                     <li class="nav-item"><a class="nav-link" href="{% url 'accounts:wallet' %}">Accounts</a></li>
 <!--                    <li class="nav-item"><a class="nav-link" href="pricing.html">Credit</a></li>-->
 <!--                    <li class="nav-item"><a class="nav-link" href="about-us.html">Services</a></li>-->
                     <li class="nav-item"><a class="nav-link" href="{% url 'accounts:register' %}">Membership</a></li>
 <!--                    <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact</a></li>-->
                 </ul>
+                {% if user.is_authenticated %}
+                <a class="nav-link fw-bold mx-2" href="{% url 'accounts:logout' %}"><btn class="btn btn-warning fw-bold" style="color: black;">Log Out, {{ user.username }} ?</btn></a>
+                {% endif %}
             </div>
         </div>
     </nav>
     <main class="page landing-page">
+        {% if messages %}
+          <div class="alert alert-danger m-5" role="alert">
+            There are errors:
+            <ul>
+              {% for message in messages %}
+                <li>{{ message }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
         {% block content %}
             <section class="clean-block clean-hero" style="background-image: url(&quot;https://images.unsplash.com/photo-1521790797524-b2497295b8a0?w=500&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGJsYWNrJTIwYnVzaW5lc3N8ZW58MHx8MHx8fDA%3D&quot;);color: rgba(0,0,0,0.85);">
-                <div class="text">
+                {% if user.is_authenticated %}
+                    <div class="text">
+                        <div class="row">
+                            <div class="col-sm-8 offset-sm-2">
+                                <h2 class="mt-5">Welcome, {{ user.username }}</h2>
+                                <p>Thank you for choosing Heritage Bank. We are here to serve you.</p>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="text">
                     <div class="row">
                         <div class="col-sm-8 offset-sm-2">
                             <h2 class="mt-5">Lorem ipsum dolor sit amet.</h2>
@@ -71,6 +100,7 @@
                         </div>
                     </div>
                 </div>
+                {% endif %}
             </section>
             <section>
                 <!-- Start: Stats Color -->
@@ -259,7 +289,7 @@
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-sm-6 col-lg-4">
-                            <div class="card text-center clean-card"><img class="card-img-top w-100 d-block" src="assets/img/avatars/avatar1.jpg">
+                            <div class="card text-center clean-card"><img class="card-img-top w-100 d-block" src="{% static 'img/avatars/avatar1.jpg' %}">
                                 <div class="card-body info">
                                     <h4 class="card-title">John Smith</h4>
                                     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
@@ -268,7 +298,7 @@
                             </div>
                         </div>
                         <div class="col-sm-6 col-lg-4">
-                            <div class="card text-center clean-card"><img class="card-img-top w-100 d-block" src="assets/img/avatars/avatar2.jpg">
+                            <div class="card text-center clean-card"><img class="card-img-top w-100 d-block" src="{% static 'img/avatars/avatar2.jpg' %}">
                                 <div class="card-body info">
                                     <h4 class="card-title">Robert Downturn</h4>
                                     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
@@ -277,7 +307,7 @@
                             </div>
                         </div>
                         <div class="col-sm-6 col-lg-4">
-                            <div class="card text-center clean-card"><img class="card-img-top w-100 d-block" src="assets/img/avatars/avatar3.jpg">
+                            <div class="card text-center clean-card"><img class="card-img-top w-100 d-block" src="{% static 'img/avatars/avatar3.jpg' %}">
                                 <div class="card-body info">
                                     <h4 class="card-title">Ally Sanders</h4>
                                     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
