@@ -27,16 +27,3 @@ urlpatterns = [
     path('', views.dashboard, name='dashboard'),  # django will match this to 'dash:dashboard'
 
 ]
-
-# # Users URLs
-# path('profile/', views.user_profile, name='user_profile'),
-# path('settings/', views.user_settings, name='user_settings'),
-#
-# # Accounts URLs
-# path('account/<int:account_id>/', views.account_details, name='account_details'),
-#
-# # Transactions URLs
-# path('recent-transactions/<int:account_id>/', views.recent_transactions, name='recent_transactions'),
-#
-# # Credit Cards URLs
-# path('credit-card-details/', views.credit_card_details, name='credit_card_details'),

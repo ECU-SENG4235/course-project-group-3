@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
@@ -15,6 +16,12 @@ class SignUpView(generic.CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy("login")
     template_name = "registration/signup.html"
+
+
+def base(request):
+    member = request.user
+    context = {'member': member}
+    return render(request, 'accounts/base.html', context)
 
 
 # @login_required

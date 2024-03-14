@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0993659f-da7c-4240-bad4-279b4c8fb233" name="Changes" comment="Optimize 'request.user' object retrieval method&#10;&#10;The 'request.user' object is now directly assigned to 'member', instead of separately fetching it from the database. This change benefits the application by reducing database calls, hence optimizing performance. Few static and template files were also modified as part of project structure refinement.">
+    <list default="true" id="0993659f-da7c-4240-bad4-279b4c8fb233" name="Changes" comment="Refactor model declarations with improved structure&#10;&#10;The model classes and admin site registrations have been shuffled between accounts and dash applications to follow a more logical structure. This commit moves Account, UserSetting, CreditCard, and Transaction models from the dash app to the accounts app and updates the corresponding imports in the admin. The admin registrations for these models are accordingly updated in both apps. Furthermore, Password and Port fields for the database connection in settings.py were modified.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/wallet.html" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/wallet.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course_project_group_3/course_project_group_3/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/course_project_group_3/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course_project_group_3/dash/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/dash/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course_project_group_3/dash/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/course_project_group_3/dash/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/dash/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,24 +47,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main-v2&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/Users/Kamron/Documents/GitHub/course-project-group-3/course_project_group_3/static/imgs&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main-v2",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "E:/Users/Kamron/Documents/GitHub/course-project-group-3/course_project_group_3/static/imgs",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\static\imgs" />
@@ -96,7 +102,11 @@
       <workItem from="1709507607986" duration="80000" />
       <workItem from="1709859230374" duration="10997000" />
       <workItem from="1709954830022" duration="6658000" />
-      <workItem from="1710032615904" duration="10007000" />
+      <workItem from="1710032615904" duration="10260000" />
+      <workItem from="1710051845799" duration="27000" />
+      <workItem from="1710051923856" duration="200000" />
+      <workItem from="1710286932842" duration="3359000" />
+      <workItem from="1710363069252" duration="5215000" />
     </task>
     <task id="LOCAL-00001" summary="Update .gitignore file&#10;&#10;Added new entries to the .gitignore file to exclude commonly unwanted directories and files. This will prevent them from being tracked by git, simplifying the development process.">
       <option name="closed" value="true" />
@@ -138,11 +148,38 @@
       <option name="project" value="LOCAL" />
       <updated>1710051114753</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Fix 'Settings' hyperlink in the base template&#10;&#10;The code has been revised to correct the hyperlink of the 'Settings' option in the navigation bar, redirecting it from 'accounts:settings' to 'accounts:profile'. The profile link in the dropdown menu has also been fixed to point to the 'accounts:profile' URL. These changes improve navigation and provide accurate guidance for users.">
+      <option name="closed" value="true" />
+      <created>1710051739922</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1710051739922</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Refactor model declarations with improved structure&#10;&#10;The model classes and admin site registrations have been shuffled between accounts and dash applications to follow a more logical structure. This commit moves Account, UserSetting, CreditCard, and Transaction models from the dash app to the accounts app and updates the corresponding imports in the admin. The admin registrations for these models are accordingly updated in both apps. Furthermore, Password and Port fields for the database connection in settings.py were modified.">
+      <option name="closed" value="true" />
+      <created>1710363301051</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1710363301051</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Update .gitignore file&#10;&#10;Added new entries to the .gitignore file to exclude commonly unwanted directories and files. This will prevent them from being tracked by git, simplifying the development process." />
@@ -150,6 +187,9 @@
     <MESSAGE value="Remove unnecessary files from commit&#10;&#10;Cleared unwanted files that were mistakenly added to the repository due to the absence of proper .gitignore attributes. Specifically, these were thousands of .venv files. Also, two unintended apps were included and subsequently removed." />
     <MESSAGE value="Remove unused static files from the project&#10;&#10;A bulk of static files were removed in this commit. These files primarily include aspects of the admin interface design and JavaScript code, as well as the i18n localization data. They were no longer needed or used in the application, hence the removal, which leads to cleaner project structure and lower overall project size." />
     <MESSAGE value="Optimize 'request.user' object retrieval method&#10;&#10;The 'request.user' object is now directly assigned to 'member', instead of separately fetching it from the database. This change benefits the application by reducing database calls, hence optimizing performance. Few static and template files were also modified as part of project structure refinement." />
-    <option name="LAST_COMMIT_MESSAGE" value="Optimize 'request.user' object retrieval method&#10;&#10;The 'request.user' object is now directly assigned to 'member', instead of separately fetching it from the database. This change benefits the application by reducing database calls, hence optimizing performance. Few static and template files were also modified as part of project structure refinement." />
+    <MESSAGE value="Refine 'request.user' retrieval and modify templates&#10;&#10;The 'request.user' object retrieval has been improved by directly assigning it to the variable 'member'. This reduces database calls, optimizes application performance, and simplifies code. Some static and template files were also adjusted to refine the project structure." />
+    <MESSAGE value="Fix 'Settings' hyperlink in the base template&#10;&#10;The code has been revised to correct the hyperlink of the 'Settings' option in the navigation bar, redirecting it from 'accounts:settings' to 'accounts:profile'. The profile link in the dropdown menu has also been fixed to point to the 'accounts:profile' URL. These changes improve navigation and provide accurate guidance for users." />
+    <MESSAGE value="Refactor model declarations with improved structure&#10;&#10;The model classes and admin site registrations have been shuffled between accounts and dash applications to follow a more logical structure. This commit moves Account, UserSetting, CreditCard, and Transaction models from the dash app to the accounts app and updates the corresponding imports in the admin. The admin registrations for these models are accordingly updated in both apps. Furthermore, Password and Port fields for the database connection in settings.py were modified." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor model declarations with improved structure&#10;&#10;The model classes and admin site registrations have been shuffled between accounts and dash applications to follow a more logical structure. This commit moves Account, UserSetting, CreditCard, and Transaction models from the dash app to the accounts app and updates the corresponding imports in the admin. The admin registrations for these models are accordingly updated in both apps. Furthermore, Password and Port fields for the database connection in settings.py were modified." />
   </component>
 </project>
