@@ -65,6 +65,8 @@ class BankAccount(models.Model):
     account_type = models.CharField(max_length=50, choices=ACCOUNT_TYPE_CHOICES, default='checking')
     is_active = models.BooleanField(default=True)
 
+    # TODO: Create routing number attribute
+
     transaction_limit = models.DecimalField(max_digits=10, decimal_places=2, default=1000.00)
     overdraft_limit = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     last_transaction_date = models.DateTimeField(null=True, blank=True)

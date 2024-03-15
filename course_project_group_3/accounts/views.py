@@ -39,12 +39,8 @@ def landing_page(request):
 
 # @login_required
 def wallet(request):
-    # Fetch the user object from the database
-    member = request.user
-
-    # Pass the user object to the template
-    context = {'member': member}
-
+    user_accounts = request.user.bank_accounts.all()
+    context = {'bank_accounts': user_accounts}
     return render(request, 'accounts/wallet.html', context)
 
 
@@ -59,20 +55,6 @@ def profile(request):
 
 def register(request):
     # TODO: Add a check to see if the user is already logged in
-    # TODO: VERIFY THAT THE CURRENT BELOW CODE WORKS BEFORE EDITING
-    if request.method == 'POST':
-        form = CustomUserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            print('User was created successfully')
-            messages.success(request, 'User was created successfully')
-            return redirect('accounts:landing_page')
-    else:
-        form = CustomUserCreationForm()  # An unbound form
-    return render(request, 'accounts/register.html')
-
-
-def membership(request):
     # TODO: VERIFY THAT THE CURRENT BELOW CODE WORKS BEFORE EDITING
     if request.method == 'POST':
         print('POST request received')
@@ -101,6 +83,49 @@ def membership(request):
             # log the user in
             login(request, user)
             print('User was created successfully')
+            messages.success(request, 'User was created successfully')
+        except Exception as e:
+            print(f'An unexpected error occurred: {str(e)}')
+            messages.error(request, f'An unexpected error occurred: {str(e)}')
+    return render(request, 'accounts/membership.html')
+
+
+def membership(request):
+    if request.method == 'POST':
+        print('POST request received')
+        # Get user details from the form
+        username = request.POST['username']
+        password = request.POST['password']
+        first_name = request.POST['firstName']
+        last_name = request.POST['lastName']
+        email = request.POST['email']
+
+        print(f'\n\n\n\nUsername: {username}')
+        print(f'Password: {password}')
+        print(f'First Name: {first_name}')
+        print(f'Last Name: {last_name}')
+        print(f'Email: {email}\n\n\n')
+
+        # Create the user object
+        user = User.objects.create_user(username, email, password)
+        user.first_name = first_name
+        user.last_name = last_name
+
+        try:
+            print('Creating a new user')
+            # Save the changes
+            user.save()
+            # log the user in
+            login(request, user)
+            print('User was created successfully')
+            messages.success(request, 'User was created successfully')
+        except Exception as e:
+            print(f'An unexpected error occurred: {str(e)}')
+            messages.error(request, f'An unexpected error occurred: {str(e)}')
+
+        try:
+            # log the user in
+            login(request, user)
             messages.success(request, 'User was created successfully')
         except Exception as e:
             print(f'An unexpected error occurred: {str(e)}')
