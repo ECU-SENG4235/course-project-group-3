@@ -4,15 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0993659f-da7c-4240-bad4-279b4c8fb233" name="Changes" comment="Refactor model declarations with improved structure&#10;&#10;The model classes and admin site registrations have been shuffled between accounts and dash applications to follow a more logical structure. This commit moves Account, UserSetting, CreditCard, and Transaction models from the dash app to the accounts app and updates the corresponding imports in the admin. The admin registrations for these models are accordingly updated in both apps. Furthermore, Password and Port fields for the database connection in settings.py were modified.">
+    <list default="true" id="0993659f-da7c-4240-bad4-279b4c8fb233" name="Changes" comment="Refactor wallet.html and enhance transaction handling&#10;&#10;This commit aims to enhance error handling in the form within wallet.html and improve the allocation of account numbers. It successfully depicts error messages and includes a new section for displaying messages. The system for generating unique account numbers in accounts/views.py has been refined and transactions are now correctly saved to the respective bank accounts. Accompanied by minor changes in the admin settings correlating to model name changes.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/base_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/base_2.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/wallet.html" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/wallet.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/course_project_group_3/course_project_group_3/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/course_project_group_3/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_project_group_3/dash/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/dash/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_project_group_3/dash/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_project_group_3/dash/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/dash/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course_project_group_3/course_project_group_3/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/course_project_group_3/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course_project_group_3/dash/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/course_project_group_3/dash/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/course_project_group_3/dash/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/course_project_group_3/dash/forms.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/course_project_group_3/dash/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/course_project_group_3/dash/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/course_project_group_3/dash/templates/dash/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course_project_group_3/dash/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/course_project_group_3/dash/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/course_project_group_3/dash/views.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,34 +58,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main-v2",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "E:/Users/Kamron/Documents/GitHub/course-project-group-3/course_project_group_3/static/imgs",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;wallet-management&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Users/Kamron/Documents/GitHub/course-project-group-3/course_project_group_3/accounts/templates/accounts&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;a.a.a.g.b&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\templates\accounts" />
+      <recent name="E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\static\main" />
       <recent name="E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\static\imgs" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\templates\accounts" />
       <recent name="E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\static\bs\dash" />
       <recent name="E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\static\js\dash" />
       <recent name="E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\static\imgs\dash" />
       <recent name="E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\static\fonts\dash" />
-      <recent name="E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\static\css\dash" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -107,6 +120,10 @@
       <workItem from="1710051923856" duration="200000" />
       <workItem from="1710286932842" duration="3359000" />
       <workItem from="1710363069252" duration="5215000" />
+      <workItem from="1710368718496" duration="15806000" />
+      <workItem from="1710436044597" duration="1922000" />
+      <workItem from="1710438162678" duration="12411000" />
+      <workItem from="1710450633307" duration="16204000" />
     </task>
     <task id="LOCAL-00001" summary="Update .gitignore file&#10;&#10;Added new entries to the .gitignore file to exclude commonly unwanted directories and files. This will prevent them from being tracked by git, simplifying the development process.">
       <option name="closed" value="true" />
@@ -164,7 +181,55 @@
       <option name="project" value="LOCAL" />
       <updated>1710363301051</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Update application layout, database settings, and import declarations&#10;&#10;Application layout is realigned by moving Account, UserSetting, CreditCard, and Transaction models from the dash app to the accounts app, simultaneously updating corresponding imports in the admin. Additionally, Password and Port fields for the database connection are adjusted in settings.py to improve security and maintain coherent code structure.">
+      <option name="closed" value="true" />
+      <created>1710368968163</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1710368968163</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Update views, database settings and page layouts&#10;&#10;Expanded and refactored several views in accounts/views.py, including the addition of a new login() function. Updated database connection settings in settings.py for improved security. Large-scale changes made to the home.html template in the accounts application, with many new features added. A considerable number of new static files were also included alongside these changes.">
+      <option name="closed" value="true" />
+      <created>1710374972326</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1710374972326</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Implement user authentication logic and improve routes&#10;&#10;Improved login and logout logic in account views, adjusted URLs for better navigation. Created suitable name attributes for input fields and form submission in home.html. Also, fixed paths for carousel images in base_2.html template.">
+      <option name="closed" value="true" />
+      <created>1710383738051</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1710383738051</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Restructure home page and update user login form handling&#10;&#10;This commit includes major change in the structure and content of the home.html template. Specifically, the login form is now only displayed if the user is not authenticated. Additionally, placeholder texts and headings have been replaced with relevant banking-related content to provide a more complete and user-friendly interface. Unnecessary changes in workspace.xml have been cleaned up as well.">
+      <option name="closed" value="true" />
+      <created>1710388521603</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1710388521603</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Update form error handling and improve transactions&#10;&#10;Enhanced error handling in wallet.html form and allocation of account numbers for users. The form now correctly displays error messages and includes a new section for displaying messages. In accounts/views.py, a system for generating unique account numbers has been implemented and new transactions are now properly saved to the bank account. Minor changes have also been made to the admin settings to reflect the model name changes.">
+      <option name="closed" value="true" />
+      <created>1710451860537</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1710451860537</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Refactor wallet.html and enhance transaction handling&#10;&#10;This commit aims to enhance error handling in the form within wallet.html and improve the allocation of account numbers. It successfully depicts error messages and includes a new section for displaying messages. The system for generating unique account numbers in accounts/views.py has been refined and transactions are now correctly saved to the respective bank accounts. Accompanied by minor changes in the admin settings correlating to model name changes.">
+      <option name="closed" value="true" />
+      <created>1710468363692</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1710468363692</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,6 +255,13 @@
     <MESSAGE value="Refine 'request.user' retrieval and modify templates&#10;&#10;The 'request.user' object retrieval has been improved by directly assigning it to the variable 'member'. This reduces database calls, optimizes application performance, and simplifies code. Some static and template files were also adjusted to refine the project structure." />
     <MESSAGE value="Fix 'Settings' hyperlink in the base template&#10;&#10;The code has been revised to correct the hyperlink of the 'Settings' option in the navigation bar, redirecting it from 'accounts:settings' to 'accounts:profile'. The profile link in the dropdown menu has also been fixed to point to the 'accounts:profile' URL. These changes improve navigation and provide accurate guidance for users." />
     <MESSAGE value="Refactor model declarations with improved structure&#10;&#10;The model classes and admin site registrations have been shuffled between accounts and dash applications to follow a more logical structure. This commit moves Account, UserSetting, CreditCard, and Transaction models from the dash app to the accounts app and updates the corresponding imports in the admin. The admin registrations for these models are accordingly updated in both apps. Furthermore, Password and Port fields for the database connection in settings.py were modified." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor model declarations with improved structure&#10;&#10;The model classes and admin site registrations have been shuffled between accounts and dash applications to follow a more logical structure. This commit moves Account, UserSetting, CreditCard, and Transaction models from the dash app to the accounts app and updates the corresponding imports in the admin. The admin registrations for these models are accordingly updated in both apps. Furthermore, Password and Port fields for the database connection in settings.py were modified." />
+    <MESSAGE value="Update application layout, database settings, and import declarations&#10;&#10;Application layout is realigned by moving Account, UserSetting, CreditCard, and Transaction models from the dash app to the accounts app, simultaneously updating corresponding imports in the admin. Additionally, Password and Port fields for the database connection are adjusted in settings.py to improve security and maintain coherent code structure." />
+    <MESSAGE value="Update views, database settings and page layouts&#10;&#10;Expanded and refactored several views in accounts/views.py, including the addition of a new login() function. Updated database connection settings in settings.py for improved security. Large-scale changes made to the home.html template in the accounts application, with many new features added. A considerable number of new static files were also included alongside these changes." />
+    <MESSAGE value="Implement user authentication logic and improve routes&#10;&#10;Improved login and logout logic in account views, adjusted URLs for better navigation. Created suitable name attributes for input fields and form submission in home.html. Also, fixed paths for carousel images in base_2.html template." />
+    <MESSAGE value="Update website content and aesthetics&#10;&#10;Redesigned the content and imagery on the home page and updated annual percentage rates. Implemented new user registration logic in the account views and improved navigation routes on the website." />
+    <MESSAGE value="Restructure home page and update user login form handling&#10;&#10;This commit includes major change in the structure and content of the home.html template. Specifically, the login form is now only displayed if the user is not authenticated. Additionally, placeholder texts and headings have been replaced with relevant banking-related content to provide a more complete and user-friendly interface. Unnecessary changes in workspace.xml have been cleaned up as well." />
+    <MESSAGE value="Update form error handling and improve transactions&#10;&#10;Enhanced error handling in wallet.html form and allocation of account numbers for users. The form now correctly displays error messages and includes a new section for displaying messages. In accounts/views.py, a system for generating unique account numbers has been implemented and new transactions are now properly saved to the bank account. Minor changes have also been made to the admin settings to reflect the model name changes." />
+    <MESSAGE value="Refactor wallet.html and enhance transaction handling&#10;&#10;This commit aims to enhance error handling in the form within wallet.html and improve the allocation of account numbers. It successfully depicts error messages and includes a new section for displaying messages. The system for generating unique account numbers in accounts/views.py has been refined and transactions are now correctly saved to the respective bank accounts. Accompanied by minor changes in the admin settings correlating to model name changes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor wallet.html and enhance transaction handling&#10;&#10;This commit aims to enhance error handling in the form within wallet.html and improve the allocation of account numbers. It successfully depicts error messages and includes a new section for displaying messages. The system for generating unique account numbers in accounts/views.py has been refined and transactions are now correctly saved to the respective bank accounts. Accompanied by minor changes in the admin settings correlating to model name changes." />
   </component>
 </project>

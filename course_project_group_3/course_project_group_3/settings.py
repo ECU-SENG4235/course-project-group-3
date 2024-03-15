@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'dash',
     'accounts',
     'notifications',
 ]
@@ -81,9 +80,9 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "railway",
         "USER": "postgres",
-        "PASSWORD": "aiBAEeqOkavXZQdWiYjTKyhRkOBzPfRI",
-        "HOST": "roundhouse.proxy.rlwy.net",
-        "PORT": "19661",
+        "PASSWORD": "RecxQNLZcOEmjwRkNPWsfAhAItemXhGh",
+        "HOST": "monorail.proxy.rlwy.net",
+        "PORT": "17572",
     }
 }
 
@@ -136,3 +135,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #Redirects users upon successful login may need to be altered
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+
+LOGIN_URL = 'accounts/home.html'  # Replace 'login' with your actual login URL pattern name
+LOGOUT_URL = 'dash/dashboard.html'  # Replace 'logout' with your actual logout URL pattern name
