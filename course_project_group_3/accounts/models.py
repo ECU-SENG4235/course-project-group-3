@@ -106,7 +106,6 @@ class Transaction(models.Model):
     description = models.TextField(blank=True)
 
     # Additional transaction-related attributes can be added here.
-
     class Meta:
         db_table = 'transactions'
         verbose_name = 'Transaction'

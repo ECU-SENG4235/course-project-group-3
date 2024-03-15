@@ -34,7 +34,27 @@ def base(request):
 def landing_page(request):
     member = request.user
     context = {'member': member}
-    return render(request, 'accounts/home.html', context)
+    return render(request, 'accounts/home.html', {'member': member})
+
+
+def dashboard(request):
+    member = request.user
+    context = {'member': member}
+    return render(request, 'accounts/dashboard.html', {'member': member})
+
+
+
+
+
+def generate_report(request):
+    member = request.user
+    context = {'member': member}
+    return render(request, 'accounts/reports.html', {'member': member})
+
+
+
+
+
 
 
 # @login_required
@@ -275,6 +295,7 @@ def generate_random_9_digit_number():
 def create_deposit_transaction(request):
     # Fetch the user object from the database
     user_id = request.user.id
+    user = User.objects.get(id=user_id)
     amount = request.POST.get('amount')
     print(f'Amount: {amount}')
     account_id = request.POST.get('account_id')
@@ -311,7 +332,7 @@ def create_deposit_transaction(request):
     # Create a new transaction object
     try:
         print('Creating a new transaction')
-        new_transaction = Transaction(account_id=account_id, transaction_type=transaction_type, amount=amount,
+        new_transaction = Transaction(account=user.bank_accounts.all.first, transaction_type=transaction_type, amount=amount,
                                       description=description)
         new_transaction.save()
         print('Deposit successful!')

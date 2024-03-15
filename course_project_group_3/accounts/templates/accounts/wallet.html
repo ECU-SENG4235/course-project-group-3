@@ -92,6 +92,13 @@
                                                                     <h4 class="modal-title">Deposit</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                                                                 </div>
                                                                 <div class="modal-body">
+
+
+
+
+
+
+
                                                                     <form action="{% url 'accounts:create_deposit_transaction' %}" method="POST">
                                                                         {% csrf_token %}
                                                                         <input type="hidden" name="user_id" value="{{ request.user.id }}">
@@ -107,9 +114,9 @@
                                                                                         {% if account.account_type == 'Checking' %}
                                                                                             <option value="{{ account.id }}">{{ account.account_number }} - {{ account.account_type }}</option>
                                                                                         {% elif account.account_type == 'Savings' %}
-                                                                                            <option value="{{ account.id }}">{{ account.account_number }}</option>
+                                                                                            <option value="{{ account.id }}">{{ account.account_number }}  - {{ account.account_type }}</option>
                                                                                         {% elif account.account_type == 'Credit' %}
-                                                                                            <option value="{{ account.id }}">{{ account.account_number }}</option>
+                                                                                            <option value="{{ account.id }}">{{ account.account_number }}  - {{ account.account_type }}</option>
                                                                                         {% endif %}
                                                                                     {% endfor %}
                                                                                 {% else %}
@@ -126,7 +133,21 @@
                                                                                 <div class="form-check my-3"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Are you sure you want to perform this action ?</label></div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Deposit</button></div>                                                        </form>
+
+
+                                                                        <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Deposit</button></div>
+
+
+                                                                    </form>
+
+
+
+
+
+
+
+
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -155,6 +176,13 @@
                                                                     <h4 class="modal-title">Transfer</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                                                                 </div>
                                                                 <div class="modal-body">
+
+
+
+
+
+
+
                                                                     <form>
                                                                         <div class="row">
                                                                             <div class="col-xxl-12 my-2">
@@ -199,6 +227,14 @@
                                                                         </div>
                                                                         <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Transfer</button></div>
                                                                     </form>
+
+
+
+
+
+
+
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -330,157 +366,196 @@
                                             </div>
                                             <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                                                 <table class="table my-0" id="dataTable">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Date</th>
-                                                            <th>Name</th>
-                                                            <th>Type</th>
-                                                            <th>Amount</th>
-                                                            <th>Balance</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>2008/11/28</td>
-                                                            <td class="text-truncate"><img class="rounded-circle me-2" width="30" height="30" src="../../../../../../Education/Spring%2024/Software%20Project%20Management/Project/Exports/Banking_v1_03-07-24/assets/img/avatars/avatar1.jpeg">Walmart</td>
-                                                            <td class="debit-light">Debit</td>
-                                                            <td>$162,700</td>
-                                                            <td>$162,700</td>
-                                                            <td>
-                                                                <div class="dropdown"><button class="btn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-three-dots-vertical">
-                                                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"></path>
-                                                                        </svg></button>
-                                                                    <div class="dropdown-menu ms-auto"><a class="dropdown-item" href="#">Hide</a><a class="dropdown-item" href="#">Report</a><a class="dropdown-item" href="#">Dispute</a></div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2009/10/09<br></td>
-                                                            <td class="text-truncate"><img class="rounded-circle me-2" width="30" height="30" src="../../../../../../Education/Spring%2024/Software%20Project%20Management/Project/Exports/Banking_v1_03-07-24/assets/img/avatars/avatar2.jpeg">ECU Staffing</td>
-                                                            <td class="credit-light">Credit</td>
-                                                            <td>$1,200,000</td>
-                                                            <td>$1,200,000</td>
-                                                            <td>
-                                                                <div class="dropdown"><button class="btn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-three-dots-vertical">
-                                                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"></path>
-                                                                        </svg></button>
-                                                                    <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2009/01/12<br></td>
-                                                            <td class="text-truncate"><img class="rounded-circle me-2" width="30" height="30" src="../../../../../../Education/Spring%2024/Software%20Project%20Management/Project/Exports/Banking_v1_03-07-24/assets/img/avatars/avatar3.jpeg">Checking to Savings</td>
-                                                            <td class="transfer-light">Transfer</td>
-                                                            <td>$86,000</td>
-                                                            <td>$86,000</td>
-                                                            <td>
-                                                                <div class="dropdown"><button class="btn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-three-dots-vertical">
-                                                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"></path>
-                                                                        </svg></button>
-                                                                    <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2012/10/13<br></td>
-                                                            <td class="text-truncate"><img class="rounded-circle me-2" width="30" height="30" src="../../../../../../Education/Spring%2024/Software%20Project%20Management/Project/Exports/Banking_v1_03-07-24/assets/img/avatars/avatar4.jpeg">Greenville Util.</td>
-                                                            <td>Debit</td>
-                                                            <td>$132,000</td>
-                                                            <td>$132,000</td>
-                                                            <td>
-                                                                <div class="dropdown"><button class="btn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-three-dots-vertical">
-                                                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"></path>
-                                                                        </svg></button>
-                                                                    <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2011/06/07<br></td>
-                                                            <td class="text-truncate"><img class="rounded-circle me-2" width="30" height="30" src="../../../../../../Education/Spring%2024/Software%20Project%20Management/Project/Exports/Banking_v1_03-07-24/assets/img/avatars/avatar5.jpeg">Parking Garage</td>
-                                                            <td>Debit</td>
-                                                            <td>$206,850</td>
-                                                            <td>$206,850</td>
-                                                            <td>
-                                                                <div class="dropdown"><button class="btn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-three-dots-vertical">
-                                                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"></path>
-                                                                        </svg></button>
-                                                                    <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2012/12/02<br></td>
-                                                            <td class="text-truncate"><img class="rounded-circle me-2" width="30" height="30" src="../../../../../../Education/Spring%2024/Software%20Project%20Management/Project/Exports/Banking_v1_03-07-24/assets/img/avatars/avatar1.jpeg">Speed Way</td>
-                                                            <td>Debit</td>
-                                                            <td>$372,000</td>
-                                                            <td>$372,000</td>
-                                                            <td>
-                                                                <div class="dropdown"><button class="btn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-three-dots-vertical">
-                                                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"></path>
-                                                                        </svg></button>
-                                                                    <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2011/05/03<br></td>
-                                                            <td class="text-truncate"><img class="rounded-circle me-2" width="30" height="30" src="../../../../../../Education/Spring%2024/Software%20Project%20Management/Project/Exports/Banking_v1_03-07-24/assets/img/avatars/avatar2.jpeg">IBM Internship</td>
-                                                            <td>Credit</td>
-                                                            <td>$163,500</td>
-                                                            <td>$163,500</td>
-                                                            <td>
-                                                                <div class="dropdown"><button class="btn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-three-dots-vertical">
-                                                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"></path>
-                                                                        </svg></button>
-                                                                    <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2011/12/12<br></td>
-                                                            <td class="text-truncate"><img class="rounded-circle me-2" width="30" height="30" src="../../../../../../Education/Spring%2024/Software%20Project%20Management/Project/Exports/Banking_v1_03-07-24/assets/img/avatars/avatar3.jpeg">Verizon Wireless</td>
-                                                            <td>Debit</td>
-                                                            <td>$106,450</td>
-                                                            <td>$106,450</td>
-                                                            <td>
-                                                                <div class="dropdown"><button class="btn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-three-dots-vertical">
-                                                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"></path>
-                                                                        </svg></button>
-                                                                    <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2011/12/06<br></td>
-                                                            <td class="text-truncate"><img class="rounded-circle me-2" width="30" height="30" src="../../../../../../Education/Spring%2024/Software%20Project%20Management/Project/Exports/Banking_v1_03-07-24/assets/img/avatars/avatar4.jpeg">Credit Card Payment</td>
-                                                            <td>Transfer</td>
-                                                            <td>$145,600</td>
-                                                            <td>$145,600</td>
-                                                            <td>
-                                                                <div class="dropdown"><button class="btn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-three-dots-vertical">
-                                                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"></path>
-                                                                        </svg></button>
-                                                                    <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>2012/03/29<br></td>
-                                                            <td class="text-truncate"><img class="rounded-circle me-2" width="30" height="30" src="../../../../../../Education/Spring%2024/Software%20Project%20Management/Project/Exports/Banking_v1_03-07-24/assets/img/avatars/avatar5.jpeg">Cedric Kelly</td>
-                                                            <td>Transfer</td>
-                                                            <td>$433,060</td>
-                                                            <td>$433,060</td>
-                                                            <td>
-                                                                <div class="dropdown"><button class="btn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-three-dots-vertical">
-                                                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"></path>
-                                                                        </svg></button>
-                                                                    <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
+                                                    {% for transaction in account.transactions.all %}
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Date</th>
+                                                                <th>Name</th>
+                                                                <th>Type</th>
+                                                                <th>Amount</th>
+<!--                                                                <th>Balance</th>-->
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>{{ transaction.timestamp }}</td>
+                                                                <td class="text-truncate"><img class="rounded-circle me-2" width="30" height="30" src="{{ transaction.profile_img_url }}">{{ transaction.description }}</td>
+                                                                {% if transaction.transaction_type == 'Debit' %}
+                                                                    <td class="debit-light">{{ transaction.transaction_type }}</td>
+                                                                {% elif transaction.transaction_type == 'Credit' %}
+                                                                    <td class="credit-light">{{ transaction.transaction_type }}</td>
+                                                                {% elif transaction.transaction_type == 'Transfer' %}
+                                                                    <td class="transfer-light">{{ transaction.transaction_type }}</td>
+                                                                {% elif transaction.transaction_type == 'Deposit' %}
+                                                                    <td class="deposit-light">{{ transaction.transaction_type }}</td>
+                                                                {% endif %}
+
+
+
+                                                                <td class="debit-light">{{ transaction.transaction_type }}</td>
+                                                                <td>${{ transaction.amount }}</td>
+<!--                                                                <td>${{ transaction.balance }}</td>-->
+                                                                <td>
+                                                                    <div class="dropdown"><button class="btn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-three-dots-vertical">
+                                                                                <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"></path>
+                                                                            </svg></button>
+                                                                        <div class="dropdown-menu ms-auto"><a class="dropdown-item" href="#">Hide</a><a class="dropdown-item" href="#">Report</a><a class="dropdown-item" href="#">Dispute</a></div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    {% endfor %}
+<!--                                                    <thead>-->
+<!--                                                        <tr>-->
+<!--                                                            <th>Date</th>-->
+<!--                                                            <th>Name</th>-->
+<!--                                                            <th>Type</th>-->
+<!--                                                            <th>Amount</th>-->
+<!--                                                            <th>Balance</th>-->
+<!--                                                        </tr>-->
+<!--                                                    </thead>-->
+<!--                                                    <tbody>-->
+<!--                                                        <tr>-->
+<!--                                                            <td>2008/11/28</td>-->
+<!--                                                            <td class="text-truncate"><img class="rounded-circle me-2" width="30" height="30" src="../../../../../../Education/Spring%2024/Software%20Project%20Management/Project/Exports/Banking_v1_03-07-24/assets/img/avatars/avatar1.jpeg">Walmart</td>-->
+<!--                                                            <td class="debit-light">Debit</td>-->
+<!--                                                            <td>$162,700</td>-->
+<!--                                                            <td>$162,700</td>-->
+<!--                                                            <td>-->
+<!--                                                                <div class="dropdown"><button class="btn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-three-dots-vertical">-->
+<!--                                                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"></path>-->
+<!--                                                                        </svg></button>-->
+<!--                                                                    <div class="dropdown-menu ms-auto"><a class="dropdown-item" href="#">Hide</a><a class="dropdown-item" href="#">Report</a><a class="dropdown-item" href="#">Dispute</a></div>-->
+<!--                                                                </div>-->
+<!--                                                            </td>-->
+<!--                                                        </tr>-->
+<!--                                                        <tr>-->
+<!--                                                            <td>2009/10/09<br></td>-->
+<!--                                                            <td class="text-truncate"><img class="rounded-circle me-2" width="30" height="30" src="../../../../../../Education/Spring%2024/Software%20Project%20Management/Project/Exports/Banking_v1_03-07-24/assets/img/avatars/avatar2.jpeg">ECU Staffing</td>-->
+<!--                                                            <td class="credit-light">Credit</td>-->
+<!--                                                            <td>$1,200,000</td>-->
+<!--                                                            <td>$1,200,000</td>-->
+<!--                                                            <td>-->
+<!--                                                                <div class="dropdown"><button class="btn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-three-dots-vertical">-->
+<!--                                                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"></path>-->
+<!--                                                                        </svg></button>-->
+<!--                                                                    <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>-->
+<!--                                                                </div>-->
+<!--                                                            </td>-->
+<!--                                                        </tr>-->
+<!--                                                        <tr>-->
+<!--                                                            <td>2009/01/12<br></td>-->
+<!--                                                            <td class="text-truncate"><img class="rounded-circle me-2" width="30" height="30" src="../../../../../../Education/Spring%2024/Software%20Project%20Management/Project/Exports/Banking_v1_03-07-24/assets/img/avatars/avatar3.jpeg">Checking to Savings</td>-->
+<!--                                                            <td class="transfer-light">Transfer</td>-->
+<!--                                                            <td>$86,000</td>-->
+<!--                                                            <td>$86,000</td>-->
+<!--                                                            <td>-->
+<!--                                                                <div class="dropdown"><button class="btn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-three-dots-vertical">-->
+<!--                                                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"></path>-->
+<!--                                                                        </svg></button>-->
+<!--                                                                    <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>-->
+<!--                                                                </div>-->
+<!--                                                            </td>-->
+<!--                                                        </tr>-->
+<!--                                                        <tr>-->
+<!--                                                            <td>2012/10/13<br></td>-->
+<!--                                                            <td class="text-truncate"><img class="rounded-circle me-2" width="30" height="30" src="../../../../../../Education/Spring%2024/Software%20Project%20Management/Project/Exports/Banking_v1_03-07-24/assets/img/avatars/avatar4.jpeg">Greenville Util.</td>-->
+<!--                                                            <td>Debit</td>-->
+<!--                                                            <td>$132,000</td>-->
+<!--                                                            <td>$132,000</td>-->
+<!--                                                            <td>-->
+<!--                                                                <div class="dropdown"><button class="btn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-three-dots-vertical">-->
+<!--                                                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"></path>-->
+<!--                                                                        </svg></button>-->
+<!--                                                                    <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>-->
+<!--                                                                </div>-->
+<!--                                                            </td>-->
+<!--                                                        </tr>-->
+<!--                                                        <tr>-->
+<!--                                                            <td>2011/06/07<br></td>-->
+<!--                                                            <td class="text-truncate"><img class="rounded-circle me-2" width="30" height="30" src="../../../../../../Education/Spring%2024/Software%20Project%20Management/Project/Exports/Banking_v1_03-07-24/assets/img/avatars/avatar5.jpeg">Parking Garage</td>-->
+<!--                                                            <td>Debit</td>-->
+<!--                                                            <td>$206,850</td>-->
+<!--                                                            <td>$206,850</td>-->
+<!--                                                            <td>-->
+<!--                                                                <div class="dropdown"><button class="btn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-three-dots-vertical">-->
+<!--                                                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"></path>-->
+<!--                                                                        </svg></button>-->
+<!--                                                                    <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>-->
+<!--                                                                </div>-->
+<!--                                                            </td>-->
+<!--                                                        </tr>-->
+<!--                                                        <tr>-->
+<!--                                                            <td>2012/12/02<br></td>-->
+<!--                                                            <td class="text-truncate"><img class="rounded-circle me-2" width="30" height="30" src="../../../../../../Education/Spring%2024/Software%20Project%20Management/Project/Exports/Banking_v1_03-07-24/assets/img/avatars/avatar1.jpeg">Speed Way</td>-->
+<!--                                                            <td>Debit</td>-->
+<!--                                                            <td>$372,000</td>-->
+<!--                                                            <td>$372,000</td>-->
+<!--                                                            <td>-->
+<!--                                                                <div class="dropdown"><button class="btn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-three-dots-vertical">-->
+<!--                                                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"></path>-->
+<!--                                                                        </svg></button>-->
+<!--                                                                    <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>-->
+<!--                                                                </div>-->
+<!--                                                            </td>-->
+<!--                                                        </tr>-->
+<!--                                                        <tr>-->
+<!--                                                            <td>2011/05/03<br></td>-->
+<!--                                                            <td class="text-truncate"><img class="rounded-circle me-2" width="30" height="30" src="../../../../../../Education/Spring%2024/Software%20Project%20Management/Project/Exports/Banking_v1_03-07-24/assets/img/avatars/avatar2.jpeg">IBM Internship</td>-->
+<!--                                                            <td>Credit</td>-->
+<!--                                                            <td>$163,500</td>-->
+<!--                                                            <td>$163,500</td>-->
+<!--                                                            <td>-->
+<!--                                                                <div class="dropdown"><button class="btn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-three-dots-vertical">-->
+<!--                                                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"></path>-->
+<!--                                                                        </svg></button>-->
+<!--                                                                    <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>-->
+<!--                                                                </div>-->
+<!--                                                            </td>-->
+<!--                                                        </tr>-->
+<!--                                                        <tr>-->
+<!--                                                            <td>2011/12/12<br></td>-->
+<!--                                                            <td class="text-truncate"><img class="rounded-circle me-2" width="30" height="30" src="../../../../../../Education/Spring%2024/Software%20Project%20Management/Project/Exports/Banking_v1_03-07-24/assets/img/avatars/avatar3.jpeg">Verizon Wireless</td>-->
+<!--                                                            <td>Debit</td>-->
+<!--                                                            <td>$106,450</td>-->
+<!--                                                            <td>$106,450</td>-->
+<!--                                                            <td>-->
+<!--                                                                <div class="dropdown"><button class="btn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-three-dots-vertical">-->
+<!--                                                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"></path>-->
+<!--                                                                        </svg></button>-->
+<!--                                                                    <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>-->
+<!--                                                                </div>-->
+<!--                                                            </td>-->
+<!--                                                        </tr>-->
+<!--                                                        <tr>-->
+<!--                                                            <td>2011/12/06<br></td>-->
+<!--                                                            <td class="text-truncate"><img class="rounded-circle me-2" width="30" height="30" src="../../../../../../Education/Spring%2024/Software%20Project%20Management/Project/Exports/Banking_v1_03-07-24/assets/img/avatars/avatar4.jpeg">Credit Card Payment</td>-->
+<!--                                                            <td>Transfer</td>-->
+<!--                                                            <td>$145,600</td>-->
+<!--                                                            <td>$145,600</td>-->
+<!--                                                            <td>-->
+<!--                                                                <div class="dropdown"><button class="btn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-three-dots-vertical">-->
+<!--                                                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"></path>-->
+<!--                                                                        </svg></button>-->
+<!--                                                                    <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>-->
+<!--                                                                </div>-->
+<!--                                                            </td>-->
+<!--                                                        </tr>-->
+<!--                                                        <tr>-->
+<!--                                                            <td>2012/03/29<br></td>-->
+<!--                                                            <td class="text-truncate"><img class="rounded-circle me-2" width="30" height="30" src="../../../../../../Education/Spring%2024/Software%20Project%20Management/Project/Exports/Banking_v1_03-07-24/assets/img/avatars/avatar5.jpeg">Cedric Kelly</td>-->
+<!--                                                            <td>Transfer</td>-->
+<!--                                                            <td>$433,060</td>-->
+<!--                                                            <td>$433,060</td>-->
+<!--                                                            <td>-->
+<!--                                                                <div class="dropdown"><button class="btn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-three-dots-vertical">-->
+<!--                                                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"></path>-->
+<!--                                                                        </svg></button>-->
+<!--                                                                    <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>-->
+<!--                                                                </div>-->
+<!--                                                            </td>-->
+<!--                                                        </tr>-->
+<!--                                                    </tbody>-->
                                                     <tfoot>
                                                         <tr>
                                                             <td><strong>Date</strong></td>
