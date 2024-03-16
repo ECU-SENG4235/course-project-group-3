@@ -300,13 +300,21 @@ def generate_random_9_digit_number():
     return int(random_number)  # Convert to integer for numerical operations
 
 
+# TODO: Rename the function to create_bank_transaction
 def create_deposit_transaction(request):
+
+    # TODO: Add a check to see if the user already has a transaction with the same date and payment type, for duplicate prevention
     user_id = request.user.id
     user = User.objects.get(id=user_id)
-    amount = 100
-    # amount = request.POST.get('amount')
-    transaction_type = request.POST.get('transaction_type')
+    # amount = 100
+    amount = request.POST.get('amount')
+    if amount is None:
+        print('Amount is None')
+        amount = 0
+    else:
+        print(f'Amount: {amount}')
 
+    transaction_type = request.POST.get('transaction_type')
     if transaction_type is None:
         print('Transaction type is None')
     else:
