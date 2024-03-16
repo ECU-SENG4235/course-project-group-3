@@ -102,30 +102,32 @@
                                                                     <form action="{% url 'accounts:create_deposit_transaction' %}" method="POST">
                                                                         {% csrf_token %}
                                                                         <input type="hidden" name="user_id" value="{{ request.user.id }}">
+                                                                        <input type="hidden" name="transaction_type" value="deposit">
                                                                         <div class="row">
                                                                             <div class="col-xxl-12 my-2">
                                                                                 <header></header><label class="form-label">Amount</label><input class="form-control" name="amount" type="number">
                                                                             </div>
-                                                                            <div class="col-xxl-12 my-2">
-                                                                                <header></header><label class="form-label">Into Account</label><label>
-                                                                                <select class="form-select" name="transaction_type">
-                                                                                {% if user.bank_accounts.all %}
-                                                                                    {% for account in user.bank_accounts.all %}
-                                                                                        {% if account.account_type == 'Checking' %}
-                                                                                            <option value="{{ account.id }}">{{ account.account_number }} - {{ account.account_type }}</option>
-                                                                                        {% elif account.account_type == 'Savings' %}
-                                                                                            <option value="{{ account.id }}">{{ account.account_number }}  - {{ account.account_type }}</option>
-                                                                                        {% elif account.account_type == 'Credit' %}
-                                                                                            <option value="{{ account.id }}">{{ account.account_number }}  - {{ account.account_type }}</option>
-                                                                                        {% endif %}
-                                                                                    {% endfor %}
-                                                                                {% else %}
-                                                                                     <!-- TODO: Create optional selector for each account type in case that no accounts exist -->
-                                                                                    <h1>WE HAVE TO DO SOMETHING HERE!!!!!!!!!</h1>
-                                                                                {% endif %}
-                                                                                </select>
-                                                                            </label>
-                                                                            </div>
+<!--                                                                            <div class="col-xxl-12 my-2">-->
+<!--                                                                                <header></header><label class="form-label">Into Account</label><label>-->
+<!--                                                                                <select class="form-select" name="transaction_type">-->
+<!--                                                                                {% if user.bank_accounts.all %}-->
+<!--                                                                                    {% for account in user.bank_accounts.all %}-->
+<!--                                                                                        {% if account.account_type == 'Checking' %}-->
+<!--                                                                                            <option value="{{ account.id }}">{{ account.account_number }} - {{ account.account_type }}</option>-->
+<!--                                                                                        {% elif account.account_type == 'Savings' %}-->
+<!--                                                                                            <option value="{{ account.id }}">{{ account.account_number }}  - {{ account.account_type }}</option>-->
+<!--                                                                                        {% elif account.account_type == 'Credit' %}-->
+<!--                                                                                            <option value="{{ account.id }}">{{ account.account_number }}  - {{ account.account_type }}</option>-->
+<!--                                                                                        {% endif %}-->
+<!--                                                                                    {% endfor %}-->
+<!--                                                                                {% else %}-->
+<!--                                                                                     &lt;!&ndash; TODO: Create optional selector for each account type in case that no accounts exist &ndash;&gt;-->
+<!--                                                                                    -->
+<!--                                                                                    <h1>WE HAVE TO DO SOMETHING HERE!!!!!!!!!</h1>-->
+<!--                                                                                {% endif %}-->
+<!--                                                                                </select>-->
+<!--                                                                                </label>-->
+<!--                                                                            </div>-->
                                                                             <div class="col-xxl-12 my-2">
                                                                                 <header></header><label class="form-label">Note</label><input class="form-control" type="text" name="description">
                                                                             </div>
@@ -184,6 +186,7 @@
 
 
                                                                     <form>
+                                                                        {% csrf_token %}
                                                                         <div class="row">
                                                                             <div class="col-xxl-12 my-2">
                                                                                 <header></header><label class="form-label">Into Account</label><select class="form-select">
@@ -249,6 +252,7 @@
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <form>
+                                                                        {% csrf_token %}
                                                                         <div class="row">
                                                                             <div class="col-xxl-12 my-2">
                                                                                 <header></header><label class="form-label">Amount</label><input class="form-control" type="number">
@@ -294,6 +298,7 @@
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <form>
+                                                                        {% csrf_token %}
                                                                         <div class="row">
                                                                             <div class="col-xxl-12 my-2">
                                                                                 <header></header><label class="form-label">Selected Account</label><select class="form-select">

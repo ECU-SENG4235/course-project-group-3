@@ -6,24 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="0993659f-da7c-4240-bad4-279b4c8fb233" name="Changes" comment="Refactor wallet.html and enhance transaction handling&#10;&#10;This commit aims to enhance error handling in the form within wallet.html and improve the allocation of account numbers. It successfully depicts error messages and includes a new section for displaying messages. The system for generating unique account numbers in accounts/views.py has been refined and transactions are now correctly saved to the respective bank accounts. Accompanied by minor changes in the admin settings correlating to model name changes.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/base_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/base_2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/wallet.html" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/wallet.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_project_group_3/course_project_group_3/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/course_project_group_3/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_project_group_3/course_project_group_3/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/course_project_group_3/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_project_group_3/dash/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_project_group_3/dash/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_project_group_3/dash/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_project_group_3/dash/forms.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_project_group_3/dash/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_project_group_3/dash/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_project_group_3/dash/templates/dash/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_project_group_3/dash/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_project_group_3/dash/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_project_group_3/dash/views.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="main-v2" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -124,6 +109,9 @@
       <workItem from="1710436044597" duration="1922000" />
       <workItem from="1710438162678" duration="12411000" />
       <workItem from="1710450633307" duration="16204000" />
+      <workItem from="1710478286467" duration="3217000" />
+      <workItem from="1710626186990" duration="1901000" />
+      <workItem from="1710628103379" duration="1205000" />
     </task>
     <task id="LOCAL-00001" summary="Update .gitignore file&#10;&#10;Added new entries to the .gitignore file to exclude commonly unwanted directories and files. This will prevent them from being tracked by git, simplifying the development process.">
       <option name="closed" value="true" />

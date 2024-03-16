@@ -13,6 +13,8 @@ from django.contrib.auth import authenticate, logout, login
 
 from .models import Transaction, BankAccount, UserSetting
 from django.utils.crypto import get_random_string
+from django.core.exceptions import ValidationError
+from decimal import Decimal
 
 
 # Create your views here.
@@ -299,56 +301,85 @@ def generate_random_9_digit_number():
 
 
 def create_deposit_transaction(request):
-    # Fetch the user object from the database
     user_id = request.user.id
     user = User.objects.get(id=user_id)
-    amount = request.POST.get('amount')
-    print(f'Amount: {amount}')
-    account_id = request.POST.get('account_id')
-    if account_id is None:
-        print('Account ID is None')
-        account_id = generate_random_9_digit_number()
-        print(f'After None -> Account ID: {account_id}')
-
+    amount = 100
+    # amount = request.POST.get('amount')
     transaction_type = request.POST.get('transaction_type')
-    print(f'Transaction Type: {transaction_type}')
-    description = request.POST.get('description')
-    print(f'Description: {description}')
 
     if transaction_type is None:
-        transaction_type = 'deposit'
-    elif transaction_type == 'deposit':
-        transaction_type = 'deposit'
-    elif transaction_type == 'withdrawal':
-        transaction_type = 'withdrawal'
+        print('Transaction type is None')
+    else:
+        print(f'Transaction type: {transaction_type}')
 
-    # Validate input data
 
-    # if not all([user_id, amount]):
-    #     print()
-    #     print()
-    #     print(f'User ID: {user_id}')
-    #     print(f'Amount: {amount}')
-    #     print()
-    #     print()
-    #     print('Values are unvalid')
-    #     messages.error(request, 'Please fill in all required fields.')
-    #     return render(request, 'dash/dashboard.html')  # Consider using an error template
+    # if transaction_type is None:
+    #     transaction_type = 'deposit'
+    # elif transaction_type == 'deposit':
+    #     transaction_type = 'deposit'
+    # elif transaction_type == 'withdrawal':
+    #     transaction_type = 'withdrawal'
+    # elif transaction_type == 'transfer':
+    #     transaction_type = 'transfer'
+    # elif transaction_type == 'payment':
+    #     transaction_type = 'payment'
+    # elif transaction_type == 'purchase':
+    #     transaction_type = 'purchase'
+    # elif transaction_type == 'refund':
+    #     transaction_type = 'refund'
+    # elif transaction_type == 'fee':
+    #     transaction_type = 'fee'
+    # elif transaction_type == 'interest':
+    #     transaction_type = 'interest'
+    # elif transaction_type == 'other':
+    #     transaction_type = 'other'
+    #
+    description = request.POST.get('description')
 
-    # Create a new transaction object
+    if description is None:
+        print('Description is None')
+        description = 'Unknown Transaction'
+
+    # Validate transaction data
+    if not amount or Decimal(amount) <= 0:
+        print('Invalid amount')
+        messages.error(request, 'Invalid amount')
+        return render(request, 'accounts/dashboard.html')  # Re-render form on error
+
+    # if not all([transaction_type, description]):
+    #     print('All fields required')
+    #     messages.error(request, 'All fields required')
+    #     return render(request, 'accounts/dashboard.html')  # Re-render form on error
+
+    # Get the user's bank account
+    account = user.bank_accounts.all().first()
+
+    # Validate bank account
+    if not account:
+        print('No linked bank account found')
+        messages.error(request, 'No linked bank account found')
+        return render(request, 'accounts/dashboard.html')  # Re-render form on error
+
     try:
-        print('Creating a new transaction')
-        new_transaction = Transaction(account=user.bank_accounts.all.first, transaction_type=transaction_type, amount=amount,
+        # Create a new transaction
+        print('create_deposit_transaction = Creating a new transaction')
+        new_transaction = Transaction(account=account, transaction_type=transaction_type, amount=amount,
                                       description=description)
+        new_transaction.full_clean()  # Django's built-in model instance data validation
+        print('create_deposit_transaction = Transaction data is valid')
         new_transaction.save()
-        print('Deposit successful!')
+        print('create_deposit_transaction = Transaction was created successfully')
         messages.success(request, 'Deposit successful!')
         return render(request, 'accounts/wallet.html')  # Success template
+    except ValidationError as e:
+        print(f'create_deposit_transaction = Invalid transaction data: {e}')
+        messages.error(request, f'Invalid transaction data: {e}')
     except IntegrityError:
-        print('An error occurred during transaction creation.')
+        print('create_deposit_transaction = An error occurred during transaction creation.')
         messages.error(request, 'An error occurred during transaction creation.')
     except Exception as e:  # Catch other potential exceptions
-        print(f'An unexpected error occurred: {str(e)}')
+        print(f'create_deposit_transaction = An unexpected error occurred: {str(e)}')
         messages.error(request, f'An unexpected error occurred: {str(e)}')
 
-    return render(request, 'dash/dashboard.html')  # Re-render form on error
+    return render(request, 'accounts/wallet.html')  # Re-render form on error
+
