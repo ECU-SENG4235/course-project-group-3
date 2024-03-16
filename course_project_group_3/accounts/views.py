@@ -38,11 +38,17 @@ def landing_page(request):
 
 
 def dashboard(request):
-    member = request.user
-    context = {'member': member}
-    return render(request, 'accounts/dashboard.html', {'member': member})
+    user_settings = UserSetting.objects.get(user=request.user)
+    context = {'user_settings': user_settings}
+    monthly_income = context['user_settings'].monthly_income
+    annual_income = monthly_income * 12
+    return render(request, 'accounts/dashboard.html', {'monthly_income': monthly_income, 'annual_income': annual_income})
 
-
+# def dashboard(request):
+#     monthly_income = 2000
+#     annual_income = monthly_income * 12
+#     member = request.user
+#     return render(request, 'accounts/dashboard.html', {'member': member, 'monthly_income': monthly_income, 'annual_income': annual_income})
 
 
 
