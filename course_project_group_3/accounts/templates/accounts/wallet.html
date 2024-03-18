@@ -19,19 +19,19 @@
 
 {% block content %}
 
-{% if messages %}
-<!-- TODO: FIX ERROR HANDLING AND DISPLAYING FEATURES TO DISPLAY SEPERATE DIV TYPES WITH THE INCLUDED MESSAGES AS A LIST INSIDE OF THE DIV -->
-    {% for message in messages %}
 
-    {% endfor %}
-  <div class="alert alert-danger m-5" role="alert">
-    There are errors:
+<!-- TODO: FIX ERROR HANDLING AND DISPLAYING FEATURES TO DISPLAY SEPERATE DIV TYPES WITH THE INCLUDED MESSAGES AS A LIST INSIDE OF THE DIV -->
+{% if messages %}
     <ul>
+        There are errors:
+      {% for message in messages %}
         {% if message.tags == 'error' %}
-          <li>{{ message }}</li>
+            <div class="alert danger" role="alert" id="alert-error"><span>{{ message }}</span></div>
+        {% elif message.tags == 'success' %}
+            <div class="alert alert-success" role="alert" id="alert-success"><span>{{ message }}</span></div>
         {% endif %}
+      {% endfor %}
     </ul>
-  </div>
 {% endif %}
 
 <div class="row">
@@ -46,18 +46,7 @@
 <!--            {% endif %}-->
         {% endfor %}
 
-        {% if messages %}
-            <ul>
-                There are errors:
-              {% for message in messages %}
-                {% if message.tags == 'error' %}
-                    <div class="alert danger" role="alert" id="alert-error"><span>{{ message }}</span></div>
-                {% elif message.tags == 'success' %}
-                    <div class="alert alert-success" role="alert" id="alert-success"><span>{{ message }}</span></div>
-                {% endif %}
-              {% endfor %}
-            </ul>
-        {% endif %}
+
         <div class="accordion my-5" role="tablist" id="accordion-1">
 
             {% for account in user.bank_accounts.all %}
@@ -92,11 +81,6 @@
                                                                     <h4 class="modal-title">Deposit</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                                                                 </div>
                                                                 <div class="modal-body">
-
-
-
-
-
 
 
                                                                     <form action="{% url 'accounts:create_deposit_transaction' %}" method="POST">
@@ -383,17 +367,17 @@
                                                     {% for transaction in account.transactions.all %}
                                                         <tbody>
                                                             <tr>
-                                                                <td>{{ transaction.timestamp }}</td>
+                                                                <td>{{ transaction.timestamp|date:"F j, Y" }}</td>
                                                                 <td class="text-truncate"><img class="rounded-circle me-2" width="30" height="30" src="{{ transaction.profile_img_url }}">{{ transaction.description }}</td>
-                                                                {% if transaction.transaction_type == 'Debit' %}
-                                                                    <td class="debit-light">{{ transaction.transaction_type }}</td>
-                                                                {% elif transaction.transaction_type == 'Credit' %}
-                                                                    <td class="credit-light">{{ transaction.transaction_type }}</td>
-                                                                {% elif transaction.transaction_type == 'Transfer' %}
-                                                                    <td class="transfer-light">{{ transaction.transaction_type }}</td>
-                                                                {% elif transaction.transaction_type == 'Deposit' %}
-                                                                    <td class="deposit-light">{{ transaction.transaction_type }}</td>
-                                                                {% endif %}
+<!--                                                                {% if transaction.transaction_type == 'Debit' %}-->
+<!--                                                                    <td class="debit-light">{{ transaction.transaction_type }}</td>-->
+<!--                                                                {% elif transaction.transaction_type == 'Credit' %}-->
+<!--                                                                    <td class="credit-light">{{ transaction.transaction_type }}</td>-->
+<!--                                                                {% elif transaction.transaction_type == 'Transfer' %}-->
+<!--                                                                    <td class="transfer-light">{{ transaction.transaction_type }}</td>-->
+<!--                                                                {% elif transaction.transaction_type == 'Deposit' %}-->
+<!--                                                                    <td class="deposit-light">{{ transaction.transaction_type }}</td>-->
+<!--                                                                {% endif %}-->
 
 
 

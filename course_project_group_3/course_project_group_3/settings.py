@@ -30,6 +30,8 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 
+# Add humanized time to the installed apps
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'humanize',
     'accounts',
     'notifications',
 ]
@@ -80,9 +83,9 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "railway",
         "USER": "postgres",
-        "PASSWORD": "RecxQNLZcOEmjwRkNPWsfAhAItemXhGh",
-        "HOST": "monorail.proxy.rlwy.net",
-        "PORT": "17572",
+        "PASSWORD": "NclgqcrYzuNhdCZKpGvneBOVQDMkoiaU",
+        "HOST": "viaduct.proxy.rlwy.net",
+        "PORT": "47505",
     }
 }
 
