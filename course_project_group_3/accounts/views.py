@@ -253,7 +253,7 @@ def generate_random_9_digit_number():
 
 
 # TODO: Rename the function to create_bank_transaction
-def create_deposit_transaction(request):
+def create_bank_transaction(request):
     # TODO: Add a check to see if the user already has a transaction with the same date and payment type, for duplicate prevention
     user_id = request.user.id
     user = User.objects.get(id=user_id)
