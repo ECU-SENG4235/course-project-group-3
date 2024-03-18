@@ -312,6 +312,14 @@ def create_bank_transaction(request):
         new_transaction.full_clean()  # Django's built-in model instance data validation
         print('create_deposit_transaction = Transaction data is valid')
         new_transaction.save()
+
+        # Update the account balance with the amount of the transaction
+        if transaction_type == 'deposit':
+            account.balance += Decimal(amount)
+        elif transaction_type == 'withdrawal':
+            account.balance -= Decimal(amount)
+        account.save()
+
         print('create_deposit_transaction = Transaction was created successfully')
         messages.success(request, 'Deposit successful!')
         return render(request, 'accounts/wallet.html')  # Success template

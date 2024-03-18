@@ -23,7 +23,6 @@
 <!-- TODO: FIX ERROR HANDLING AND DISPLAYING FEATURES TO DISPLAY SEPERATE DIV TYPES WITH THE INCLUDED MESSAGES AS A LIST INSIDE OF THE DIV -->
 {% if messages %}
     <ul>
-        There are errors:
       {% for message in messages %}
         {% if message.tags == 'error' %}
             <div class="alert danger" role="alert" id="alert-error"><span>{{ message }}</span></div>
@@ -1103,13 +1102,6 @@
                 {% endif %}
 
             {% endfor %}
-
-
-
-
-
-
-
 
         </div>
     </div>

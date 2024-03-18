@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0993659f-da7c-4240-bad4-279b4c8fb233" name="Changes" comment="Refactor transaction form and improve error handling&#10;&#10;Moved the table header outside the for-loop in wallet.html form. Updated create_deposit_transaction function to handle potential issues related to receiving 'amount' and 'transaction_type'. &#10;&#10;The update in the accounts/views.py file will now handle the case if the amount is None by setting it to 0 and print out more debugging information for transaction type and amount. Finally, some changes were done in .idea/workspace.xml for managing tasks and committing message.">
+    <list default="true" id="0993659f-da7c-4240-bad4-279b4c8fb233" name="Changes" comment="Refactor wallet.html and update transaction handling&#10;&#10;Updated code to improve account management in wallet.html, adopting DRY principles and simplifying user interface. Additionally, implemented better error handling for transaction processing, specifically to manage invalid 'amount' and 'transaction_type' inputs.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/wallet.html" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/wallet.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -116,7 +114,7 @@
       <workItem from="1710659425109" duration="1728000" />
       <workItem from="1710706579496" duration="1320000" />
       <workItem from="1710736903005" duration="6818000" />
-      <workItem from="1710795690239" duration="2134000" />
+      <workItem from="1710795690239" duration="2503000" />
     </task>
     <task id="LOCAL-00001" summary="Update .gitignore file&#10;&#10;Added new entries to the .gitignore file to exclude commonly unwanted directories and files. This will prevent them from being tracked by git, simplifying the development process.">
       <option name="closed" value="true" />
@@ -230,7 +228,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710629325859</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Refactor wallet.html and update transaction handling&#10;&#10;Updated code to improve account management in wallet.html, adopting DRY principles and simplifying user interface. Additionally, implemented better error handling for transaction processing, specifically to manage invalid 'amount' and 'transaction_type' inputs.">
+      <option name="closed" value="true" />
+      <created>1710797944740</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1710797944741</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,6 +270,8 @@
     <MESSAGE value="Update form error handling and improve transactions&#10;&#10;Enhanced error handling in wallet.html form and allocation of account numbers for users. The form now correctly displays error messages and includes a new section for displaying messages. In accounts/views.py, a system for generating unique account numbers has been implemented and new transactions are now properly saved to the bank account. Minor changes have also been made to the admin settings to reflect the model name changes." />
     <MESSAGE value="Refactor wallet.html and enhance transaction handling&#10;&#10;This commit aims to enhance error handling in the form within wallet.html and improve the allocation of account numbers. It successfully depicts error messages and includes a new section for displaying messages. The system for generating unique account numbers in accounts/views.py has been refined and transactions are now correctly saved to the respective bank accounts. Accompanied by minor changes in the admin settings correlating to model name changes." />
     <MESSAGE value="Simplify transaction form and improve error handling&#10;&#10;DEPOSIT's are now working but some of the values are hardcoded and still need to be addressed prior to the task being labeled as completed.&#10;&#10;This commit simplifies the deposit transaction form in wallet.html by removing account selection and fixes error handling in the account deposit function. It also ensures that CSRF tokens are included in all forms to prevent cross-site request forgery attacks." />
-    <option name="LAST_COMMIT_MESSAGE" value="Simplify transaction form and improve error handling&#10;&#10;DEPOSIT's are now working but some of the values are hardcoded and still need to be addressed prior to the task being labeled as completed.&#10;&#10;This commit simplifies the deposit transaction form in wallet.html by removing account selection and fixes error handling in the account deposit function. It also ensures that CSRF tokens are included in all forms to prevent cross-site request forgery attacks." />
+    <MESSAGE value="Refactor transaction form and improve error handling&#10;&#10;Moved the table header outside the for-loop in wallet.html form. Updated create_deposit_transaction function to handle potential issues related to receiving 'amount' and 'transaction_type'. &#10;&#10;The update in the accounts/views.py file will now handle the case if the amount is None by setting it to 0 and print out more debugging information for transaction type and amount. Finally, some changes were done in .idea/workspace.xml for managing tasks and committing message." />
+    <MESSAGE value="Refactor wallet.html and update transaction handling&#10;&#10;Updated code to improve account management in wallet.html, adopting DRY principles and simplifying user interface. Additionally, implemented better error handling for transaction processing, specifically to manage invalid 'amount' and 'transaction_type' inputs." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor wallet.html and update transaction handling&#10;&#10;Updated code to improve account management in wallet.html, adopting DRY principles and simplifying user interface. Additionally, implemented better error handling for transaction processing, specifically to manage invalid 'amount' and 'transaction_type' inputs." />
   </component>
 </project>
