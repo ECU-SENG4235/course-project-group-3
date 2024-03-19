@@ -82,6 +82,43 @@ class BankAccount(models.Model):
 
     is_joint_account = models.BooleanField(default=False)
 
+    def deposit(self, amount, description=''):
+        self.balance += amount
+        self.save()
+        Transaction.objects.create(account=self, transaction_type='deposit', amount=amount, description=description)
+
+    def withdraw(self, amount, description=''):
+        if self.balance >= amount:
+            self.balance -= amount
+            self.save()
+            Transaction.objects.create(account=self, transaction_type='withdrawal', amount=amount,
+                                       description=description)
+        else:
+            # Handle insufficient funds (e.g., raise an exception)
+            print('Insufficient funds')
+            raise ValueError('Insufficient funds')
+
+    def transfer_to(self, other_account, amount, description=''):
+        try:
+            with transaction.atomic():  # Ensure database consistency
+                self.withdraw(amount, description)
+                other_account.deposit(amount, description)
+        except Exception as e:
+            # Handle transaction failure (e.g., log error, notify user)
+            print(e)
+            raise ValueError('Transfer failed')
+
+    def payment(self, amount, description=''):
+        try:
+            with transaction.atomic():  # Ensure database consistency
+                self.withdraw(amount, description)
+        except Exception as e:
+            # Handle transaction failure (e.g., log error, notify user)
+            print(e)
+            raise ValueError('Payment failed')
+
+    # Similarly, implement a 'payment' method with appropriate logic
+
     # joint_account_users = models.ManyToManyField('User', related_name='joint_accounts', blank=True)
 
     # def save(self, *args, **kwargs):
@@ -102,7 +139,7 @@ class Transaction(models.Model):
     transaction_type = models.CharField(max_length=50, choices=[('deposit', 'Deposit'), ('withdrawal', 'Withdrawal')])
     transaction_limit = models.DecimalField(max_digits=10, decimal_places=2, default=1000.00)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
-    timestamp = models.DateTimeField(auto_now_add=True)
+    timestamp = models.DateTimeField(auto_now=True)
     description = models.TextField(blank=True)
 
     # Additional transaction-related attributes can be added here.

@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
@@ -13,7 +15,12 @@ from django.contrib.auth import authenticate, logout, login
 
 from .models import Transaction, BankAccount, UserSetting
 from django.utils.crypto import get_random_string
+from django.core.exceptions import ValidationError
+from decimal import Decimal
 
+from django.db.models.signals import post_save
+from django.conf import settings
+import logging
 
 # Create your views here.
 
@@ -38,23 +45,25 @@ def landing_page(request):
 
 
 def dashboard(request):
-    member = request.user
-    context = {'member': member}
-    return render(request, 'accounts/dashboard.html', {'member': member})
+    user_settings = UserSetting.objects.get(user=request.user)
+    context = {'user_settings': user_settings}
+    monthly_income = context['user_settings'].monthly_income
+    annual_income = monthly_income * 12
+    return render(request, 'accounts/dashboard.html',
+                  {'monthly_income': monthly_income, 'annual_income': annual_income})
 
 
-
+# def dashboard(request):
+#     monthly_income = 2000
+#     annual_income = monthly_income * 12
+#     member = request.user
+#     return render(request, 'accounts/dashboard.html', {'member': member, 'monthly_income': monthly_income, 'annual_income': annual_income})
 
 
 def generate_report(request):
     member = request.user
     context = {'member': member}
     return render(request, 'accounts/reports.html', {'member': member})
-
-
-
-
-
 
 
 # @login_required
@@ -161,77 +170,28 @@ def membership(request):
         # date_of_birth = request.POST['date_of_birth']
         monthly_income = request.POST['monthly_income']
         credit_score = request.POST['credit_score']
-        initial_deposit = request.POST['deposit_amount']
-        account_type = request.POST['account_type']
 
         if profile_img_url is None:
             profile_img_url = 'https://media.istockphoto.com/id/168415745/photo/black-panther.webp?b=1&s=170667a&w=0&k=20&c=VUXE_4-AEIAJIxRvVjkbENkBfroAXrzaHlUMwE4jR_s='
 
-        # Bank-Account Initial Transaction/Deposit
-        if account_type is None:
-            account_type = 'Checking'
-        elif account_type == 'Checking':
-            account_type = 'Checking'
-        elif account_type == 'Savings':
-            account_type = 'Savings'
-
-        if initial_deposit is None:
-            initial_deposit = 200.00
-
         if monthly_income is None:
             monthly_income = 4200.00
 
+        # Try to update user settings for the new user
         try:
             # Create a user setting and bank account for the new user
-            user_settings = UserSetting.objects.create(
-                user=user,
-                profile_img_url=profile_img_url,
-                # date_of_birth=date_of_birth,
-                monthly_income=monthly_income,
-                credit_score=credit_score
-            )
+            user_settings = UserSetting.objects.get(user=user)
+            user_settings.profile_img_url = profile_img_url
+            # user_settings.date_of_birth = date_of_birth
+            user_settings.monthly_income = monthly_income
+            user_settings.credit_score = credit_score
+
             print(f'User profile_img_url: {user_settings.profile_img_url}')
             # print(f'User date_of_birth: {user_settings.date_of_birth}')
             print(f'User monthly_income: {user_settings.monthly_income}')
             print(f'User credit_score: {user_settings.credit_score}')
             user_settings.save()
             print('User settings were created successfully')
-        except Exception as e:
-            print(f'An unexpected error occurred: {str(e)}')
-            messages.error(request, f'An unexpected error occurred: {str(e)}')
-
-        try:
-            print('Creating a new bank account')
-            # Create a bank account for the new user
-            bank_account = BankAccount.objects.create(
-                user=user,
-                account_number=generate_unique_account_number(),
-                account_type=account_type,
-                balance=initial_deposit
-            )
-            bank_account.save()
-            print(f'Bank account number: {bank_account.account_number}')
-            print(f'Bank account type: {bank_account.account_type}')
-            print(f'Bank account balance: {bank_account.balance}')
-            print('Bank account was created successfully')
-        except Exception as e:
-            print(f'An unexpected error occurred: {str(e)}')
-            messages.error(request, f'An unexpected error occurred: {str(e)}')
-
-        try:
-            print('Creating a new transaction')
-            # Create a transaction for the initial deposit
-            transaction = Transaction.objects.create(
-                account=bank_account,
-                transaction_type='deposit',
-                amount=initial_deposit,
-                description='Initial Deposit'
-            )
-            transaction.save()
-            print(f'Transaction type: {transaction.transaction_type}')
-            print(f'Transaction amount: {transaction.amount}')
-            print(f'Transaction description: {transaction.description}')
-            print('Initial deposit transaction was created successfully')
         except Exception as e:
             print(f'An unexpected error occurred: {str(e)}')
             messages.error(request, f'An unexpected error occurred: {str(e)}')
@@ -292,22 +252,24 @@ def generate_random_9_digit_number():
     return int(random_number)  # Convert to integer for numerical operations
 
 
-def create_deposit_transaction(request):
-    # Fetch the user object from the database
+# TODO: Rename the function to create_bank_transaction
+def create_bank_transaction(request):
+    # TODO: Add a check to see if the user already has a transaction with the same date and payment type, for duplicate prevention
     user_id = request.user.id
     user = User.objects.get(id=user_id)
+    # amount = 100
     amount = request.POST.get('amount')
-    print(f'Amount: {amount}')
-    account_id = request.POST.get('account_id')
-    if account_id is None:
-        print('Account ID is None')
-        account_id = generate_random_9_digit_number()
-        print(f'After None -> Account ID: {account_id}')
+    if amount is None:
+        print('Amount is None')
+        amount = 0
+    else:
+        print(f'Amount: {amount}')
 
     transaction_type = request.POST.get('transaction_type')
-    print(f'Transaction Type: {transaction_type}')
-    description = request.POST.get('description')
-    print(f'Description: {description}')
+    # if transaction_type is None:
+    #     print('Transaction type is None')
+    # else:
+    #     print(f'Transaction type: {transaction_type}')
 
     if transaction_type is None:
         transaction_type = 'deposit'
@@ -316,33 +278,120 @@ def create_deposit_transaction(request):
     elif transaction_type == 'withdrawal':
         transaction_type = 'withdrawal'
 
-    # Validate input data
+    description = request.POST.get('description')
 
-    # if not all([user_id, amount]):
-    #     print()
-    #     print()
-    #     print(f'User ID: {user_id}')
-    #     print(f'Amount: {amount}')
-    #     print()
-    #     print()
-    #     print('Values are unvalid')
-    #     messages.error(request, 'Please fill in all required fields.')
-    #     return render(request, 'dash/dashboard.html')  # Consider using an error template
+    if description is None:
+        print('Description is None')
+        description = 'Unknown Transaction'
 
-    # Create a new transaction object
+    # Validate transaction data
+    if not amount or Decimal(amount) <= 0:
+        print('Invalid amount')
+        messages.error(request, 'Invalid amount')
+        return render(request, 'accounts/dashboard.html')  # Re-render form on error
+
+    # if not all([transaction_type, description]):
+    #     print('All fields required')
+    #     messages.error(request, 'All fields required')
+    #     return render(request, 'accounts/dashboard.html')  # Re-render form on error
+
+    # Get the user's bank account
+    account = user.bank_accounts.all().first()
+
+    # Validate bank account
+    if not account:
+        print('No linked bank account found')
+        messages.error(request, 'No linked bank account found')
+        return render(request, 'accounts/dashboard.html')  # Re-render form on error
+
     try:
-        print('Creating a new transaction')
-        new_transaction = Transaction(account=user.bank_accounts.all.first, transaction_type=transaction_type, amount=amount,
+        # Create a new transaction
+        print('create_deposit_transaction = Creating a new transaction')
+        new_transaction = Transaction(account=account, transaction_type=transaction_type, amount=amount,
                                       description=description)
+        new_transaction.full_clean()  # Django's built-in model instance data validation
+        print('create_deposit_transaction = Transaction data is valid')
         new_transaction.save()
-        print('Deposit successful!')
+
+        # Update the account balance with the amount of the transaction
+        if transaction_type == 'deposit':
+            account.balance += Decimal(amount)
+        elif transaction_type == 'withdrawal':
+            account.balance -= Decimal(amount)
+        account.save()
+
+        print('create_deposit_transaction = Transaction was created successfully')
         messages.success(request, 'Deposit successful!')
         return render(request, 'accounts/wallet.html')  # Success template
+    except ValidationError as e:
+        print(f'create_deposit_transaction = Invalid transaction data: {e}')
+        messages.error(request, f'Invalid transaction data: {e}')
     except IntegrityError:
-        print('An error occurred during transaction creation.')
+        print('create_deposit_transaction = An error occurred during transaction creation.')
         messages.error(request, 'An error occurred during transaction creation.')
     except Exception as e:  # Catch other potential exceptions
-        print(f'An unexpected error occurred: {str(e)}')
+        print(f'create_deposit_transaction = An unexpected error occurred: {str(e)}')
         messages.error(request, f'An unexpected error occurred: {str(e)}')
 
-    return render(request, 'dash/dashboard.html')  # Re-render form on error
+    return render(request, 'accounts/wallet.html')  # Re-render form on error
+
+
+# Create an 'Account' profile automatically when registering new user***
+logger = logging.getLogger(__name__)
+
+PROFILE_IMAGE_URL = 'https://images.unsplash.com/photo-1710488140458-e1757928a9f8?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+STARTING_BALANCE = 200.00
+ACCOUNT_TYPE = 'Checking'
+
+
+def create_profile(sender, instance, created, **kwargs):
+    if created:
+        try:
+            # Create a user setting and bank account for the new user
+            user_settings = UserSetting.objects.create(
+                user=instance,
+                profile_img_url=PROFILE_IMAGE_URL,
+            )
+            logger.info('User settings were created successfully')
+        except Exception as e:
+            print(f'An unexpected error occurred: {str(e)}')
+            error_message = f'An error occurred while creating user settings: {str(e)}'
+            logger.error(error_message)
+            messages.error(error_message)
+
+        try:
+            # Create a bank account for the new user
+            print('Creating a bank account for the new user')
+            bank_account = BankAccount.objects.create(
+                user=instance,
+                account_number=generate_unique_account_number(),
+                account_type=ACCOUNT_TYPE,
+                balance=STARTING_BALANCE
+            )
+            bank_account.save()
+
+            # Create an initial deposit transaction for the new bank account
+            print('Creating an initial deposit transaction for the new bank account')
+            transaction = Transaction.objects.create(
+                account=bank_account,
+                transaction_type='deposit',
+                amount=STARTING_BALANCE,
+                description='Initial deposit',
+                timestamp=datetime.now()
+            )
+            print(datetime.now())
+            print('Initial deposit transaction was created successfully')
+            transaction.save()
+
+            logger.info('Bank account was created successfully')
+            logger.info(f'Bank account number: {bank_account.account_number}')
+            logger.info(f'Bank account type: {bank_account.account_type}')
+            logger.info(f'Bank account balance: {bank_account.balance}')
+        except Exception as e:
+            print(f'An unexpected error occurred: {str(e)}')
+            error_message = f'An error occurred while creating a bank account: {str(e)}'
+            logger.error(error_message)
+            messages.error(error_message)
+
+
+post_save.connect(create_profile, sender=User)
