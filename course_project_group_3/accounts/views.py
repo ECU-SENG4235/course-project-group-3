@@ -49,8 +49,9 @@ def dashboard(request):
     context = {'user_settings': user_settings}
     monthly_income = context['user_settings'].monthly_income
     annual_income = monthly_income * 12
+    spending_limit = 18
     return render(request, 'accounts/dashboard.html',
-                  {'monthly_income': monthly_income, 'annual_income': annual_income})
+                  {'monthly_income': monthly_income, 'annual_income': annual_income, 'spending_limit': spending_limit})
 
 
 # def dashboard(request):
