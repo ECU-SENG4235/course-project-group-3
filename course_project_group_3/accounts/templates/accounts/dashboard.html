@@ -26,19 +26,40 @@
 
 
 
-
         <div class="d-sm-flex justify-content-between align-items-center mb-4">
             <h3 class="text-dark mb-0">Dashboard</h3>
-            <!--     TODO: Curtis works here       -->
-            <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#">
-                <i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report
-            </a>
+            <div class="btn-group" role="group">
+                <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#" data-bs-toggle="modal" data-bs-target="#spendingLimitModal">
+                    <i class="fas fa-plus fa-sm text-white-50"></i>&nbsp;Update Spending Limit
+                </a>
+                &nbsp;&nbsp; <!-- Added spacing here -->
+                <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#">
+                    
+                    <!-- TODO: Curtis works here -->
+                    <i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report
+                </a>
+            </div>
         </div>
 
-
-
-
-
+        <!-- Modal For Update Spending Limit -->
+        <!--TODO: Add for to select account and choose spending limit-->
+        <div class="modal fade" id="spendingLimitModal" tabindex="-1" aria-labelledby="spendingLimitModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="spendingLimitModalLabel">Update Spending Limit</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Add your form or content here for updating the spending limit -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-md-6 col-xl-3 mb-4">
@@ -73,6 +94,7 @@
                         <div class="row align-items-center no-gutters">
                             <div class="col me-2">
                                 <div class="text-uppercase text-info fw-bold text-xs mb-1"><span>Spending Limit</span></div>
+                                
                                 <div class="row g-0 align-items-center">
                                     <div class="col-auto">
                                         <div class="text-dark fw-bold h5 mb-0 me-3"><span>{{spending_limit}}%</span></div>
