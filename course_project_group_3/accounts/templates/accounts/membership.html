@@ -1,0 +1,73 @@
+{% extends 'accounts/base_2.html' %}
+{% load static %}
+
+{% block title %}Heritage{% endblock %}
+
+{% block head %}
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+<!--<head>-->
+<!--    <meta charset="utf-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">-->
+<!--    <title>Contact Us - Brand</title>-->
+<!--    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">-->
+<!--    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i&amp;display=swap">-->
+<!--    <link rel="stylesheet" href="assets/css/bs-theme-overrides.css">-->
+<!--    <link rel="stylesheet" href="assets/css/baguetteBox.min.css">-->
+<!--    <link rel="stylesheet" href="assets/css/vanilla-zoom.min.css">-->
+<!--</head>-->
+
+{% block style %}
+{% endblock %}
+
+{% block content %}
+    <section class="clean-block clean-form dark">
+
+
+
+
+
+
+
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-info">Register &amp; Join Below !</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
+                </div>
+                <form method="POST" action="{% url 'accounts:membership' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="account_type" value="Checking">
+                    <div class="mb-3"><label class="form-label" for="username">Username</label>
+                        <input class="form-control" type="text" id="username" name="username" data-bs-theme="light"></div>
+                    <div class="mb-3"><label class="form-label" for="password">Password</label>
+                        <input class="form-control" type="password" id="password" name="password" data-bs-theme="light"></div>
+                    <div class="mb-3"><label class="form-label" for="firstName">First Name</label>
+                        <input class="form-control" type="text" id="firstName" name="firstName" data-bs-theme="light"></div>
+                    <div class="mb-3"><label class="form-label" for="lastName">Last Name</label>
+                        <input class="form-control" type="text" id="lastName" name="lastName" data-bs-theme="light"></div>
+<!--                    <div class="mb-3"><label class="form-label" for="address">Address</label>-->
+<!--                        <input class="form-control" type="text" id="address" name="address" data-bs-theme="light"></div>-->
+                    <div class="mb-3"><label class="form-label" for="email">Email</label>
+                        <input class="form-control" type="email" id="email" name="email" data-bs-theme="light"></div>
+<!--                    <div class="mb-3"><label class="form-label" for="phone">Phone Number</label>-->
+<!--                        <input class="form-control" type="tel"></div>-->
+<!--                    <div class="mb-3"><label class="form-label" for="dob">Date of Birth</label>-->
+<!--                        <input class="form-control" id="dob" type="date" name="dob"></div>-->
+                    <div class="mb-3"><label class="form-label" for="monthly_income">Monthly Income</label>
+                        <input class="form-control" type="number" id="monthly_income" name="monthly_income"></div>
+                    <div class="mb-3"><label class="form-label" for="deposit_amount">Initial Deposit Amount</label>
+                        <input class="form-control" type="number" id="deposit_amount" name="deposit_amount"></div>
+                    <div class="mb-3"><label class="form-label" for="credit_score">Credit Score</label>
+                        <input class="form-control" type="number" id="credit_score" name="credit_score"></div>
+                    <div class="mb-3"><label class="form-label" for="profile_img_url">Profile Image URL</label>
+                        <input class="form-control" type="text" id="profile_img_url" name="profile_img_url"></div>
+                    <div class="mb-3"><button class="btn btn-primary" type="submit">Send</button></div>
+                </form>
+            </div>
+        </section>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

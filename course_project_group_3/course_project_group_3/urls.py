@@ -20,7 +20,6 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
 
-    path('dash/', include('dash.urls')),
     path('admin/', admin.site.urls),
 
     # accounts/
