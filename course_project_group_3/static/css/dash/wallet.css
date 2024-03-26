@@ -1,0 +1,31 @@
+.debit-light {
+  background-color: lightpink !important;
+}
+
+.credit-light {
+  background-color: lightgreen !important;
+}
+
+.transfer-light {
+  /*background-color: var(--bs-primary-bg-subtle) !important;*/
+}
+
+.a-page-item:active {
+  background-color: var(--bs-primary-border-subtle) !important;
+}
+
+.pagination {
+  --bs-pagination-active-color: #fff;
+  --bs-pagination-active-bg: var(--bs-primary-border-subtle);
+  --bs-pagination-active-border-color: var(--bs-primary-border-subtle);
+  --bs-pagination-disabled-color: var(--bs-secondary-color);
+}
+
+.send-btn {
+  width: 120px;
+}
+
+.form-label {
+  color: #000000;
+}
+

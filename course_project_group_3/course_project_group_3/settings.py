@@ -30,6 +30,8 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 
+# Add humanized time to the installed apps
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,8 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'members',
+    'humanize',
     'accounts',
+    'notifications',
 ]
 
 MIDDLEWARE = [
@@ -80,9 +83,9 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "railway",
         "USER": "postgres",
-        "PASSWORD": "-gD3edd2bfCd-Ga66GEg2B2fGGcaeFeG",
-        "HOST": "roundhouse.proxy.rlwy.net",
-        "PORT": "18273",
+        "PASSWORD": "NclgqcrYzuNhdCZKpGvneBOVQDMkoiaU",
+        "HOST": "viaduct.proxy.rlwy.net",
+        "PORT": "47505",
     }
 }
 
@@ -121,7 +124,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -131,3 +138,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #Redirects users upon successful login may need to be altered
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+
+LOGIN_URL = 'accounts/home.html'  # Replace 'login' with your actual login URL pattern name
+LOGOUT_URL = 'dash/dashboard.html'  # Replace 'logout' with your actual logout URL pattern name
