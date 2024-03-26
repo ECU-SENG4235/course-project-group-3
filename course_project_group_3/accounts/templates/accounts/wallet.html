@@ -136,50 +136,78 @@
 
 
 
-                                                                    <form>
+                                                                     <form action="{% url 'accounts:create_bank_transaction' %}" method="POST">
                                                                         {% csrf_token %}
                                                                         <div class="row">
                                                                             <div class="col-xxl-12 my-2">
-                                                                                <header></header><label class="form-label">Into Account</label><select class="form-select">
-                                                                                    <optgroup label="Checking">
-                                                                                        <option value="12" selected="">Account Ending in (0909)</option>
-                                                                                        <option value="5674">Account Ending in (5674)</option>
-                                                                                        <option value="8789">Account Ending in (8789)</option>
-                                                                                    </optgroup>
-                                                                                    <optgroup label="Savings">
-                                                                                        <option value="5544">Account Ending in (5544)</option>
-                                                                                    </optgroup>
-                                                                                    <optgroup label="Credit">
-                                                                                        <option value="6987">Account Ending in (6987)</option>
-                                                                                    </optgroup>
+
+                                                                                {% if user.bank_accounts.all %}
+                                                                                    <header></header><label class="form-label">Into Account</label><select class="form-select" type="number" name="account_to">
+                                                                                    {% for account in user.bank_accounts.all %}
+                                                                                        {% if account.account_type == 'Checking' %}
+                                                                                            <option value="{{ account.account_number }}">{{ account.account_number }} - {{ account.account_type }}</option>
+                                                                                        {% elif account.account_type == 'Savings' %}
+                                                                                            <option value="{{ account.account_number }}">{{ account.account_number }}  - {{ account.account_type }}</option>
+                                                                                        {% elif account.account_type == 'Credit' %}
+                                                                                            <option value="{{ account.account_number }}">{{ account.account_number }}  - {{ account.account_type }}</option>
+                                                                                        {% endif %}
+                                                                                    {% endfor %}
+<!--                                                                                    <optgroup label="Checking">-->
+<!--                                                                                        <option value="12" selected="">Account Ending in (0909)</option>-->
+<!--                                                                                        <option value="5674">Account Ending in (5674)</option>-->
+<!--                                                                                        <option value="8789">Account Ending in (8789)</option>-->
+<!--                                                                                    </optgroup>-->
+<!--                                                                                    <optgroup label="Savings">-->
+<!--                                                                                        <option value="5544">Account Ending in (5544)</option>-->
+<!--                                                                                    </optgroup>-->
+<!--                                                                                    <optgroup label="Credit">-->
+<!--                                                                                        <option value="6987">Account Ending in (6987)</option>-->
+<!--                                                                                    </optgroup>-->
+                                                                                {% endif %}
                                                                                 </select>
                                                                             </div>
                                                                             <div class="col-xxl-12 my-2">
-                                                                                <header></header><label class="form-label">Amount</label><input class="form-control" type="number">
+                                                                                <header></header><label class="form-label">Amount</label><input class="form-control" type="number" name="amount">
                                                                             </div>
+
+
                                                                             <div class="col-xxl-12 my-2">
-                                                                                <header></header><label class="form-label">From Account</label><select class="form-select">
-                                                                                    <optgroup label="Checking">
-                                                                                        <option value="12" selected="">Account Ending in (0909)</option>
-                                                                                        <option value="5674">Account Ending in (5674)</option>
-                                                                                        <option value="8789">Account Ending in (8789)</option>
-                                                                                    </optgroup>
-                                                                                    <optgroup label="Savings">
-                                                                                        <option value="5544">Account Ending in (5544)</option>
-                                                                                    </optgroup>
-                                                                                    <optgroup label="Credit">
-                                                                                        <option value="6987">Account Ending in (6987)</option>
-                                                                                    </optgroup>
+
+                                                                                {% if user.bank_accounts.all %}
+                                                                                    <header></header><label class="form-label">From Account</label><select class="form-select" type="number" name="account_from">
+                                                                                    {% for account in user.bank_accounts.all %}
+                                                                                        {% if account.account_type == 'Checking' %}
+                                                                                            <option value="{{ account.id }}">{{ account.account_number }} - {{ account.account_type }}</option>
+                                                                                        {% elif account.account_type == 'Savings' %}
+                                                                                            <option value="{{ account.id }}">{{ account.account_number }}  - {{ account.account_type }}</option>
+                                                                                        {% elif account.account_type == 'Credit' %}
+                                                                                            <option value="{{ account.id }}">{{ account.account_number }}  - {{ account.account_type }}</option>
+                                                                                        {% endif %}
+                                                                                    {% endfor %}
+<!--                                                                                    <optgroup label="Checking">-->
+<!--                                                                                        <option value="12" selected="">Account Ending in (0909)</option>-->
+<!--                                                                                        <option value="5674">Account Ending in (5674)</option>-->
+<!--                                                                                        <option value="8789">Account Ending in (8789)</option>-->
+<!--                                                                                    </optgroup>-->
+<!--                                                                                    <optgroup label="Savings">-->
+<!--                                                                                        <option value="5544">Account Ending in (5544)</option>-->
+<!--                                                                                    </optgroup>-->
+<!--                                                                                    <optgroup label="Credit">-->
+<!--                                                                                        <option value="6987">Account Ending in (6987)</option>-->
+<!--                                                                                    </optgroup>-->
+                                                                                {% endif %}
                                                                                 </select>
                                                                             </div>
+
+
                                                                             <div class="col-xxl-12 my-2">
-                                                                                <header></header><label class="form-label">Note</label><input class="form-control" type="text">
+                                                                                <header></header><label class="form-label">Note</label><input class="form-control" type="text" name="description">
                                                                             </div>
                                                                             <div class="col-xxl-12">
                                                                                 <div class="form-check my-3"><input class="form-check-input" type="checkbox" id="formCheck-2"><label class="form-check-label" for="formCheck-2">Are you sure you want to perform this action ?</label></div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Transfer</button></div>
+                                                                        <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Transfer</button></div>
                                                                     </form>
 
 
@@ -336,20 +364,20 @@
                                                             <tr>
                                                                 <td>{{ transaction.timestamp|date:"F j, Y" }}</td>
                                                                 <td class="text-truncate"><img class="rounded-circle me-2" width="30" height="30" src="{{ transaction.profile_img_url }}">{{ transaction.description }}</td>
-<!--                                                                {% if transaction.transaction_type == 'Debit' %}-->
+<!--                                                                {% if transaction.transaction_type == 'debit' %}-->
 <!--                                                                    <td class="debit-light">{{ transaction.transaction_type }}</td>-->
-<!--                                                                {% elif transaction.transaction_type == 'Credit' %}-->
+<!--                                                                {% elif transaction.transaction_type == 'credit' %}-->
 <!--                                                                    <td class="credit-light">{{ transaction.transaction_type }}</td>-->
-<!--                                                                {% elif transaction.transaction_type == 'Transfer' %}-->
+<!--                                                                {% elif transaction.transaction_type == 'transfer' %}-->
 <!--                                                                    <td class="transfer-light">{{ transaction.transaction_type }}</td>-->
-<!--                                                                {% elif transaction.transaction_type == 'Deposit' %}-->
+<!--                                                                {% elif transaction.transaction_type == 'deposit' %}-->
 <!--                                                                    <td class="deposit-light">{{ transaction.transaction_type }}</td>-->
 <!--                                                                {% endif %}-->
 
 
 
                                                                 <td class="debit-light">{{ transaction.transaction_type }}</td>
-                                                                <td>${{ transaction.amount }}</td>
+                                                                <td>$ {{ transaction.amount }}</td>
 <!--                                                                <td>${{ transaction.balance }}</td>-->
                                                                 <td>
                                                                     <div class="dropdown"><button class="btn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-three-dots-vertical">
@@ -393,10 +421,15 @@
                                 </div>
                             </div>
                         </div>
-                {% elif account.account_type == 'Saving' %}
+                    {% endif %}
+            {% endfor %}
+
+            {% for account in user.bank_accounts.all %}
+                {% if account.account_type == 'Savings' %}
                     <!-- SAVING ACCOUNTS -->
                     <div class="accordion-item my-5">
-                            <h2 class="accordion-header" role="tab"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-1 .item-1" aria-expanded="true" aria-controls="accordion-1 .item-1">(....{{ account.account_number|slice:"-4" }}) Savings</button></h2>
+                            <h2 class="accordion-header" role="tab">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-1 .item-1" aria-expanded="true" aria-controls="accordion-1 .item-1">(....{{ account.account_number|slice:"-4" }}) Savings</button></h2>
                             <div class="accordion-collapse collapse show item-1" role="tabpanel" data-bs-parent="#accordion-1">
                                 <div class="accordion-body">
                                     <div class="row">
@@ -746,7 +779,11 @@
                                 </div>
                             </div>
                         </div>
-                {% elif account.account_type == 'Credit' %}
+                    {% endif %}
+            {% endfor %}
+
+            {% for account in user.bank_accounts.all %}
+                {% if account.account_type == 'Credit' %}
                     <!-- CREDIT ACCOUNTS -->
                     <div class="accordion-item my-5">
                             <h2 class="accordion-header" role="tab"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-1 .item-1" aria-expanded="true" aria-controls="accordion-1 .item-1">(....{{ account.account_number|slice:"-4" }}) Credit</button></h2>
@@ -769,6 +806,8 @@
 
                                         <div class="col d-lg-flex justify-content-lg-center align-items-lg-center">
                                             <div class="row d-flex justify-content-center">
+
+                                                <!--   Deposit Modal    -->
                                                 <div class="col-6 col-sm-4 col-lg-3 offset-0 offset-sm-0 d-flex justify-content-center"><button class="btn btn-primary my-2 send-btn" type="button" data-bs-target="#modal-deposit" data-bs-toggle="modal">Deposit</button>
                                                     <div class="modal fade" role="dialog" tabindex="-1" id="modal-deposit">
                                                         <div class="modal-dialog" role="document">
@@ -827,6 +866,11 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
+
+
+
+                                                <!--   Transfer Modal    -->
                                                 <div class="col-6 col-sm-4 col-lg-3 offset-0 d-flex justify-content-center"><button class="btn btn-primary my-2 send-btn" type="button" data-bs-target="#modal-transfer" data-bs-toggle="modal">Transfer</button>
                                                     <div class="modal fade" role="dialog" tabindex="-1" id="modal-transfer">
                                                         <div class="modal-dialog" role="document">
@@ -900,6 +944,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <!--   Send Money Modal    -->
                                                 <div class="col-6 col-sm-4 col-lg-3 offset-0 d-flex justify-content-center"><button class="btn btn-primary my-2 send-btn" type="button" data-bs-target="#modal-send" data-bs-toggle="modal">Send Money</button>
                                                     <div class="modal fade" role="dialog" tabindex="-1" id="modal-send">
                                                         <div class="modal-dialog" role="document">
@@ -946,6 +991,9 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
+
+                                                <!--   Export CSV Modal    -->
                                                 <div class="col-6 col-sm-4 col-lg-3 offset-0 d-flex justify-content-center"><button class="btn btn-primary my-2 send-btn" type="button" data-bs-target="#modal-export" data-bs-toggle="modal">Export CSV</button>
                                                     <div class="modal fade" role="dialog" tabindex="-1" id="modal-export">
                                                         <div class="modal-dialog" role="document">

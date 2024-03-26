@@ -20,6 +20,9 @@ urlpatterns = [
     path('create_deposit_transaction/', views.create_bank_transaction, name='create_bank_transaction'),
     path('create_new_account/', views.membership, name='membership'),
 
+    # Account URLs
+    path('create_bank_account/', views.create_bank_account, name='create_bank_account'),
+
 #     TODO: Add URL to generate report (Curtis)
     path('generate_report/', views.generate_report, name='generate_report'),
 ]

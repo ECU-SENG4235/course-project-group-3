@@ -30,9 +30,68 @@
         <div class="d-sm-flex justify-content-between align-items-center mb-4">
             <h3 class="text-dark mb-0">Dashboard</h3>
             <!--     TODO: Curtis works here       -->
-            <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#">
-                <i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report
-            </a>
+
+            <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#" data-bs-toggle="modal" data-bs-target="#generateReportModal" aria-label="Generate Report"> <i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report </a> <a class="btn btn-primary btn-sm d-sm-none" role="button" href="#" data-bs-toggle="modal" data-bs-target="#generateReportModal" aria-label="Generate Report for mobile"> <i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report </a>
+
+
+            <div class="modal" id="generateReportModal" tabindex="-1" role="dialog" aria-labelledby="generateReportModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="generateReportModalLabel">Generate Report</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <!--  Provide form choices for selecting either CSV or PDF  -->
+
+
+
+
+
+
+
+
+
+                        <form method="POST" action="{% url 'accounts:generate_report' %}">
+                            {% csrf_token %}
+                            <div class="modal-body start">
+                                <div class="form-check mt-3">
+                                    <input class="form-check-input" type="radio" name="reportType" id="csv" value="csv">
+                                    <label class="form-check-label" for="csv">CSV</label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="radio" name="reportType" id="pdf" value="pdf">
+                                    <label class="form-check-label" for="pdf">PDF</label>
+                                </div>
+                                <hr>
+                                    {% for account in member.bank_accounts.all %}
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="accounts" id="account{{ account.id }}" value="{{ account.id }}">
+                                            <label class="form-check-label" for="account{{ account.id }}">{{ account.account_type }}</label>
+                                        </div>
+                                    {% endfor %}
+
+                                <p class="m-3 fw-bold">Are you sure you want to generate a report?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Generate</button>
+                            </div>
+                        </form>
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
         </div>
 
 
@@ -47,7 +106,7 @@
                         <div class="row align-items-center no-gutters">
                             <div class="col me-2">
                                 <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>Earnings (monthly)</span></div>
-                                <div class="text-dark fw-bold h5 mb-0"><span>$ {{monthly_income}} </span></div>
+                                <div class="text-dark fw-bold h5 mb-0"><span>$ {{ settings.monthly_income }} </span></div>
                             </div>
                             <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
                         </div>
@@ -60,7 +119,7 @@
                         <div class="row align-items-center no-gutters">
                             <div class="col me-2">
                                 <div class="text-uppercase text-success fw-bold text-xs mb-1"><span>Earnings (annual)</span></div>
-                                <div class="text-dark fw-bold h5 mb-0"><span>$ {{annual_income}}</span></div>
+                                <div class="text-dark fw-bold h5 mb-0"><span>$ {{ annual_income }}</span></div>
                             </div>
                             <div class="col-auto"><i class="fas fa-dollar-sign fa-2x text-gray-300"></i></div>
                         </div>
@@ -151,7 +210,7 @@
                         </div>
                         <h4 class="small fw-bold">Sales tracking<span class="float-end">40%</span></h4>
                         <div class="progress mb-4">
-                            <div class="progress-bar bg-warning" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;"><span class="visually-hidden">40%</span></div>
+                           <div class="progress-bar bg-warning" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;"><span class="visually-hidden">40%</span></div>
                         </div>
                         <h4 class="small fw-bold">Customer Database<span class="float-end">60%</span></h4>
                         <div class="progress mb-4">

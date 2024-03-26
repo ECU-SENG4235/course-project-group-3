@@ -7,6 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 from django.views import generic
+from django.views.decorators.http import require_POST
 from psycopg2 import IntegrityError
 
 from .forms import CustomUserCreationForm, generate_unique_account_number
@@ -21,6 +22,7 @@ from decimal import Decimal
 from django.db.models.signals import post_save
 from django.conf import settings
 import logging
+
 
 # Create your views here.
 
@@ -45,12 +47,19 @@ def landing_page(request):
 
 
 def dashboard(request):
+    user = request.user
     user_settings = UserSetting.objects.get(user=request.user)
-    context = {'user_settings': user_settings}
-    monthly_income = context['user_settings'].monthly_income
+    monthly_income = user_settings.monthly_income
     annual_income = monthly_income * 12
-    return render(request, 'accounts/dashboard.html',
-                  {'monthly_income': monthly_income, 'annual_income': annual_income})
+
+    context = {
+        'member': user,
+        'settings': user_settings,
+        'monthly_income': monthly_income,
+        'annual_income': annual_income,
+    }
+
+    return render(request, 'accounts/dashboard.html', context)
 
 
 # def dashboard(request):
@@ -62,6 +71,74 @@ def dashboard(request):
 
 def generate_report(request):
     member = request.user
+    report_type = request.POST.get('report_type')
+    user_account_number = request.POST.get('account_number')
+
+    print(f'Report Type: {report_type}')
+
+    if request.method == 'POST':
+        print('POST request received')
+        # Get the user's bank account (Checking)
+        account = member.bank_accounts.first()
+
+        # Get the user's transactions
+        transactions = Transaction.objects.filter(account=account)
+
+        # Get the user's settings
+        user_settings = UserSetting.objects.get(user=member)
+
+        # Get the user's credit score
+        credit_score = user_settings.credit_score
+
+        # Get the user's monthly income
+        monthly_income = user_settings.monthly_income
+
+        # Get the user's annual income
+        annual_income = monthly_income * 12
+
+        # Get the user's account balance
+        account_balance = account.balance
+
+        # Get the user's total deposits
+        total_deposits = Transaction.objects.filter(account=account, transaction_type='deposit').count()
+
+        # Get the user's total withdrawals
+        total_withdrawals = Transaction.objects.filter(account=account, transaction_type='withdrawal').count()
+
+        # Get the user's total transactions
+        total_transactions = total_deposits + total_withdrawals
+
+        # Get the user's total deposits amount
+        total_deposits_amount = Transaction.objects.filter(account=account, transaction_type='deposit').aggregate(
+            total=Sum('amount'))['total']
+
+        # Get the user's total withdrawals amount
+        total_withdrawals_amount = Transaction.objects.filter(account=account, transaction_type='withdrawal').aggregate(
+            total=Sum('amount'))['total']
+
+        # Get the user's total transactions amount
+        total_transactions_amount = total_deposits_amount + total_withdrawals_amount
+
+        # Get the user's average deposit amount
+        average_deposit_amount = total_deposits_amount / total_deposits
+
+        # Get the user's average withdrawal amount
+        average_withdrawal_amount = total_withdrawals_amount / total_withdrawals
+
+        # Get the user's average transaction amount
+        average_transaction_amount = total_transactions_amount / total_transactions
+
+        # Get the user's highest deposit amount
+        highest_deposit_amount = Transaction.objects.filter(account=account, transaction_type='deposit').aggregate(
+            max=Max('amount'))['max']
+
+        # Get the user's highest withdrawal amount
+        highest_withdrawal_amount = \
+        Transaction.objects.filter(account=account, transaction_type='withdrawal').aggregate(
+            max=Max('amount'))['max']
+
+        # Get the user's highest transaction amount
+    # transaction = Transaction.objects.get(account=member.bank_accounts.first())  # Get the first transaction
     context = {'member': member}
     return render(request, 'accounts/reports.html', {'member': member})
 
@@ -139,6 +216,7 @@ def membership(request):
         user = User.objects.create_user(username, email, password)
         user.first_name = first_name
         user.last_name = last_name
+        user.email = email
 
         try:
             print('Creating a new user')
@@ -175,7 +253,12 @@ def membership(request):
             profile_img_url = 'https://media.istockphoto.com/id/168415745/photo/black-panther.webp?b=1&s=170667a&w=0&k=20&c=VUXE_4-AEIAJIxRvVjkbENkBfroAXrzaHlUMwE4jR_s='
 
         if monthly_income is None:
-            monthly_income = 4200.00
+            monthly_income = 0
+
+        if credit_score is None:
+            credit_score = 0
+        else:
+            credit_score = int(credit_score)
 
         # Try to update user settings for the new user
         try:
@@ -187,6 +270,7 @@ def membership(request):
             user_settings.credit_score = credit_score
 
             print(f'User profile_img_url: {user_settings.profile_img_url}')
+            logger.info(f'User profile_img_url: {user_settings.profile_img_url}')
             # print(f'User date_of_birth: {user_settings.date_of_birth}')
             print(f'User monthly_income: {user_settings.monthly_income}')
             print(f'User credit_score: {user_settings.credit_score}')
@@ -218,7 +302,7 @@ def login_user(request):
             login(request, user)
             print('Successful Login!')
             messages.success(request, 'Successful Login!')
-            return render(request, 'dash/dashboard.html', context)  # Redirect to the home page
+            return render(request, 'accounts/dashboard.html', context)  # Redirect to the home page
         else:
             print('ERROR: No username or password, please try again..')
             messages.error(request, 'ERROR: No username or password, please try again..')
@@ -252,11 +336,66 @@ def generate_random_9_digit_number():
     return int(random_number)  # Convert to integer for numerical operations
 
 
+@require_POST
+def create_bank_account(request):
+    # Get the user object from the
+    user = User.objects.get(id=request.user.id)
+    account_type = request.POST.get('account_type')
+    deposit_amount = request.POST.get('deposit_amount')
+
+    if account_type is None:
+        account_type = 'Savings'
+
+    if deposit_amount is None:
+        deposit_amount = 0
+    else:
+        deposit_amount = Decimal(deposit_amount)
+
+    try:
+        # Create a new bank account
+        print('Creating a new bank account')
+        new_account = BankAccount.objects.create(
+            user=user,
+            account_number=generate_unique_account_number(),
+            account_type=account_type,
+            balance=deposit_amount
+        )
+        new_account.save()
+        print('Bank account was created successfully')
+        logger.info('Bank account was created successfully')
+        messages.success(request, 'Bank account was created successfully')
+        return render(request, 'accounts/wallet.html')
+    except Exception as e:
+        print(f'An unexpected error occurred: {str(e)}')
+        logger.error(f'An unexpected error occurred: {str(e)}')
+        messages.error(request, f'An unexpected error occurred: {str(e)}')
+        return render(request, 'accounts/wallet.html')
+
+
 # TODO: Rename the function to create_bank_transaction
 def create_bank_transaction(request):
-    # TODO: Add a check to see if the user already has a transaction with the same date and payment type, for duplicate prevention
-    user_id = request.user.id
-    user = User.objects.get(id=user_id)
+    # TODO: Add a check to see if the user already has a transaction with the same date and payment type,
+    #  for duplicate prevention
+
+    account_from_number = request.POST.get('account_from_number')
+    account_to_number = request.POST.get('account_to_number')
+
+    if account_from_number is None:
+        print('Account from number is None')
+        account_from_number = 0
+    else:
+        print(f'Account from number: {account_from_number}')
+        account_from = BankAccount.objects.get_or_404(account_number=account_from_number)
+        account_from_number = int(account_from_number)
+    if account_to_number is None:
+        print('Account to number is None')
+        account_to_number = 0
+    else:
+        print(f'Account to number: {account_to_number}')
+        account_to = BankAccount.objects.get_or_404(account_number=account_to_number)
+        account_to_number = int(account_to_number)
+
+    user = User.objects.get(id=request.user.id)
     # amount = 100
     amount = request.POST.get('amount')
     if amount is None:
@@ -266,6 +405,9 @@ def create_bank_transaction(request):
         print(f'Amount: {amount}')
 
     transaction_type = request.POST.get('transaction_type')
+
+    # credit_score = request.POST.get('credit_score')
+
     # if transaction_type is None:
     #     print('Transaction type is None')
     # else:
@@ -277,6 +419,8 @@ def create_bank_transaction(request):
         transaction_type = 'deposit'
     elif transaction_type == 'withdrawal':
         transaction_type = 'withdrawal'
+    elif transaction_type == 'transfer':
+        transaction_type = 'transfer'
 
     description = request.POST.get('description')
 
@@ -307,18 +451,42 @@ def create_bank_transaction(request):
     try:
         # Create a new transaction
         print('create_deposit_transaction = Creating a new transaction')
-        new_transaction = Transaction(account=account, transaction_type=transaction_type, amount=amount,
-                                      description=description)
-        new_transaction.full_clean()  # Django's built-in model instance data validation
-        print('create_deposit_transaction = Transaction data is valid')
-        new_transaction.save()
-
-        # Update the account balance with the amount of the transaction
         if transaction_type == 'deposit':
+
+            new_transaction = Transaction(account=account, transaction_type=transaction_type, amount=amount,
+                                          description=description)
+            new_transaction.full_clean()  # Django's built-in model instance data validation
             account.balance += Decimal(amount)
+            new_transaction.save()
+            account.save()
+            logger.info('Deposit successful!')
+
         elif transaction_type == 'withdrawal':
-            account.balance -= Decimal(amount)
-        account.save()
+
+            new_transaction = Transaction(account=account_from, transaction_type=transaction_type, amount=amount,
+                                          description=description)
+            new_transaction.full_clean()  # Django's built-in model instance data validation
+            account_from.balance -= Decimal(amount)
+            new_transaction.save()
+            account_from.save()
+            logger.info('Withdrawal successful!')
+
+        elif transaction_type == 'transfer':
+
+            new_transaction = Transaction(account=account_to, transaction_type=transaction_type, amount=amount,
+                                          description=description)
+            new_transaction.full_clean()  # Django's built-in model instance data validation
+            account_to.balance += Decimal(amount)
+            new_transaction.save()
+            account_to.save()
+
+            new_transaction2 = Transaction(account=account_from, transaction_type=transaction_type, amount=amount,
+                                           description=description)
+            new_transaction2.full_clean()  # Django's built-in model instance data validation
+            account_from.balance -= Decimal(amount)
+            new_transaction2.save()
+            account_from.save()
+            logger.info('Transfer successful!')
 
         print('create_deposit_transaction = Transaction was created successfully')
         messages.success(request, 'Deposit successful!')
@@ -395,3 +563,26 @@ def create_profile(sender, instance, created, **kwargs):
 
 
 post_save.connect(create_profile, sender=User)
+
+
+def update_settings(user_id, credit_score=None, monthly_income=None):
+    # user = User.objects.get(id=user_id)
+    user_settings = UserSetting.objects.get(id=user_id)
+    try:
+        if monthly_income is not None:
+            user_settings.monthly_income = monthly_income
+        if credit_score is not None:
+            user_settings.credit_score = credit_score
+
+        user_settings.save()
+    except Exception as e:
+        print(f'An unexpected error occurred: {str(e)}')
+        error_message = f'An error occurred while updating user settings: {str(e)}'
+        logger.error(error_message)
+        messages.error(error_message)
+
+    # def update_credit_score(request):
+    #     user_id = request.user.id
+    #     credit_score = request.POST.get('credit_score')
+    #     update_settings(user_id, credit_score=credit_score)
+    #     return render(request, 'accounts/settings.html')
