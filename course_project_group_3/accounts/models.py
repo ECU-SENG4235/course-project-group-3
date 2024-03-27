@@ -139,6 +139,7 @@ class Transaction(models.Model):
     transaction_type = models.CharField(max_length=50, choices=[('deposit', 'Deposit'), ('withdrawal', 'Withdrawal')])
     transaction_limit = models.DecimalField(max_digits=10, decimal_places=2, default=1000.00)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
+    img_url = models.URLField(null=True, blank=True)
     timestamp = models.DateTimeField(auto_now=True)
     description = models.TextField(blank=True)
 
@@ -149,7 +150,7 @@ class Transaction(models.Model):
         verbose_name_plural = 'Transactions'
 
     def __str__(self):
-        return f"{self.account.user.username}'s Transactions"
+        return f"{self.id} - {self.transaction_type} - {self.account.user.username}"
 
 
 class CreditCard(models.Model):
