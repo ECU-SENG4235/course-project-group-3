@@ -62,6 +62,7 @@ def dashboard(request):
     return render(request, 'accounts/dashboard.html', context)
 
 
+
 # def dashboard(request):
 #     monthly_income = 2000
 #     annual_income = monthly_income * 12

@@ -20,16 +20,10 @@
 {% block content %}
 
     <div class="container-fluid">
-
-
-
-
-
-
-
         <div class="d-sm-flex justify-content-between align-items-center mb-4">
             <h3 class="text-dark mb-0">Dashboard</h3>
-            <!--     TODO: Curtis works here       -->
+
+          <!--     TODO: Curtis works here       -->
 
             <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#" data-bs-toggle="modal" data-bs-target="#generateReportModal" aria-label="Generate Report"> <i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report </a> <a class="btn btn-primary btn-sm d-sm-none" role="button" href="#" data-bs-toggle="modal" data-bs-target="#generateReportModal" aria-label="Generate Report for mobile"> <i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report </a>
 
@@ -91,14 +85,73 @@
 
                     </div>
                 </div>
+              
+<!--                           <div class="btn-group" role="group">
+                <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#" data-bs-toggle="modal" data-bs-target="#spendingLimitModal">
+                    <i class="fas fa-plus fa-sm text-white-50"></i>&nbsp;Update Spending Limit
+                </a>
+                &nbsp;&nbsp; <!-- Added spacing here -->
+                <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#">
+                    
+                    <!-- TODO: Curtis works here -->
+                    <i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report
+                </a> -->
+
+            </div>
+        </div>
+
+        <!-- Modal For Update Spending Limit -->
+        <!--TODO: Add for to select account and choose spending limit-->
+        <div class="modal fade" id="spendingLimitModal" tabindex="-1" aria-labelledby="spendingLimitModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" style="padding: 20px;">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="spendingLimitModalLabel" style="margin-top: -10px; margin-left: -10px;">Update Spending Limit</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Add your form or content here for updating the spending limit -->
+                    </div>
+                    <form>
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-xxl-12 my-2">
+                                <header></header><label class="form-label">Select</label><select class="form-select">
+                                    <optgroup label="Checking">
+                                        <option value="12" selected="">Account Ending in (0909)</option>
+                                        <option value="5674">Account Ending in (5674)</option>
+                                        <option value="8789">Account Ending in (8789)</option>
+                                    </optgroup>
+                                    <optgroup label="Savings">
+                                        <option value="5544">Account Ending in (5544)</option>
+                                    </optgroup>
+                                    <optgroup label="Credit">
+                                        <option value="6987">Account Ending in (6987)</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                            <div class="col-xxl-12 my-2">
+                                <header></header><label class="form-label">Amount</label><input class="form-control" type="number">
+                            </div>
+                            <div class="col-xxl-12 my-2">
+                            </div>
+                            <div class="col-xxl-12">
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary"> Update </button>
+                    </div>
+                </div>
             </div>
         </div>
 
 
 
 
-
-
+        
         <div class="row">
             <div class="col-md-6 col-xl-3 mb-4">
                 <div class="card shadow border-start-primary py-2">
@@ -132,13 +185,14 @@
                         <div class="row align-items-center no-gutters">
                             <div class="col me-2">
                                 <div class="text-uppercase text-info fw-bold text-xs mb-1"><span>Spending Limit</span></div>
+                                
                                 <div class="row g-0 align-items-center">
                                     <div class="col-auto">
-                                        <div class="text-dark fw-bold h5 mb-0 me-3"><span>50%</span></div>
+                                        <div class="text-dark fw-bold h5 mb-0 me-3"><span>{{spending_limit}}%</span></div>
                                     </div>
                                     <div class="col">
                                         <div class="progress progress-sm">
-                                            <div class="progress-bar bg-info" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"><span class="visually-hidden">50%</span></div>
+                                            <div class="progress-bar bg-info" aria-valuenow="{{spending_limit}}" aria-valuemin="0" aria-valuemax="100" style="width: {{spending_limit}}%;"><span class="visually-hidden">{{spending_limit}}%</span></div>
                                         </div>
                                     </div>
                                 </div>
