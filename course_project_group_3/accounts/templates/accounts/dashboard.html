@@ -25,7 +25,18 @@
 
           <!--     TODO: Curtis works here       -->
 
-            <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#" data-bs-toggle="modal" data-bs-target="#generateReportModal" aria-label="Generate Report"> <i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report </a> <a class="btn btn-primary btn-sm d-sm-none" role="button" href="#" data-bs-toggle="modal" data-bs-target="#generateReportModal" aria-label="Generate Report for mobile"> <i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report </a>
+            <div class="btn-group" role="group">
+                <button class="btn btn-primary btn-sm d-none d-sm-inline-block" type="button" data-bs-toggle="modal" data-bs-target="#spendingLimitModal" aria-label="Spending Limit">
+                    <i class="fas fa-plus fa-sm text-white-50"></i>&nbsp;Spending Limit
+                </button>
+                &nbsp;&nbsp; <!-- Added spacing here -->
+                <button class="btn btn-primary btn-sm d-none d-sm-inline-block" type="button" data-bs-toggle="modal" data-bs-target="#generateReportModal" aria-label="Generate Report">
+                    <i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report
+                </button>
+                <button class="btn btn-primary btn-sm d-sm-none" type="button" data-bs-toggle="modal" data-bs-target="#generateReportModal" aria-label="Generate Report for mobile">
+                    <i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report
+                </button>
+            </div>
 
 
             <div class="modal" id="generateReportModal" tabindex="-1" role="dialog" aria-labelledby="generateReportModalLabel" aria-hidden="true">
@@ -36,14 +47,6 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <!--  Provide form choices for selecting either CSV or PDF  -->
-
-
-
-
-
-
-
-
 
                         <form method="POST" action="{% url 'accounts:generate_report' %}">
                             {% csrf_token %}
@@ -112,22 +115,45 @@
                     <div class="modal-body">
                         <!-- Add your form or content here for updating the spending limit -->
                     </div>
-                    <form>
+                    <form method="post" action="{% url 'accounts:dashboard' %}">
                         {% csrf_token %}
                         <div class="row">
                             <div class="col-xxl-12 my-2">
-                                <header></header><label class="form-label">Select</label><select class="form-select">
-                                    <optgroup label="Checking">
-                                        <option value="12" selected="">Account Ending in (0909)</option>
-                                        <option value="5674">Account Ending in (5674)</option>
-                                        <option value="8789">Account Ending in (8789)</option>
-                                    </optgroup>
-                                    <optgroup label="Savings">
-                                        <option value="5544">Account Ending in (5544)</option>
-                                    </optgroup>
-                                    <optgroup label="Credit">
-                                        <option value="6987">Account Ending in (6987)</option>
-                                    </optgroup>
+                                <header></header><label class="form-label">Select Account</label>
+                                {{ form.account }}
+                            </div>
+                            <div class="col-xxl-12 my-2">
+                                <header></header><label class="form-label">Amount</label>
+                                {{ form.spending_limit }}
+                            </div>
+                            <div class="col-xxl-12 my-2">
+                            </div>
+                            <div class="col-xxl-12">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary"> Update </button>
+                        </div>
+                    </form>
+
+
+
+
+
+
+
+
+
+                    <!-- <form>
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-xxl-12 my-2">
+                                <header></header><label class="form-label">Select Account</label>
+                                <select class="form-select">
+                                    {% for account in accounts %}
+                                        <option value="{{ account.id }}">Account Ending in ({{ account.last_four }})</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                             <div class="col-xxl-12 my-2">
@@ -138,12 +164,7 @@
                             <div class="col-xxl-12">
                             </div>
                         </div>
-                    </form>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary"> Update </button>
-                    </div>
+                    </form> -->
                 </div>
             </div>
         </div>
