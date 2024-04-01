@@ -6,10 +6,6 @@ from django.views.generic import CreateView
 from django import forms
 from django.contrib.auth.models import User
 from django.views import generic
-<<<<<<< Updated upstream
-from .forms import CustomUserCreationForm
-
-=======
 from django.views.decorators.http import require_POST
 from psycopg2 import IntegrityError
 
@@ -33,7 +29,6 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
 import io
 import csv
->>>>>>> Stashed changes
 
 # Create your views here.
 
@@ -50,8 +45,6 @@ def base(request):
     return render(request, 'accounts/base.html', context)
 
 
-<<<<<<< Updated upstream
-=======
 # Will serve as the landing page for unauthenticated users
 def landing_page(request):
     member = request.user
@@ -149,7 +142,6 @@ def generate_csv(request):
     return response
 
 
->>>>>>> Stashed changes
 # @login_required
 def wallet(request):
     # Fetch the user object from the database

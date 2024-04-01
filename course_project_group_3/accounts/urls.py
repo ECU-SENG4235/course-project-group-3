@@ -13,8 +13,6 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('settings/', views.settings, name='settings'),
 
-<<<<<<< Updated upstream
-=======
     # Transaction URLs
     path('create_deposit_transaction/', views.create_bank_transaction, name='create_bank_transaction'),
     path('create_new_account/', views.membership, name='membership'),
@@ -26,5 +24,4 @@ urlpatterns = [
     path('generate_report/', views.generate_report, name='generate_report'),
     path('generate_pdf/', views.generate_pdf, name='generate_pdf'),
     path('generate_csv/', views.generate_csv, name='generate_csv'),
->>>>>>> Stashed changes
 ]
