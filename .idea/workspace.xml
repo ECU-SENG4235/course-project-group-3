@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0993659f-da7c-4240-bad4-279b4c8fb233" name="Changes" comment="Clean up wallet.html template and update transaction operations&#10;&#10;Simplified wallet.html template by removing unnecessary lines and loose error handling. Enhanced transaction operations in views.py by ensuring properly updated account balance after each transaction.">
+    <list default="true" id="0993659f-da7c-4240-bad4-279b4c8fb233" name="Changes" comment="Update transaction types in account model&#10;&#10;Transaction type field in Transaction model of account module has been expanded to include two additional types - 'transfer' and 'payment'. This gives more granularity in categorizing account transactions, improving transactional record and analysis.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/dashboard.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/wallet.html" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/templates/accounts/wallet.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -120,7 +116,12 @@
       <workItem from="1710736903005" duration="6818000" />
       <workItem from="1710795690239" duration="4616000" />
       <workItem from="1711415356976" duration="21693000" />
-      <workItem from="1711472608345" duration="3774000" />
+      <workItem from="1711472608345" duration="5245000" />
+      <workItem from="1711513613557" duration="18000" />
+      <workItem from="1711935216359" duration="1900000" />
+      <workItem from="1712011779358" duration="4000" />
+      <workItem from="1712025029319" duration="4010000" />
+      <workItem from="1712029107998" duration="522000" />
     </task>
     <task id="LOCAL-00001" summary="Update .gitignore file&#10;&#10;Added new entries to the .gitignore file to exclude commonly unwanted directories and files. This will prevent them from being tracked by git, simplifying the development process.">
       <option name="closed" value="true" />
@@ -250,7 +251,23 @@
       <option name="project" value="LOCAL" />
       <updated>1710798309605</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Refactor transaction handling and cleanup wallet.html template &#10;&#10;Streamlined transaction operations in the views.py file to guarantee accurate updating of account balance post each transaction. Enhanced the wallet.html template by getting rid of superfluous lines and implementing robust error handling.">
+      <option name="closed" value="true" />
+      <created>1711476417480</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1711476417480</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Update transaction types in account model&#10;&#10;Transaction type field in Transaction model of account module has been expanded to include two additional types - 'transfer' and 'payment'. This gives more granularity in categorizing account transactions, improving transactional record and analysis.">
+      <option name="closed" value="true" />
+      <created>1711480789970</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1711480789970</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -287,6 +304,8 @@
     <MESSAGE value="Refactor transaction form and improve error handling&#10;&#10;Moved the table header outside the for-loop in wallet.html form. Updated create_deposit_transaction function to handle potential issues related to receiving 'amount' and 'transaction_type'. &#10;&#10;The update in the accounts/views.py file will now handle the case if the amount is None by setting it to 0 and print out more debugging information for transaction type and amount. Finally, some changes were done in .idea/workspace.xml for managing tasks and committing message." />
     <MESSAGE value="Refactor wallet.html and update transaction handling&#10;&#10;Updated code to improve account management in wallet.html, adopting DRY principles and simplifying user interface. Additionally, implemented better error handling for transaction processing, specifically to manage invalid 'amount' and 'transaction_type' inputs." />
     <MESSAGE value="Clean up wallet.html template and update transaction operations&#10;&#10;Simplified wallet.html template by removing unnecessary lines and loose error handling. Enhanced transaction operations in views.py by ensuring properly updated account balance after each transaction." />
-    <option name="LAST_COMMIT_MESSAGE" value="Clean up wallet.html template and update transaction operations&#10;&#10;Simplified wallet.html template by removing unnecessary lines and loose error handling. Enhanced transaction operations in views.py by ensuring properly updated account balance after each transaction." />
+    <MESSAGE value="Refactor transaction handling and cleanup wallet.html template &#10;&#10;Streamlined transaction operations in the views.py file to guarantee accurate updating of account balance post each transaction. Enhanced the wallet.html template by getting rid of superfluous lines and implementing robust error handling." />
+    <MESSAGE value="Update transaction types in account model&#10;&#10;Transaction type field in Transaction model of account module has been expanded to include two additional types - 'transfer' and 'payment'. This gives more granularity in categorizing account transactions, improving transactional record and analysis." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update transaction types in account model&#10;&#10;Transaction type field in Transaction model of account module has been expanded to include two additional types - 'transfer' and 'payment'. This gives more granularity in categorizing account transactions, improving transactional record and analysis." />
   </component>
 </project>
