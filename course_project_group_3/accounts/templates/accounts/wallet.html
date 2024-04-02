@@ -377,8 +377,8 @@
                                                     </thead>
                                                     {% for transaction in account.transactions.all %}
                                                         <tbody>
-                                                            <tr>
-                                                                <td>{{ transaction.timestamp|date:"F j, Y" }}</td>
+                                                            <tr title="{{ transaction.timestamp }}">
+                                                                <td>{{ transaction.timestamp|date:"d/m/y" }}</td>
                                                                 <td class="text-truncate"><img class="rounded-circle me-2" width="30" height="30" src="{{ transaction.profile_img_url }}">{{ transaction.description }}</td>
 <!--                                                                {% if transaction.transaction_type == 'debit' %}-->
 <!--                                                                    <td class="debit-light">{{ transaction.transaction_type }}</td>-->
@@ -403,6 +403,9 @@
                                                                         <td class="transfer-light">{{ transaction.transaction_type|title }}</td>
                                                                         <td>$ {{ transaction.amount }}</td>
                                                                     {% elif transaction.transaction_type == 'deposit' %}
+                                                                        <td class="deposit-light">{{ transaction.transaction_type|title }}</td>
+                                                                        <td>$ {{ transaction.amount }}</td>
+                                                                {% elif transaction.transaction_type == 'expense' %}
                                                                         <td class="deposit-light">{{ transaction.transaction_type|title }}</td>
                                                                         <td>$ {{ transaction.amount }}</td>
                                                                     {% endif %}
@@ -768,8 +771,8 @@
                                                         </thead>
                                                         {% for transaction in account.transactions.all %}
                                                         <tbody>
-                                                            <tr>
-                                                                <td>{{ transaction.timestamp|date:"F j, Y" }}</td>
+                                                            <tr title="{{ transaction.timestamp }}">
+                                                                <td>{{ transaction.timestamp|date:"d/m/y" }}</td>
                                                                 <td class="text-truncate"><img class="rounded-circle me-2" width="30" height="30" src="{{ transaction.profile_img_url }}">{{ transaction.description }}</td>
 <!--                                                                {% if transaction.transaction_type == 'debit' %}-->
 <!--                                                                    <td class="debit-light">{{ transaction.transaction_type }}</td>-->
@@ -783,8 +786,22 @@
 
 
 
-                                                                <td class="debit-light">{{ transaction.transaction_type|title }}</td>
-                                                                <td>$ {{ transaction.amount }}</td>
+                                                                {% if transaction.transaction_type == 'debit' %}
+                                                                        <td class="debit-light">{{ transaction.transaction_type|title }}</td>
+                                                                        <td>$ -{{ transaction.amount }}</td>
+                                                                    {% elif transaction.transaction_type == 'credit' %}
+                                                                        <td class="credit-light">{{ transaction.transaction_type|title }}</td>
+                                                                        <td>$ +{{ transaction.amount }}</td>
+                                                                    {% elif transaction.transaction_type == 'transfer' %}
+                                                                        <td class="transfer-light">{{ transaction.transaction_type|title }}</td>
+                                                                        <td>$ {{ transaction.amount }}</td>
+                                                                    {% elif transaction.transaction_type == 'deposit' %}
+                                                                        <td class="deposit-light">{{ transaction.transaction_type|title }}</td>
+                                                                        <td>$ {{ transaction.amount }}</td>
+                                                                    {% elif transaction.transaction_type == 'expense' %}
+                                                                        <td class="deposit-light">{{ transaction.transaction_type|title }}</td>
+                                                                        <td>$ {{ transaction.amount }}</td>
+                                                                    {% endif %}
 <!--                                                                <td>${{ transaction.balance }}</td>-->
                                                                 <td>
                                                                     <div class="dropdown"><button class="btn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-three-dots-vertical">
