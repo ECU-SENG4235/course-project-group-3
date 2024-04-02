@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0993659f-da7c-4240-bad4-279b4c8fb233" name="Changes" comment="Update wallet.html for better transaction readability &amp; handling&#10;&#10;Improved transaction table readability in wallet.html using CSS styles and revised date formatting. Addition of expense transaction type and updated handling of various transaction types has also been implemented. Further, made enhancements in the form used for bank transactions.">
+    <list default="true" id="0993659f-da7c-4240-bad4-279b4c8fb233" name="Changes" comment="Update transaction handling in accounts views&#10;&#10;Adjusted the way transactions adjust the account balance in accounts/views.py. Transactions will now accurately reflect the updated account balances post-transaction.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course_project_group_3/my_django_app.log" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/my_django_app.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course_project_group_3/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/course_project_group_3/accounts/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +120,7 @@
       <workItem from="1711935216359" duration="1900000" />
       <workItem from="1712011779358" duration="4000" />
       <workItem from="1712025029319" duration="4010000" />
-      <workItem from="1712029107998" duration="5498000" />
+      <workItem from="1712029107998" duration="6235000" />
     </task>
     <task id="LOCAL-00001" summary="Update .gitignore file&#10;&#10;Added new entries to the .gitignore file to exclude commonly unwanted directories and files. This will prevent them from being tracked by git, simplifying the development process.">
       <option name="closed" value="true" />
@@ -299,7 +298,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712034016798</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Update transaction handling in accounts views&#10;&#10;Adjusted the way transactions adjust the account balance in accounts/views.py. Transactions will now accurately reflect the updated account balances post-transaction.">
+      <option name="closed" value="true" />
+      <created>1712034751421</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1712034751421</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -317,7 +324,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Update .gitignore file&#10;&#10;Added new entries to the .gitignore file to exclude commonly unwanted directories and files. This will prevent them from being tracked by git, simplifying the development process." />
     <MESSAGE value="Unintended committed files&#10;&#10;Two apps were added. Not having the proper .gitignore attributes, thousands of .venv files were also added." />
     <MESSAGE value="Remove unnecessary files from commit&#10;&#10;Cleared unwanted files that were mistakenly added to the repository due to the absence of proper .gitignore attributes. Specifically, these were thousands of .venv files. Also, two unintended apps were included and subsequently removed." />
     <MESSAGE value="Remove unused static files from the project&#10;&#10;A bulk of static files were removed in this commit. These files primarily include aspects of the admin interface design and JavaScript code, as well as the i18n localization data. They were no longer needed or used in the application, hence the removal, which leads to cleaner project structure and lower overall project size." />
@@ -342,6 +348,7 @@
     <MESSAGE value="Updated wallet template and transaction handling&#10;&#10;Added visual style enhancements to wallet.html for better transaction readability and simplified the bank transaction form. Implemented a more accurate account balance updating in views.py after each transaction, improving overall transaction handling." />
     <MESSAGE value="Add Django logging file, enhance transaction display, and account balance updating&#10;&#10;The wallet.html template now has added CSS styles, making the transaction table more readable by presenting varying background colors based on transaction types. Also, the form for creating bank transactions has been improved for simpler transfer handling between accounts. Additionally, the transaction handling in views.py now includes a more accurate post-transaction account balance updating mechanism.&#10;&#10;This commit includes a new log file for the Django application under 'course_project_group_3'. It records file changes, HTTP requests, and server responses, providing an essential tool for understanding the runtime behavior, debugging, and problem diagnosis of the application." />
     <MESSAGE value="Update wallet.html for better transaction readability &amp; handling&#10;&#10;Improved transaction table readability in wallet.html using CSS styles and revised date formatting. Addition of expense transaction type and updated handling of various transaction types has also been implemented. Further, made enhancements in the form used for bank transactions." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update wallet.html for better transaction readability &amp; handling&#10;&#10;Improved transaction table readability in wallet.html using CSS styles and revised date formatting. Addition of expense transaction type and updated handling of various transaction types has also been implemented. Further, made enhancements in the form used for bank transactions." />
+    <MESSAGE value="Update transaction handling in accounts views&#10;&#10;Adjusted the way transactions adjust the account balance in accounts/views.py. Transactions will now accurately reflect the updated account balances post-transaction." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update transaction handling in accounts views&#10;&#10;Adjusted the way transactions adjust the account balance in accounts/views.py. Transactions will now accurately reflect the updated account balances post-transaction." />
   </component>
 </project>

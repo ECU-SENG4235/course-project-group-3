@@ -136,7 +136,7 @@ class BankAccount(models.Model):
 
 class Transaction(models.Model):
     account = models.ForeignKey(BankAccount, on_delete=models.CASCADE, related_name='transactions')
-    transaction_type = models.CharField(max_length=50, choices=[('deposit', 'Deposit'), ('withdrawal', 'Withdrawal'), ('transfer', 'Transfer'), ('payment', 'Payment')])
+    transaction_type = models.CharField(max_length=50, choices=[('deposit', 'Deposit'), ('withdrawal', 'Withdrawal'), ('transfer', 'Transfer'), ('expense', 'Expense')])
     transaction_limit = models.DecimalField(max_digits=10, decimal_places=2, default=1000.00)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     img_url = models.URLField(null=True, blank=True)

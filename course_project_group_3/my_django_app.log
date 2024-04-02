@@ -65,3 +65,6 @@ Watching for file changes with StatReloader
 "POST /create_deposit_transaction/ HTTP/1.1" 302 0
 "GET /accounts/ HTTP/1.1" 200 196770
 "GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
