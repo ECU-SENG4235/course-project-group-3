@@ -1,0 +1,33 @@
+Watching for file changes with StatReloader
+E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\course_project_group_3\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /accounts/ HTTP/1.1" 200 177228
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"POST /create_deposit_transaction/ HTTP/1.1" 200 34457
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /accounts/ HTTP/1.1" 200 177228
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"POST /create_deposit_transaction/ HTTP/1.1" 200 34457
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /accounts/ HTTP/1.1" 200 177228
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"POST /create_deposit_transaction/ HTTP/1.1" 200 34457
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /accounts/ HTTP/1.1" 200 177228
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"POST /create_deposit_transaction/ HTTP/1.1" 302 0
+"GET /accounts/ HTTP/1.1" 200 181798
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /accounts/ HTTP/1.1" 200 181626
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"POST /create_deposit_transaction/ HTTP/1.1" 302 0
+"GET /accounts/ HTTP/1.1" 200 186389
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
