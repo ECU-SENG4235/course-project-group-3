@@ -15,6 +15,20 @@
 {% endblock %}
 
 {% block style %}
+<style>
+    .debit-light {
+        background-color: rgba(255, 0, 0, 0.1) !important;
+    }
+    .credit-light {
+        background-color: rgba(0, 128, 0, 0.1) !important;
+    }
+    .transfer-light {
+        background-color: rgba(0, 0, 255, 0.1) !important;
+    }
+    .deposit-light {
+        background-color: rgba(0, 128, 0, 0.1) !important;
+    }
+</style>
 {% endblock %}
 
 {% block content %}
@@ -139,6 +153,7 @@
                                                                      <form action="{% url 'accounts:create_bank_transaction' %}" method="POST">
                                                                         {% csrf_token %}
                                                                          <input type="hidden" name="transaction_type" value="transfer">
+                                                                         <input type="hidden" name="account_from_number" value="{{ account.account_number }}">
                                                                         <div class="row">
                                                                             <div class="col-xxl-12 my-2">
 
@@ -172,33 +187,33 @@
                                                                             </div>
 
 
-                                                                            <div class="col-xxl-12 my-2">
+<!--                                                                            <div class="col-xxl-12 my-2">-->
 
-                                                                                {% if user.bank_accounts.all %}
-                                                                                    <header></header><label class="form-label">From Account</label><select class="form-select" type="number" name="account_from_number">
-                                                                                    {% for account in user.bank_accounts.all %}
-                                                                                        {% if account.account_type == 'Checking' %}
-                                                                                            <option value="{{ account.account_number }}">{{ account.account_number }} - {{ account.account_type }}</option>
-                                                                                        {% elif account.account_type == 'Savings' %}
-                                                                                            <option value="{{ account.account_number }}">{{ account.account_number }}  - {{ account.account_type }}</option>
-                                                                                        {% elif account.account_type == 'Credit' %}
-                                                                                            <option value="{{ account.account_number }}">{{ account.account_number }}  - {{ account.account_type }}</option>
-                                                                                        {% endif %}
-                                                                                    {% endfor %}
-<!--                                                                                    <optgroup label="Checking">-->
-<!--                                                                                        <option value="12" selected="">Account Ending in (0909)</option>-->
-<!--                                                                                        <option value="5674">Account Ending in (5674)</option>-->
-<!--                                                                                        <option value="8789">Account Ending in (8789)</option>-->
-<!--                                                                                    </optgroup>-->
-<!--                                                                                    <optgroup label="Savings">-->
-<!--                                                                                        <option value="5544">Account Ending in (5544)</option>-->
-<!--                                                                                    </optgroup>-->
-<!--                                                                                    <optgroup label="Credit">-->
-<!--                                                                                        <option value="6987">Account Ending in (6987)</option>-->
-<!--                                                                                    </optgroup>-->
-                                                                                {% endif %}
-                                                                                </select>
-                                                                            </div>
+<!--                                                                                {% if user.bank_accounts.all %}-->
+<!--                                                                                    <header></header><label class="form-label">From Account</label><select class="form-select" type="number" name="account_from_number">-->
+<!--                                                                                    {% for account in user.bank_accounts.all %}-->
+<!--                                                                                        {% if account.account_type == 'Checking' %}-->
+<!--                                                                                            <option value="{{ account.account_number }}">{{ account.account_number }} - {{ account.account_type }}</option>-->
+<!--                                                                                        {% elif account.account_type == 'Savings' %}-->
+<!--                                                                                            <option value="{{ account.account_number }}">{{ account.account_number }}  - {{ account.account_type }}</option>-->
+<!--                                                                                        {% elif account.account_type == 'Credit' %}-->
+<!--                                                                                            <option value="{{ account.account_number }}">{{ account.account_number }}  - {{ account.account_type }}</option>-->
+<!--                                                                                        {% endif %}-->
+<!--                                                                                    {% endfor %}-->
+<!--&lt;!&ndash;                                                                                    <optgroup label="Checking">&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                                        <option value="12" selected="">Account Ending in (0909)</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                                        <option value="5674">Account Ending in (5674)</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                                        <option value="8789">Account Ending in (8789)</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                                    </optgroup>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                                    <optgroup label="Savings">&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                                        <option value="5544">Account Ending in (5544)</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                                    </optgroup>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                                    <optgroup label="Credit">&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                                        <option value="6987">Account Ending in (6987)</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                                    </optgroup>&ndash;&gt;-->
+<!--                                                                                {% endif %}-->
+<!--                                                                                </select>-->
+<!--                                                                            </div>-->
 
 
                                                                             <div class="col-xxl-12 my-2">
@@ -377,8 +392,24 @@
 
 
 
-                                                                <td class="debit-light">{{ transaction.transaction_type }}</td>
-                                                                <td>$ {{ transaction.amount }}</td>
+
+                                                                    {% if transaction.transaction_type == 'debit' %}
+                                                                        <td class="debit-light">{{ transaction.transaction_type|title }}</td>
+                                                                        <td>$ -{{ transaction.amount }}</td>
+                                                                    {% elif transaction.transaction_type == 'credit' %}
+                                                                        <td class="credit-light">{{ transaction.transaction_type|title }}</td>
+                                                                        <td>$ +{{ transaction.amount }}</td>
+                                                                    {% elif transaction.transaction_type == 'transfer' %}
+                                                                        <td class="transfer-light">{{ transaction.transaction_type|title }}</td>
+                                                                        <td>$ {{ transaction.amount }}</td>
+                                                                    {% elif transaction.transaction_type == 'deposit' %}
+                                                                        <td class="deposit-light">{{ transaction.transaction_type|title }}</td>
+                                                                        <td>$ {{ transaction.amount }}</td>
+                                                                    {% endif %}
+
+
+
+
 <!--                                                                <td>${{ transaction.balance }}</td>-->
                                                                 <td>
                                                                     <div class="dropdown"><button class="btn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-three-dots-vertical">
@@ -396,7 +427,7 @@
                                                             <td><strong>Name</strong></td>
                                                             <td><strong>Type</strong></td>
                                                             <td><strong>Amount</strong></td>
-                                                            <td><strong>Balance</strong></td>
+<!--                                                            <td><strong>Balance</strong></td>-->
                                                         </tr>
                                                     </tfoot>
                                                 </table>
@@ -736,42 +767,42 @@
                                                             </tr>
                                                         </thead>
                                                         {% for transaction in account.transactions.all %}
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td>{{ transaction.timestamp|date:"F j, Y" }}</td>
-                                                                    <td class="text-truncate"><img class="rounded-circle me-2" width="30" height="30" src="{{ transaction.profile_img_url }}">{{ transaction.description }}</td>
-    <!--                                                                {% if transaction.transaction_type == 'Debit' %}-->
-    <!--                                                                    <td class="debit-light">{{ transaction.transaction_type }}</td>-->
-    <!--                                                                {% elif transaction.transaction_type == 'Credit' %}-->
-    <!--                                                                    <td class="credit-light">{{ transaction.transaction_type }}</td>-->
-    <!--                                                                {% elif transaction.transaction_type == 'Transfer' %}-->
-    <!--                                                                    <td class="transfer-light">{{ transaction.transaction_type }}</td>-->
-    <!--                                                                {% elif transaction.transaction_type == 'Deposit' %}-->
-    <!--                                                                    <td class="deposit-light">{{ transaction.transaction_type }}</td>-->
-    <!--                                                                {% endif %}-->
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>{{ transaction.timestamp|date:"F j, Y" }}</td>
+                                                                <td class="text-truncate"><img class="rounded-circle me-2" width="30" height="30" src="{{ transaction.profile_img_url }}">{{ transaction.description }}</td>
+<!--                                                                {% if transaction.transaction_type == 'debit' %}-->
+<!--                                                                    <td class="debit-light">{{ transaction.transaction_type }}</td>-->
+<!--                                                                {% elif transaction.transaction_type == 'credit' %}-->
+<!--                                                                    <td class="credit-light">{{ transaction.transaction_type }}</td>-->
+<!--                                                                {% elif transaction.transaction_type == 'transfer' %}-->
+<!--                                                                    <td class="transfer-light">{{ transaction.transaction_type }}</td>-->
+<!--                                                                {% elif transaction.transaction_type == 'deposit' %}-->
+<!--                                                                    <td class="deposit-light">{{ transaction.transaction_type }}</td>-->
+<!--                                                                {% endif %}-->
 
 
 
-                                                                    <td class="debit-light">{{ transaction.transaction_type }}</td>
-                                                                    <td>${{ transaction.amount }}</td>
-    <!--                                                                <td>${{ transaction.balance }}</td>-->
-                                                                    <td>
-                                                                        <div class="dropdown"><button class="btn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-three-dots-vertical">
-                                                                                    <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"></path>
-                                                                                </svg></button>
-                                                                            <div class="dropdown-menu ms-auto"><a class="dropdown-item" href="#">Hide</a><a class="dropdown-item" href="#">Report</a><a class="dropdown-item" href="#">Dispute</a></div>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        {% endfor %}
+                                                                <td class="debit-light">{{ transaction.transaction_type|title }}</td>
+                                                                <td>$ {{ transaction.amount }}</td>
+<!--                                                                <td>${{ transaction.balance }}</td>-->
+                                                                <td>
+                                                                    <div class="dropdown"><button class="btn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-three-dots-vertical">
+                                                                                <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"></path>
+                                                                            </svg></button>
+                                                                        <div class="dropdown-menu ms-auto"><a class="dropdown-item" href="#">Hide</a><a class="dropdown-item" href="#">Report</a><a class="dropdown-item" href="#">Dispute</a></div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    {% endfor %}
                                                         <tfoot>
                                                             <tr>
                                                                 <td><strong>Date</strong></td>
                                                                 <td><strong>Name</strong></td>
                                                                 <td><strong>Type</strong></td>
                                                                 <td><strong>Amount</strong></td>
-                                                                <td><strong>Balance</strong></td>
+<!--                                                                <td><strong>Balance</strong></td>-->
                                                             </tr>
                                                         </tfoot>
                                                     </table>

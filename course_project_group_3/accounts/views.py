@@ -387,8 +387,15 @@ def create_bank_transaction(request):
     transaction_type = request.POST.get('transaction_type')
     description = request.POST.get('description')
 
+    print(f'Account from: {account_from_number}')
+    print(f'Account to: {account_to_number}')
+    print(f'Amount: {amount}')
+    print(f'Transaction type: {transaction_type}')
+    print(f'Description: {description}')
+
     # Validate required input fields
-    if not all([amount, transaction_type, description]):
+    if not all([amount, transaction_type]):
+        print('All fields (amount, type, description) are required.')
         messages.error(request, 'All fields (amount, type, description) are required.')
         return render(request, 'accounts/dashboard.html')
 
@@ -397,10 +404,12 @@ def create_bank_transaction(request):
         if amount <= 0:
             raise ValueError('Amount must be greater than zero.')
     except (ValueError, Decimal.InvalidOperation):
+        print('Please enter a valid amount.')
         messages.error(request, 'Please enter a valid amount.')
         return render(request, 'accounts/dashboard.html')
 
-    if transaction_type not in ('deposit', 'withdrawal', 'transfer'):
+    if transaction_type not in ('deposit', 'withdrawal', 'transfer', 'payment'):
+        print('Invalid transaction type.')
         messages.error(request, 'Invalid transaction type.')
         return render(request, 'accounts/dashboard.html')
 
@@ -408,8 +417,10 @@ def create_bank_transaction(request):
     try:
         account = request.user.bank_accounts.all().first()
         if not account:
+            print()
             raise ObjectDoesNotExist('User has no linked bank account.')
     except ObjectDoesNotExist as e:
+        print(f'User has no linked bank account: {e}')
         logger.warning(str(e))
         messages.error(request, 'No linked bank account found.')
         return render(request, 'accounts/dashboard.html')
@@ -418,17 +429,22 @@ def create_bank_transaction(request):
     def handle_account_number(account_number):
         if account_number:
             try:
+                print(f'Account number: {account_number}')
                 return BankAccount.objects.get(account_number=account_number)
             except ObjectDoesNotExist:
+                print(f'Account number {account_number} does not exist.')
                 messages.error(request, f'Account number {account_number} does not exist.')
                 return None
         else:
+            print('Account number is required.')
             messages.error(request, 'Account number is required.')
             return None
 
     account_from = handle_account_number(account_from_number)
     account_to = handle_account_number(account_to_number)
+
     if not account_from or not account_to:
+        print('Invalid account number(s).')
         return render(request, 'accounts/dashboard.html')
 
     # Duplicate Transaction Prevention (Simplified)
@@ -439,6 +455,7 @@ def create_bank_transaction(request):
         description=description,
         # Add date comparison if needed
     ).exists():
+        print('A similar transaction already exists.')
         messages.warning(request, 'A similar transaction already exists.')
         return render(request, 'accounts/dashboard.html')
 
@@ -465,10 +482,21 @@ def create_bank_transaction(request):
                 raise ValueError('Insufficient funds for transfer.')
             account_from.balance -= amount
             account_to.balance += amount
+
+            new_transaction_to = Transaction(
+                account=account_to,  # Determine correct account based on type
+                transaction_type=transaction_type,
+                amount=amount,
+                description='Transfer from ' + account_from_number
+            )
+            new_transaction.description = 'Transfer to ' + account_to_number
+            new_transaction.full_clean()
             # Create second transaction for clarity
 
         # Save changes
         new_transaction.save()
+        if transaction_type == 'transfer' and new_transaction_to:
+            new_transaction_to.save()
         account.save()  # Save changes to account balance
         if transaction_type == 'transfer':
             account_to.save()
@@ -478,9 +506,11 @@ def create_bank_transaction(request):
 
     except ValueError as e:
         logger.error(f'Transaction failed: {e}')
+        print(f'\n\nTransaction failed: {e}')
         messages.error(request, str(e))
     except Exception as e:
         logger.exception(f'Unexpected error during transaction: {e}')
+        print(f'\n\nUnexpected error during transaction: {e}')
         messages.error(request, 'An unexpected error occurred.')
 
     return render(request, 'accounts/dashboard.html')
