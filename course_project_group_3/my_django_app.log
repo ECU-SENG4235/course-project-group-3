@@ -31,3 +31,37 @@ Watching for file changes with StatReloader
 "POST /create_deposit_transaction/ HTTP/1.1" 302 0
 "GET /accounts/ HTTP/1.1" 200 186389
 "GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /accounts/ HTTP/1.1" 200 186181
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /accounts/ HTTP/1.1" 200 186172
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /accounts/ HTTP/1.1" 200 186157
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /accounts/ HTTP/1.1" 200 186256
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /accounts/ HTTP/1.1" 200 186553
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /accounts/ HTTP/1.1" 200 187000
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /profile/ HTTP/1.1" 200 31613
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /accounts/ HTTP/1.1" 200 187000
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"POST /create_deposit_transaction/ HTTP/1.1" 302 0
+"GET /accounts/ HTTP/1.1" 200 191971
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /dashboard/ HTTP/1.1" 200 36041
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /accounts/ HTTP/1.1" 200 191799
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"POST /create_deposit_transaction/ HTTP/1.1" 302 0
+"GET /accounts/ HTTP/1.1" 200 196770
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822

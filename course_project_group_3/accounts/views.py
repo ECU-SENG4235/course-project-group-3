@@ -490,6 +490,8 @@ def create_bank_transaction(request):
                 description='Transfer from ' + account_from_number
             )
             new_transaction.description = 'Transfer to ' + account_to_number
+            new_transaction.account.balance = float(new_transaction.account.balance) - float(amount)
+            new_transaction_to.account.balance = float(new_transaction_to.account.balance) + float(amount)
             new_transaction.full_clean()
             # Create second transaction for clarity
 
