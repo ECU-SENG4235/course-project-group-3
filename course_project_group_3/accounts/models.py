@@ -23,6 +23,8 @@ class UserSetting(models.Model):
     dark_mode_end_time = models.TimeField(null=True, blank=True)
     show_balance_on_dashboard = models.BooleanField(default=True)
 
+    budget_account = models.OneToOneField('BankAccount', on_delete=models.CASCADE, related_name='user_setting', null=True, blank=True)
+
     monthly_income = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
     # monthly_expenses = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
     # monthly_savings = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
@@ -64,9 +66,9 @@ class BankAccount(models.Model):
     balance = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     account_type = models.CharField(max_length=50, choices=ACCOUNT_TYPE_CHOICES, default='checking')
     is_active = models.BooleanField(default=True)
-
     # TODO: Create routing number attribute
 
+    spending_limit = models.DecimalField(max_digits=10, decimal_places=2, default=1000.00)
     transaction_limit = models.DecimalField(max_digits=10, decimal_places=2, default=1000.00)
     overdraft_limit = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     last_transaction_date = models.DateTimeField(null=True, blank=True)

@@ -10,7 +10,7 @@ from django.views import generic
 from django.views.decorators.http import require_POST
 from psycopg2 import IntegrityError
 
-from .forms import CustomUserCreationForm, generate_unique_account_number
+from .forms import CustomUserCreationForm, SpendingLimitForm, generate_unique_account_number
 from django.contrib import messages  # for messages
 from django.contrib.auth import authenticate, logout, login
 
@@ -62,7 +62,9 @@ def dashboard(request):
         form = SpendingLimitForm(request.user, request.POST)
         if form.is_valid():
             account = form.cleaned_data['account']
-            account.transaction_limit = form.cleaned_data['spending_limit']
+            account.spending_limit = form.cleaned_data['spending_limit']
+            user_settings.budget_account = account
+            user_settings.save()
             account.save()
             return redirect('accounts:dashboard')
     else:
