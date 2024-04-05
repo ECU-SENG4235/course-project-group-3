@@ -58,6 +58,25 @@ def dashboard(request):
 
     form = SpendingLimitForm(request.user)
 
+    sum = 0
+
+    #Check if budget account has been set
+    if user_settings.budget_account is not None:
+        
+        #check if there are any transactions in the budget account
+        if Transaction.objects.filter(account=user_settings.budget_account).count() != 0:
+
+            for transaction in Transaction.objects.filter(account=user_settings.budget_account, transaction_type='withdrawal'):
+                sum += transaction.amount
+
+            percent = sum / user_settings.budget_account.spending_limit
+            percent = percent * 100
+            
+    else:
+        percent = 0
+
+
+
     if request.method == 'POST':
         form = SpendingLimitForm(request.user, request.POST)
         if form.is_valid():
@@ -76,7 +95,8 @@ def dashboard(request):
         'monthly_income': monthly_income,
         'annual_income': annual_income,
         'accounts': accounts,
-        'form': form
+        'form': form,
+        'percent': percent
     }
 
     return render(request, 'accounts/dashboard.html', context)
