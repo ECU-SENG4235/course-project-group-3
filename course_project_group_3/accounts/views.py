@@ -1,27 +1,21 @@
+import logging
 from datetime import datetime
-
-from django.contrib.auth import authenticate
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
-from django.urls import reverse_lazy
-from django.contrib.auth.models import User
-from django.views import generic
-from django.views.decorators.http import require_POST
-from psycopg2 import IntegrityError
-
-from .forms import CustomUserCreationForm, generate_unique_account_number
-from django.contrib import messages  # for messages
-from django.contrib.auth import authenticate, logout, login
-
-from .models import Transaction, BankAccount, UserSetting
-from django.utils.crypto import get_random_string
-from django.core.exceptions import ValidationError, ObjectDoesNotExist
 from decimal import Decimal
 
+from django.contrib import messages  # for messages
+from django.contrib.auth import authenticate, logout, login
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.core.exceptions import ObjectDoesNotExist
 from django.db.models.signals import post_save
-from django.conf import settings
-import logging
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+from django.utils.crypto import get_random_string
+from django.views import generic
+from django.views.decorators.http import require_POST
+
+from .forms import CustomUserCreationForm, generate_unique_account_number
+from .models import Transaction, BankAccount, UserSetting
 
 logger = logging.getLogger(__name__)  # Set up basic logging
 

@@ -1,8 +1,5 @@
-from django.urls import path, include
-
-from .views import SignUpView
-
 from accounts import views
+from django.urls import path
 
 app_name = 'accounts'  # ensure this line is here, the value should match the namespace you used in the main urls.py
 

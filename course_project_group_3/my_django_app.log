@@ -68,3 +68,21 @@ Watching for file changes with StatReloader
 E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\models.py changed, reloading.
 Watching for file changes with StatReloader
 Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 22573
+"GET /static/main/css/baguetteBox-zoom.min.css HTTP/1.1" 404 1858
+"GET /static/main/css/bs-theme-overrides.css HTTP/1.1" 200 3280
+"GET /static/main/css/vanilla-zoom.min.css HTTP/1.1" 200 629
+"GET /static/main/bootstrap/css/bootstrap.min.css HTTP/1.1" 200 265323
+"GET /static/img/scenery/image4.jpg HTTP/1.1" 404 1825
+"GET /static/img/photo-1560472355-536de3962603.jpg HTTP/1.1" 404 1870
+"GET /static/img/scenery/image1.jpg HTTP/1.1" 404 1825
+"GET /static/main/js/baguetteBox.min.js HTTP/1.1" 200 9583
+"GET /static/img/scenery/image6.jpg HTTP/1.1" 404 1825
+"GET /static/img/avatars/avatar1.jpg HTTP/1.1" 404 1828
+"GET /static/main/js/vanilla-zoom.js HTTP/1.1" 200 3712
+"GET /static/main/js/theme.js HTTP/1.1" 200 322
+"GET /static/img/avatars/avatar2.jpg HTTP/1.1" 404 1828
+"GET /static/img/avatars/avatar3.jpg HTTP/1.1" 404 1828
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 4271

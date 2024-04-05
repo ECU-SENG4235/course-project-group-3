@@ -1,11 +1,10 @@
 import random
 import string
 
+from accounts.models import BankAccount
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-
-from accounts.models import UserSetting, BankAccount
 
 
 class CustomUserCreationForm(UserCreationForm):
