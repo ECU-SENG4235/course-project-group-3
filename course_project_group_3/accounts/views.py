@@ -45,17 +45,34 @@ def landing_page(request):
 def dashboard(request):
     user = request.user
     user_settings = UserSetting.objects.get(user=request.user)
+    bank_accounts = BankAccount.objects.filter(user=request.user)
     monthly_income = user_settings.monthly_income
     annual_income = monthly_income * 12
+    accounts = [{'id': account.id, 'last_four': str(account.account_number)[-4:]} for account in bank_accounts]
+
+    form = SpendingLimitForm(request.user)
+
+    if request.method == 'POST':
+        form = SpendingLimitForm(request.user, request.POST)
+        if form.is_valid():
+            account = form.cleaned_data['account']
+            account.transaction_limit = form.cleaned_data['spending_limit']
+            account.save()
+            return redirect('accounts:dashboard')
+    else:
+        form = SpendingLimitForm(request.user)
 
     context = {
         'member': user,
         'settings': user_settings,
         'monthly_income': monthly_income,
         'annual_income': annual_income,
+        'accounts': accounts,
+        'form': form
     }
 
     return render(request, 'accounts/dashboard.html', context)
+
 
 
 # def dashboard(request):
@@ -594,3 +611,15 @@ def update_settings(user_id, credit_score=None, monthly_income=None):
     #     credit_score = request.POST.get('credit_score')
     #     update_settings(user_id, credit_score=credit_score)
     #     return render(request, 'accounts/settings.html')
+
+# def update_spending_limit(request):
+#     if request.method == 'POST':
+#         form = SpendingLimitForm(request.user, request.POST)
+#         if form.is_valid():
+#             account = form.cleaned_data['account']
+#             account.spending_limit = form.cleaned_data['spending_limit']
+#             account.save()
+#             return redirect('dashboard')
+#     else:
+#         form = SpendingLimitForm(request.user)
+#     return render(request, 'dashboard.html', {'form': form})
