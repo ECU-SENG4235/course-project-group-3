@@ -10,7 +10,7 @@ from django.views import generic
 from django.views.decorators.http import require_POST
 from psycopg2 import IntegrityError
 
-from .forms import CustomUserCreationForm, generate_unique_account_number
+from .forms import CustomUserCreationForm, SpendingLimitForm, generate_unique_account_number
 from django.contrib import messages  # for messages
 from django.contrib.auth import authenticate, logout, login
 
@@ -58,11 +58,32 @@ def dashboard(request):
 
     form = SpendingLimitForm(request.user)
 
+    sum = 0
+
+    #Check if budget account has been set
+    if user_settings.budget_account is not None:
+        
+        #check if there are any transactions in the budget account
+        if Transaction.objects.filter(account=user_settings.budget_account).count() != 0:
+
+            for transaction in Transaction.objects.filter(account=user_settings.budget_account, transaction_type='withdrawal'):
+                sum += transaction.amount
+
+            percent = sum / user_settings.budget_account.spending_limit
+            percent = percent * 100
+            
+    else:
+        percent = 0
+
+
+
     if request.method == 'POST':
         form = SpendingLimitForm(request.user, request.POST)
         if form.is_valid():
             account = form.cleaned_data['account']
-            account.transaction_limit = form.cleaned_data['spending_limit']
+            account.spending_limit = form.cleaned_data['spending_limit']
+            user_settings.budget_account = account
+            user_settings.save()
             account.save()
             return redirect('accounts:dashboard')
     else:
@@ -74,7 +95,8 @@ def dashboard(request):
         'monthly_income': monthly_income,
         'annual_income': annual_income,
         'accounts': accounts,
-        'form': form
+        'form': form,
+        'percent': percent
     }
 
     return render(request, 'accounts/dashboard.html', context)
@@ -321,7 +343,7 @@ def login_user(request):
             login(request, user)
             print('Successful Login!')
             messages.success(request, 'Successful Login!')
-            return redirect('accounts:dash')  # Redirect to the home page
+            return redirect('accounts:dashboard')  # Redirect to the home page
         else:
             print('ERROR: No username or password, please try again..')
             messages.error(request, 'ERROR: No username or password, please try again..')
