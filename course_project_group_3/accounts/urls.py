@@ -25,4 +25,5 @@ urlpatterns = [
 
 #     TODO: Add URL to generate report (Curtis)
     path('generate_report/', views.generate_report, name='generate_report'),
-]
+    path('generate_report/', views.generate_pdf_report, name='generate_pdf_report'),
+    path('generate_report/', views.generate_csv_report, name='generate_csv_report')]

@@ -1,7 +1,12 @@
+import csv
 from datetime import datetime
+from enum import member
+import io
+from msilib import Table
 
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
+from django.http import FileResponse, HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
@@ -22,6 +27,25 @@ from decimal import Decimal
 from django.db.models.signals import post_save
 from django.conf import settings
 import logging
+from reportlab.lib import colors
+from reportlab.platypus import Spacer
+from reportlab.pdfgen import canvas
+from reportlab.lib.units import inch
+from reportlab.lib.pagesizes import letter
+from reportlab.platypus import SimpleDocTemplate, Table
+from reportlab.platypus import TableStyle
+from reportlab.lib.styles import getSampleStyleSheet
+from django.views.decorators.http import require_POST
+import io
+import csv
+from reportlab.lib.pagesizes import letter
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer
+from reportlab.lib import colors
+from reportlab.lib.styles import getSampleStyleSheet
+from django.http import HttpResponse, FileResponse
+from .models import Transaction, BankAccount
+from django.views.decorators.http import require_POST
+
 
 logger = logging.getLogger(__name__)  # Set up basic logging
 
@@ -110,78 +134,92 @@ def dashboard(request):
 #     return render(request, 'accounts/dashboard.html', {'member': member, 'monthly_income': monthly_income, 'annual_income': annual_income})
 
 
+@require_POST
 def generate_report(request):
-    member = request.user
-    report_type = request.POST.get('report_type')
-    user_account_number = request.POST.get('account_number')
+    report_type = request.POST.get('reportType')
 
-    print(f'Report Type: {report_type}')
+    if report_type == 'pdf':
+        print('Generating PDF report')
+        return generate_pdf_report(request)
+    
+    elif report_type == 'csv':
+        print('Generating CSV report')
+        return generate_csv_report(request)
+    
+    else:
+        print('Invalid report type selected. Please try again.')
+        return HttpResponse("Invalid report type selected. Please try again.")
 
-    if request.method == 'POST':
-        print('POST request received')
-        # Get the user's bank account (Checking)
-        account = member.bank_accounts.first()
+def generate_pdf_report(request):
+    user_account_number = request.POST.get('account.account_number')
+    print(f'Account number: {user_account_number}')
+    transactions = Transaction.objects.filter(account__account_number=user_account_number)
+    print(f'Transactions: {transactions}')
+    report_type = request.POST.get('reportType')
 
-        # Get the user's transactions
-        transactions = Transaction.objects.filter(account=account)
+    print(f'Generating a PDF report for account number: {user_account_number}')
+    
+    # Create a buffer to hold the PDF content
+    buffer = io.BytesIO()
+    
+    # Create a PDF document
+    doc = SimpleDocTemplate(buffer, pagesize=letter)
+    elements = []
+    
+    # Add document title
+    styles = getSampleStyleSheet()
+    report_title = Paragraph(report_type.upper(), styles['Title'])
+    elements.append(report_title)
+    elements.append(Spacer(1, 24))
+    
+    # Add company data section
+    company_data = "Company Name: Heritage Banking\nAddress: 123 Here Street, City, Country\nContact: info@xyzinc.com"
+    company_info = Paragraph(company_data, styles['Normal'])
+    elements.append(company_info)
+    elements.append(Spacer(1, 24))
+    
+    # Add customer data section
+    user = request.user
+    customer_data = f"Customer Name: {user.first_name} {user.last_name}\nAccount Number: {user_account_number}"
+    customer_info = Paragraph(customer_data, styles['Normal'])
+    elements.append(customer_info)
+    elements.append(Spacer(1, 12))
+    
+   # Format transaction data for inclusion in PDF
+    data = [['Transaction ID', 'Type', 'Amount', 'Date']]
+    for transaction in transactions:
+        data.append([transaction.id, transaction.transaction_type, transaction.amount, transaction.date])
+        
+    table = Table(data)
+    table.setStyle(TableStyle([('GRID', (0, 0), (-1, -1), 1, (0, 0, 0))]))
+    elements.append(table)
+    
+    # Build the PDF document
+    doc.build(elements)
 
-        # Get the user's settings
-        user_settings = UserSetting.objects.get(user=member)
+    # Return the PDF content as a response
+    buffer.seek(0)
+    return FileResponse(buffer, as_attachment=True, filename="report.pdf")
 
-        # Get the user's credit score
-        credit_score = user_settings.credit_score
+def generate_csv_report(request):
+    user_account_number = request.POST.get('account.account_number')
+    transactions = Transaction.objects.filter(account__account_number=user_account_number)
 
-        # Get the user's monthly income
-        monthly_income = user_settings.monthly_income
+    print(f'Generating a CSV report for account number: {user_account_number}')
 
-        # Get the user's annual income
-        annual_income = monthly_income * 12
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="transaction_report.csv"'
 
-        # Get the user's account balance
-        account_balance = account.balance
+    writer = csv.writer(response)
+    
+    # Write headers
+    writer.writerow(['Transaction ID', 'Type', 'Amount', 'Date'])
 
-        # Get the user's total deposits
-        total_deposits = Transaction.objects.filter(account=account, transaction_type='deposit').count()
+    # Write transaction data
+    for transaction in transactions:
+        writer.writerow([transaction.id, transaction.transaction_type, transaction.amount, transaction.date])
 
-        # Get the user's total withdrawals
-        total_withdrawals = Transaction.objects.filter(account=account, transaction_type='withdrawal').count()
-
-        # Get the user's total transactions
-        total_transactions = total_deposits + total_withdrawals
-
-        # Get the user's total deposits amount
-        total_deposits_amount = Transaction.objects.filter(account=account, transaction_type='deposit').aggregate(
-            total=Sum('amount'))['total']
-
-        # Get the user's total withdrawals amount
-        total_withdrawals_amount = Transaction.objects.filter(account=account, transaction_type='withdrawal').aggregate(
-            total=Sum('amount'))['total']
-
-        # Get the user's total transactions amount
-        total_transactions_amount = total_deposits_amount + total_withdrawals_amount
-
-        # Get the user's average deposit amount
-        average_deposit_amount = total_deposits_amount / total_deposits
-
-        # Get the user's average withdrawal amount
-        average_withdrawal_amount = total_withdrawals_amount / total_withdrawals
-
-        # Get the user's average transaction amount
-        average_transaction_amount = total_transactions_amount / total_transactions
-
-        # Get the user's highest deposit amount
-        highest_deposit_amount = Transaction.objects.filter(account=account, transaction_type='deposit').aggregate(
-            max=Max('amount'))['max']
-
-        # Get the user's highest withdrawal amount
-        highest_withdrawal_amount = \
-        Transaction.objects.filter(account=account, transaction_type='withdrawal').aggregate(
-            max=Max('amount'))['max']
-
-        # Get the user's highest transaction amount
-    # transaction = Transaction.objects.get(account=member.bank_accounts.first())  # Get the first transaction
-    context = {'member': member}
-    return render(request, 'accounts/reports.html', {'member': member})
+    return response
 
 
 # @login_required
