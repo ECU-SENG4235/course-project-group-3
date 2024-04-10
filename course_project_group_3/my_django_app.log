@@ -1013,3 +1013,230 @@ C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course
 Watching for file changes with StatReloader
 C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
 Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 22573
+"GET /static/main/bootstrap/css/bootstrap.min.css HTTP/1.1" 304 0
+"GET /static/main/css/bs-theme-overrides.css HTTP/1.1" 304 0
+"GET /static/main/css/vanilla-zoom.min.css HTTP/1.1" 304 0
+"GET /static/img/scenery/image1.jpg HTTP/1.1" 404 1825
+"GET /static/img/scenery/image4.jpg HTTP/1.1" 404 1825
+"GET /static/main/css/baguetteBox-zoom.min.css HTTP/1.1" 404 1858
+"GET /static/img/avatars/avatar1.jpg HTTP/1.1" 404 1828
+"GET /static/img/photo-1560472355-536de3962603.jpg HTTP/1.1" 404 1870
+"GET /static/main/js/baguetteBox.min.js HTTP/1.1" 304 0
+"GET /static/img/scenery/image6.jpg HTTP/1.1" 404 1825
+"GET /static/main/js/vanilla-zoom.js HTTP/1.1" 304 0
+"GET /static/main/js/theme.js HTTP/1.1" 304 0
+"GET /static/img/avatars/avatar3.jpg HTTP/1.1" 404 1828
+"GET /static/img/avatars/avatar2.jpg HTTP/1.1" 404 1828
+"GET /dashboard/ HTTP/1.1" 200 39675
+"GET /static/bs/dash/css/bootstrap.min.css HTTP/1.1" 304 0
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /static/css/dash/wallet.css HTTP/1.1" 304 0
+"GET /static/js/dash/theme.js HTTP/1.1" 304 0
+"GET /static/css/dash/bs-theme-overrides.css HTTP/1.1" 304 0
+"GET /static/css/dash/global.css HTTP/1.1" 304 0
+"GET /static/js/dash/bs-init.js HTTP/1.1" 304 0
+"GET /profile/ HTTP/1.1" 200 31609
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /accounts/ HTTP/1.1" 200 52991
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /accounts/ HTTP/1.1" 200 52991
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /dashboard/ HTTP/1.1" 200 39675
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"POST /generate_report/ HTTP/1.1" 200 1922
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 22573
+"GET /static/img/scenery/image1.jpg HTTP/1.1" 404 1825
+"GET /static/img/photo-1560472355-536de3962603.jpg HTTP/1.1" 404 1870
+"GET /static/main/css/baguetteBox-zoom.min.css HTTP/1.1" 404 1858
+"GET /static/img/scenery/image6.jpg HTTP/1.1" 404 1825
+"GET /static/img/scenery/image4.jpg HTTP/1.1" 404 1825
+"GET /static/img/avatars/avatar3.jpg HTTP/1.1" 404 1828
+"GET /static/img/avatars/avatar1.jpg HTTP/1.1" 404 1828
+"GET /static/img/avatars/avatar2.jpg HTTP/1.1" 404 1828
+"GET /dashboard/ HTTP/1.1" 200 39675
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+Internal Server Error: /generate_report/
+Traceback (most recent call last):
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\views\decorators\http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py", line 152, in generate_report
+    return generate_pdf_report(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py", line 175, in generate_pdf_report
+    report_title = Paragraph(report_type.upper(), styles['Title'])
+                             ^^^^^^^^^^^
+NameError: name 'report_type' is not defined
+"POST /generate_report/ HTTP/1.1" 500 85744
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 22573
+"GET /static/main/css/baguetteBox-zoom.min.css HTTP/1.1" 404 1858
+"GET /static/img/scenery/image6.jpg HTTP/1.1" 404 1825
+"GET /static/img/scenery/image4.jpg HTTP/1.1" 404 1825
+"GET /static/img/photo-1560472355-536de3962603.jpg HTTP/1.1" 404 1870
+"GET /static/img/avatars/avatar1.jpg HTTP/1.1" 404 1828
+"GET /static/img/scenery/image1.jpg HTTP/1.1" 404 1825
+"GET /static/img/avatars/avatar3.jpg HTTP/1.1" 404 1828
+"GET /static/img/avatars/avatar2.jpg HTTP/1.1" 404 1828
+"GET /dashboard/ HTTP/1.1" 200 39675
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"POST /generate_report/ HTTP/1.1" 200 1961
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 22573
+"GET /static/main/css/baguetteBox-zoom.min.css HTTP/1.1" 404 1858
+"GET /static/img/photo-1560472355-536de3962603.jpg HTTP/1.1" 404 1870
+"GET /static/img/scenery/image1.jpg HTTP/1.1" 404 1825
+"GET /static/img/scenery/image4.jpg HTTP/1.1" 404 1825
+"GET /static/img/scenery/image6.jpg HTTP/1.1" 404 1825
+"GET /static/img/avatars/avatar1.jpg HTTP/1.1" 404 1828
+"GET /static/img/avatars/avatar2.jpg HTTP/1.1" 404 1828
+"GET /static/img/avatars/avatar3.jpg HTTP/1.1" 404 1828
+- Broken pipe from ('127.0.0.1', 63503)
+"GET /dashboard/ HTTP/1.1" 200 39674
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+Internal Server Error: /generate_report/
+Traceback (most recent call last):
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\views\decorators\http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py", line 152, in generate_report
+    return generate_pdf_report(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py", line 186, in generate_pdf_report
+    company_data = "<br/>".join([f"<b>{label}:</b> {value}" for label, value in company_info])
+                                                                ^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 2)
+"POST /generate_report/ HTTP/1.1" 500 87491
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 22573
+"GET /static/img/photo-1560472355-536de3962603.jpg HTTP/1.1" 404 1870
+"GET /static/img/avatars/avatar1.jpg HTTP/1.1" 404 1828
+"GET /static/main/css/baguetteBox-zoom.min.css HTTP/1.1" 404 1858
+"GET /static/img/scenery/image4.jpg HTTP/1.1" 404 1825
+"GET /static/img/scenery/image6.jpg HTTP/1.1" 404 1825
+"GET /static/img/scenery/image1.jpg HTTP/1.1" 404 1825
+"GET /static/img/avatars/avatar2.jpg HTTP/1.1" 404 1828
+"GET /static/img/avatars/avatar3.jpg HTTP/1.1" 404 1828
+- Broken pipe from ('127.0.0.1', 63595)
+- Broken pipe from ('127.0.0.1', 63596)
+- Broken pipe from ('127.0.0.1', 63599)
+"GET /dashboard/ HTTP/1.1" 200 39674
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+Internal Server Error: /generate_report/
+Traceback (most recent call last):
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\views\decorators\http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py", line 152, in generate_report
+    return generate_pdf_report(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py", line 186, in generate_pdf_report
+    company_data = "<br/>".join([f"<b>{label}:</b> {value}" for label, value in company_info])
+                                                                ^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 2)
+"POST /generate_report/ HTTP/1.1" 500 87491
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 22573
+"GET /static/img/photo-1560472355-536de3962603.jpg HTTP/1.1" 404 1870
+"GET /static/img/avatars/avatar1.jpg HTTP/1.1" 404 1828
+"GET /static/img/scenery/image4.jpg HTTP/1.1" 404 1825
+"GET /static/img/scenery/image1.jpg HTTP/1.1" 404 1825
+"GET /static/main/css/baguetteBox-zoom.min.css HTTP/1.1" 404 1858
+"GET /static/img/scenery/image6.jpg HTTP/1.1" 404 1825
+"GET /static/img/avatars/avatar2.jpg HTTP/1.1" 404 1828
+"GET /static/img/avatars/avatar3.jpg HTTP/1.1" 404 1828
+- Broken pipe from ('127.0.0.1', 63668)
+"GET /dashboard/ HTTP/1.1" 200 39675
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"POST /generate_report/ HTTP/1.1" 200 1922
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /generate_report/ HTTP/1.1" 200 1922
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /generate_report/ HTTP/1.1" 200 1961
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 22573
+"GET /static/main/css/baguetteBox-zoom.min.css HTTP/1.1" 404 1858
+"GET /static/img/photo-1560472355-536de3962603.jpg HTTP/1.1" 404 1870
+"GET /static/img/scenery/image1.jpg HTTP/1.1" 404 1825
+"GET /static/img/avatars/avatar1.jpg HTTP/1.1" 404 1828
+"GET /static/img/scenery/image4.jpg HTTP/1.1" 404 1825
+"GET /static/img/scenery/image6.jpg HTTP/1.1" 404 1825
+"GET /static/img/avatars/avatar3.jpg HTTP/1.1" 404 1828
+"GET /static/img/avatars/avatar2.jpg HTTP/1.1" 404 1828
+"GET /dashboard/ HTTP/1.1" 200 39675
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+Internal Server Error: /generate_report/
+Traceback (most recent call last):
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\views\decorators\http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py", line 143, in generate_report
+    return generate_pdf_report(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py", line 181, in generate_pdf_report
+    company_data = "<br/>".join([f"<b>{label}:</b> {value}" for label, value in company_info])
+                                                                ^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 2)
+"POST /generate_report/ HTTP/1.1" 500 87335
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader

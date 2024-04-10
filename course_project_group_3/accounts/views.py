@@ -151,7 +151,7 @@ def generate_report(request):
         return HttpResponse("Invalid report type selected. Please try again.")
 
 def generate_pdf_report(request):
-    user_account_number = request.POST.get('account.account_number')
+    user_account_number = request.POST.get('account_number')
     print(f'Account number: {user_account_number}')
     transactions = Transaction.objects.filter(account__account_number=user_account_number)
     print(f'Transactions: {transactions}')
@@ -172,17 +172,26 @@ def generate_pdf_report(request):
     elements.append(report_title)
     elements.append(Spacer(1, 24))
     
-    # Add company data section
-    company_data = "Company Name: Heritage Banking\nAddress: 123 Here Street, City, Country\nContact: info@xyzinc.com"
-    company_info = Paragraph(company_data, styles['Normal'])
-    elements.append(company_info)
+     # Add company data section
+    company_info = [
+        ('Company Name', 'Heritage Banking'),
+        ('Address', '123 Here Street, City, Country'),
+        ('Contact', 'info@xyzinc.com')
+    ]
+    company_data = "<br/>".join([f"<b>{label}:</b> {value}" for label, value in company_info])
+    company_info_paragraph = Paragraph(company_data, styles['Normal'])
+    elements.append(company_info_paragraph)
     elements.append(Spacer(1, 24))
-    
+
     # Add customer data section
     user = request.user
-    customer_data = f"Customer Name: {user.first_name} {user.last_name}\nAccount Number: {user_account_number}"
-    customer_info = Paragraph(customer_data, styles['Normal'])
-    elements.append(customer_info)
+    customer_info = [
+        ('Customer Name', f'{user.first_name} {user.last_name}'),
+        ('Account Number', user_account_number)
+    ]
+    customer_data = "<br/>".join([f"<b>{label}:</b> {value}" for label, value in customer_info])
+    customer_info_paragraph = Paragraph(customer_data, styles['Normal'])
+    elements.append(customer_info_paragraph)
     elements.append(Spacer(1, 12))
     
    # Format transaction data for inclusion in PDF
