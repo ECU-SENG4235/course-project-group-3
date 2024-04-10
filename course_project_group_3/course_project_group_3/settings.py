@@ -141,3 +141,27 @@ LOGOUT_REDIRECT_URL = 'home'
 
 LOGIN_URL = 'accounts/home.html'  # Replace 'login' with your actual login URL pattern name
 LOGOUT_URL = 'dash/dashboard.html'  # Replace 'logout' with your actual logout URL pattern name
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,  # Keep existing loggers
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+        'file': {  # Example of writing to a file
+            'class': 'logging.FileHandler',
+            'filename': 'my_django_app.log',
+        },
+    },
+    'loggers': {
+        'django': {  # Catch-all logger for Django
+            'handlers': ['console', 'file'],  # Send logs to console and file
+            'level': 'INFO',  # Set minimum level to log
+        },
+        'accounts': {   #  A logger specifically for your app
+            'handlers': ['console'],
+            'level': 'DEBUG',  # More verbose logging
+        }
+    },
+}

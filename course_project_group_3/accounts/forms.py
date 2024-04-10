@@ -1,5 +1,6 @@
 import random
 import string
+from urllib import request
 
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
@@ -35,3 +36,27 @@ def generate_unique_account_number():
 #     account.save()
 #
 #     return user
+
+#formatting the fields for the form
+class AccountModelChoiceField(forms.ModelChoiceField):
+    def label_from_instance(self, obj):
+        return f"{obj.user.username}'s {obj.account_type} Account ({str(obj.account_number)[-4:]})"
+
+class SpendingLimitForm(forms.Form):
+    account = AccountModelChoiceField(
+        queryset=BankAccount.objects.all(), 
+        widget=forms.Select(attrs={'class': 'form-control account-select'}), 
+        empty_label=None, 
+        to_field_name='account_number', 
+        label='Account'
+    )
+    spending_limit = forms.DecimalField(
+        max_digits=10, 
+        decimal_places=2,
+        widget=forms.NumberInput(attrs={'class': 'form-control'})
+    )
+
+
+    def __init__(self, user, *args, **kwargs):
+        super(SpendingLimitForm, self).__init__(*args, **kwargs)
+        self.fields['account'].queryset = BankAccount.objects.filter(user=user)
