@@ -394,7 +394,7 @@ def login_user(request):
             login(request, user)
             print('Successful Login!')
             messages.success(request, 'Successful Login!')
-            return redirect('accounts:dash')  # Redirect to the home page
+            return redirect('accounts:dashboard')  # Redirect to the home page
         else:
             print('ERROR: No username or password, please try again..')
             messages.error(request, 'ERROR: No username or password, please try again..')
