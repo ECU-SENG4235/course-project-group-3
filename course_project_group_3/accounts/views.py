@@ -134,6 +134,15 @@ def dashboard(request):
 #     return render(request, 'accounts/dashboard.html', {'member': member, 'monthly_income': monthly_income, 'annual_income': annual_income})
 
 
+from reportlab.lib import colors
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Spacer, Paragraph
+from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.lib.pagesizes import letter
+from django.http import HttpResponse, FileResponse
+import io
+import csv
+from .models import Transaction, BankAccount
+
 @require_POST
 def generate_report(request):
     report_type = request.POST.get('reportType')
@@ -141,44 +150,39 @@ def generate_report(request):
     if report_type == 'pdf':
         print('Generating PDF report')
         return generate_pdf_report(request)
-    
     elif report_type == 'csv':
         print('Generating CSV report')
         return generate_csv_report(request)
-    
     else:
         print('Invalid report type selected. Please try again.')
         return HttpResponse("Invalid report type selected. Please try again.")
 
 def generate_pdf_report(request):
-    user_account_number = request.POST.get('account_number')
-    print(f'Account number: {user_account_number}')
+    user_account_number = request.POST.get('account')
     transactions = Transaction.objects.filter(account__account_number=user_account_number)
-    print(f'Transactions: {transactions}')
-    report_type = request.POST.get('reportType')
 
     print(f'Generating a PDF report for account number: {user_account_number}')
-    
+
     # Create a buffer to hold the PDF content
     buffer = io.BytesIO()
-    
+
     # Create a PDF document
     doc = SimpleDocTemplate(buffer, pagesize=letter)
     elements = []
-    
+
     # Add document title
     styles = getSampleStyleSheet()
-    report_title = Paragraph(report_type.upper(), styles['Title'])
+    report_title = Paragraph('Transaction Report', styles['Title'])
     elements.append(report_title)
     elements.append(Spacer(1, 24))
-    
-     # Add company data section
+
+    # Add company data section
     company_info = [
-        ('Company Name', 'Heritage Banking'),
-        ('Address', '123 Here Street, City, Country'),
-        ('Contact', 'info@xyzinc.com')
+        ('Heritage Banking'),
+        ('123 Here Street, Greenville, NC 27834'),
+        ('info@xyzinc.com')
     ]
-    company_data = "<br/>".join([f"<b>{label}:</b> {value}" for label, value in company_info])
+    company_data = "<br/>".join([f"<b>{value}</b>" for value in company_info])
     company_info_paragraph = Paragraph(company_data, styles['Normal'])
     elements.append(company_info_paragraph)
     elements.append(Spacer(1, 24))
@@ -193,16 +197,16 @@ def generate_pdf_report(request):
     customer_info_paragraph = Paragraph(customer_data, styles['Normal'])
     elements.append(customer_info_paragraph)
     elements.append(Spacer(1, 12))
-    
-   # Format transaction data for inclusion in PDF
+
+    # Format transaction data for inclusion in PDF
     data = [['Transaction ID', 'Type', 'Amount', 'Date']]
     for transaction in transactions:
         data.append([transaction.id, transaction.transaction_type, transaction.amount, transaction.date])
-        
+
     table = Table(data)
-    table.setStyle(TableStyle([('GRID', (0, 0), (-1, -1), 1, (0, 0, 0))]))
+    table.setStyle(TableStyle([('GRID', (0, 0), (-1, -1), 1, colors.black)]))
     elements.append(table)
-    
+
     # Build the PDF document
     doc.build(elements)
 
@@ -211,7 +215,7 @@ def generate_pdf_report(request):
     return FileResponse(buffer, as_attachment=True, filename="report.pdf")
 
 def generate_csv_report(request):
-    user_account_number = request.POST.get('account.account_number')
+    user_account_number = request.POST.get('account')
     transactions = Transaction.objects.filter(account__account_number=user_account_number)
 
     print(f'Generating a CSV report for account number: {user_account_number}')
@@ -220,7 +224,7 @@ def generate_csv_report(request):
     response['Content-Disposition'] = 'attachment; filename="transaction_report.csv"'
 
     writer = csv.writer(response)
-    
+
     # Write headers
     writer.writerow(['Transaction ID', 'Type', 'Amount', 'Date'])
 

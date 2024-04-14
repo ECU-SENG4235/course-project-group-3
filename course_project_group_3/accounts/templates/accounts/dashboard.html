@@ -62,7 +62,7 @@
                                 <hr>
                                     {% for account in member.bank_accounts.all %}
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="accounts" id="account{{ account.id }}" value="{{ account.id }}">
+                                            <input class="form-check-input" type="checkbox" name="account" id="account{{ account.id }}" value="{{ account.id }}">
                                             <label class="form-check-label" for="account{{ account.id }}">{{ account.account_type }}</label>
                                         </div>
                                     {% endfor %}
@@ -74,14 +74,6 @@
                                 <button type="submit" class="btn btn-primary">Generate</button>
                             </div>
                         </form>
-
-
-
-
-
-
-
-
 
 
 
