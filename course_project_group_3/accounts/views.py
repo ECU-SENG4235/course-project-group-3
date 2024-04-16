@@ -22,6 +22,7 @@ from decimal import Decimal
 from django.db.models.signals import post_save
 from django.conf import settings
 import logging
+import json
 
 logger = logging.getLogger(__name__)  # Set up basic logging
 
@@ -58,7 +59,7 @@ def dashboard(request):
 
     form = SpendingLimitForm(request.user)
 
-    sum = 0
+    total = 0
 
     #Check if budget account has been set
     if user_settings.budget_account is not None:
@@ -67,16 +68,16 @@ def dashboard(request):
         if Transaction.objects.filter(account=user_settings.budget_account).count() != 0:
 
             for transaction in Transaction.objects.filter(account=user_settings.budget_account, transaction_type='withdrawal'):
-                sum += transaction.amount
+                total += transaction.amount
 
-            percent = sum / user_settings.budget_account.spending_limit
+            percent = total / user_settings.budget_account.spending_limit
             percent = percent * 100
             
     else:
         percent = 0
 
 
-
+    #Add spending limit form
     if request.method == 'POST':
         form = SpendingLimitForm(request.user, request.POST)
         if form.is_valid():
@@ -89,6 +90,31 @@ def dashboard(request):
     else:
         form = SpendingLimitForm(request.user)
 
+    #Creating values for charts
+    labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    data = []  # Initialize an empty list to store the sum of transactions for each month
+
+    current_year = datetime.now().year
+
+    withdrawal_transactions = []
+    for month in range(1, 13):
+        transactions = Transaction.objects.filter(account__user=user,transaction_type='withdrawal', timestamp__year=current_year, timestamp__month=month)
+        withdrawal_transactions.extend(transactions)
+
+        if transactions.exists():
+            # Calculate the sum of transactions for the current month
+            month_sum = sum(transaction.amount for transaction in transactions)
+            data.append(month_sum)
+        else:
+            data.append(0)
+    
+    data = [float(x) for x in data]
+
+    #Convert data to json to pass to template
+    data = json.dumps(data)
+    labels = json.dumps(labels)
+
+
     context = {
         'member': user,
         'settings': user_settings,
@@ -96,7 +122,9 @@ def dashboard(request):
         'annual_income': annual_income,
         'accounts': accounts,
         'form': form,
-        'percent': percent
+        'percent': percent,
+        'labels': labels,
+        'data': data
     }
 
     return render(request, 'accounts/dashboard.html', context)
