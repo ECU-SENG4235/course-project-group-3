@@ -1468,3 +1468,353 @@ Watching for file changes with StatReloader
 "GET /dashboard/ HTTP/1.1" 200 39666
 "GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
 "POST /generate_report/ HTTP/1.1" 200 1955
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 24397
+"GET /static/main/bootstrap/css/bootstrap.min.css HTTP/1.1" 304 0
+"GET /static/main/css/bs-theme-overrides.css HTTP/1.1" 304 0
+"GET /static/main/css/vanilla-zoom.min.css HTTP/1.1" 304 0
+"GET /static/img/scenery/image1.jpg HTTP/1.1" 404 1825
+"GET /static/img/photo-1560472355-536de3962603.jpg HTTP/1.1" 404 1870
+"GET /static/main/css/baguetteBox-zoom.min.css HTTP/1.1" 404 1858
+"GET /static/main/js/vanilla-zoom.js HTTP/1.1" 304 0
+"GET /static/img/scenery/image4.jpg HTTP/1.1" 404 1825
+"GET /static/img/scenery/image6.jpg HTTP/1.1" 404 1825
+"GET /static/main/js/theme.js HTTP/1.1" 304 0
+"GET /static/main/js/baguetteBox.min.js HTTP/1.1" 304 0
+"GET /static/img/avatars/avatar1.jpg HTTP/1.1" 404 1828
+"GET /static/img/avatars/avatar2.jpg HTTP/1.1" 404 1828
+"GET /static/img/avatars/avatar3.jpg HTTP/1.1" 404 1828
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 4653
+"GET /register/ HTTP/1.1" 200 7540
+"GET /static/main/css/baguetteBox-zoom.min.css HTTP/1.1" 404 1858
+"POST /create_new_account/ HTTP/1.1" 302 0
+"GET /accounts/ HTTP/1.1" 200 53472
+"GET /static/bs/dash/css/bootstrap.min.css HTTP/1.1" 304 0
+"GET /static/css/dash/bs-theme-overrides.css HTTP/1.1" 304 0
+"GET /static/js/dash/bs-init.js HTTP/1.1" 304 0
+"GET /static/css/dash/global.css HTTP/1.1" 304 0
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /static/css/dash/wallet.css HTTP/1.1" 304 0
+"GET /static/js/dash/theme.js HTTP/1.1" 304 0
+"GET /dashboard/ HTTP/1.1" 200 39819
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"POST /generate_report/ HTTP/1.1" 200 1957
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 22574
+"GET /static/img/photo-1560472355-536de3962603.jpg HTTP/1.1" 404 1870
+"GET /static/img/scenery/image1.jpg HTTP/1.1" 404 1825
+"GET /static/main/css/baguetteBox-zoom.min.css HTTP/1.1" 404 1858
+"GET /static/img/scenery/image6.jpg HTTP/1.1" 404 1825
+"GET /static/img/avatars/avatar1.jpg HTTP/1.1" 404 1828
+"GET /static/img/scenery/image4.jpg HTTP/1.1" 404 1825
+"GET /static/img/avatars/avatar2.jpg HTTP/1.1" 404 1828
+"GET /static/img/avatars/avatar3.jpg HTTP/1.1" 404 1828
+- Broken pipe from ('127.0.0.1', 52901)
+- Broken pipe from ('127.0.0.1', 52902)
+"GET /dashboard/ HTTP/1.1" 200 39819
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"POST /generate_report/ HTTP/1.1" 200 1957
+"POST /generate_report/ HTTP/1.1" 200 1957
+"POST /generate_report/ HTTP/1.1" 200 1957
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 22574
+"GET /static/main/bootstrap/css/bootstrap.min.css HTTP/1.1" 304 0
+"GET /static/main/css/bs-theme-overrides.css HTTP/1.1" 304 0
+"GET /static/main/css/vanilla-zoom.min.css HTTP/1.1" 304 0
+"GET /static/img/photo-1560472355-536de3962603.jpg HTTP/1.1" 404 1870
+"GET /static/img/scenery/image1.jpg HTTP/1.1" 404 1825
+"GET /static/main/css/baguetteBox-zoom.min.css HTTP/1.1" 404 1858
+"GET /static/img/scenery/image4.jpg HTTP/1.1" 404 1825
+"GET /static/main/js/baguetteBox.min.js HTTP/1.1" 304 0
+"GET /static/img/scenery/image6.jpg HTTP/1.1" 404 1825
+"GET /static/img/avatars/avatar1.jpg HTTP/1.1" 404 1828
+"GET /static/main/js/vanilla-zoom.js HTTP/1.1" 304 0
+"GET /static/main/js/theme.js HTTP/1.1" 304 0
+"GET /static/img/avatars/avatar3.jpg HTTP/1.1" 404 1828
+"GET /static/img/avatars/avatar2.jpg HTTP/1.1" 404 1828
+"GET /dashboard/ HTTP/1.1" 200 39819
+"GET /static/bs/dash/css/bootstrap.min.css HTTP/1.1" 304 0
+"GET /static/css/dash/bs-theme-overrides.css HTTP/1.1" 304 0
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /static/js/dash/bs-init.js HTTP/1.1" 304 0
+"GET /static/js/dash/theme.js HTTP/1.1" 304 0
+"GET /static/css/dash/global.css HTTP/1.1" 304 0
+"GET /static/css/dash/wallet.css HTTP/1.1" 304 0
+"POST /generate_report/ HTTP/1.1" 200 1957
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 22574
+"GET /static/main/bootstrap/css/bootstrap.min.css HTTP/1.1" 304 0
+"GET /static/main/css/bs-theme-overrides.css HTTP/1.1" 304 0
+"GET /static/main/css/vanilla-zoom.min.css HTTP/1.1" 304 0
+"GET /static/img/photo-1560472355-536de3962603.jpg HTTP/1.1" 404 1870
+"GET /static/img/scenery/image1.jpg HTTP/1.1" 404 1825
+"GET /static/main/css/baguetteBox-zoom.min.css HTTP/1.1" 404 1858
+"GET /static/img/scenery/image4.jpg HTTP/1.1" 404 1825
+"GET /static/main/js/baguetteBox.min.js HTTP/1.1" 304 0
+"GET /static/main/js/vanilla-zoom.js HTTP/1.1" 304 0
+"GET /static/main/js/theme.js HTTP/1.1" 304 0
+"GET /static/img/avatars/avatar1.jpg HTTP/1.1" 404 1828
+"GET /static/img/scenery/image6.jpg HTTP/1.1" 404 1825
+"GET /static/img/avatars/avatar3.jpg HTTP/1.1" 404 1828
+"GET /static/img/avatars/avatar2.jpg HTTP/1.1" 404 1828
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 4653
+- Broken pipe from ('127.0.0.1', 64090)
+"GET /dashboard/ HTTP/1.1" 200 39819
+"GET /static/bs/dash/css/bootstrap.min.css HTTP/1.1" 304 0
+"GET /static/css/dash/global.css HTTP/1.1" 304 0
+"GET /static/css/dash/bs-theme-overrides.css HTTP/1.1" 304 0
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /static/css/dash/wallet.css HTTP/1.1" 304 0
+"GET /static/js/dash/bs-init.js HTTP/1.1" 304 0
+"GET /static/js/dash/theme.js HTTP/1.1" 304 0
+Internal Server Error: /generate_report/
+Traceback (most recent call last):
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\views\decorators\http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py", line 148, in generate_report
+    return generate_pdf_report(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py", line 210, in generate_pdf_report
+    customer_data = "<br/>".join([f"<b>{label}:</b> {value}" for label, value in customer_info])
+                                                                 ^^^^^^^^^^^^
+TypeError: cannot unpack non-iterable NoneType object
+"POST /generate_report/ HTTP/1.1" 500 93010
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /generate_report/
+Traceback (most recent call last):
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\views\decorators\http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py", line 148, in generate_report
+    return generate_pdf_report(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py", line 210, in generate_pdf_report
+    customer_data = "<br/>".join([f"<b>{label}:</b> {value}" for label, value in customer_info])
+                                                                 ^^^^^^^^^^^^
+TypeError: cannot unpack non-iterable NoneType object
+"POST /generate_report/ HTTP/1.1" 500 93010
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+Internal Server Error: /generate_report/
+Traceback (most recent call last):
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\views\decorators\http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py", line 148, in generate_report
+    return generate_pdf_report(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py", line 210, in generate_pdf_report
+    customer_data = "<br/>".join([f"<b>{label}:</b> {value}" for label, value in customer_info])
+                                                                 ^^^^^^^^^^^^
+TypeError: cannot unpack non-iterable NoneType object
+"POST /generate_report/ HTTP/1.1" 500 93010
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 22574
+"GET /static/main/bootstrap/css/bootstrap.min.css HTTP/1.1" 304 0
+"GET /static/main/css/bs-theme-overrides.css HTTP/1.1" 304 0
+"GET /static/main/css/vanilla-zoom.min.css HTTP/1.1" 304 0
+"GET /static/main/css/baguetteBox-zoom.min.css HTTP/1.1" 404 1858
+"GET /static/img/photo-1560472355-536de3962603.jpg HTTP/1.1" 404 1870
+"GET /static/img/scenery/image1.jpg HTTP/1.1" 404 1825
+"GET /static/img/scenery/image4.jpg HTTP/1.1" 404 1825
+"GET /static/img/avatars/avatar1.jpg HTTP/1.1" 404 1828
+"GET /static/img/scenery/image6.jpg HTTP/1.1" 404 1825
+"GET /static/main/js/baguetteBox.min.js HTTP/1.1" 304 0
+"GET /static/img/avatars/avatar2.jpg HTTP/1.1" 404 1828
+"GET /static/main/js/vanilla-zoom.js HTTP/1.1" 304 0
+"GET /static/main/js/theme.js HTTP/1.1" 304 0
+"GET /static/img/avatars/avatar3.jpg HTTP/1.1" 404 1828
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 4653
+"GET /dashboard/ HTTP/1.1" 200 39819
+"GET /static/bs/dash/css/bootstrap.min.css HTTP/1.1" 304 0
+"GET /static/css/dash/bs-theme-overrides.css HTTP/1.1" 304 0
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /static/js/dash/theme.js HTTP/1.1" 304 0
+"GET /static/css/dash/global.css HTTP/1.1" 304 0
+"GET /static/js/dash/bs-init.js HTTP/1.1" 304 0
+"GET /static/css/dash/wallet.css HTTP/1.1" 304 0
+"POST /generate_report/ HTTP/1.1" 200 1728
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 22574
+"GET /static/img/photo-1560472355-536de3962603.jpg HTTP/1.1" 404 1870
+"GET /static/main/css/baguetteBox-zoom.min.css HTTP/1.1" 404 1858
+"GET /static/img/scenery/image1.jpg HTTP/1.1" 404 1825
+"GET /static/img/scenery/image6.jpg HTTP/1.1" 404 1825
+"GET /static/img/avatars/avatar1.jpg HTTP/1.1" 404 1828
+"GET /static/img/scenery/image4.jpg HTTP/1.1" 404 1825
+"GET /static/img/avatars/avatar2.jpg HTTP/1.1" 404 1828
+"GET /static/img/avatars/avatar3.jpg HTTP/1.1" 404 1828
+"GET /dashboard/ HTTP/1.1" 200 39819
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+Internal Server Error: /generate_report/
+Traceback (most recent call last):
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\views\decorators\http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py", line 153, in generate_report
+    return generate_pdf_report(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py", line 220, in generate_pdf_report
+    data.append([transaction.id, transaction.transaction_type, transaction.amount, transaction.date])
+                                                                                   ^^^^^^^^^^^^^^^^
+AttributeError: 'Transaction' object has no attribute 'date'
+"POST /generate_report/ HTTP/1.1" 500 96337
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /generate_report/ HTTP/1.1" 200 2003
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /generate_report/
+Traceback (most recent call last):
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\views\decorators\http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py", line 153, in generate_report
+    return generate_pdf_report(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py", line 205, in generate_pdf_report
+    ('A')
+TypeError: 'str' object is not callable
+"POST /generate_report/ HTTP/1.1" 500 91740
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
