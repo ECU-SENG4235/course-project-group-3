@@ -24,6 +24,12 @@ from django.conf import settings
 import logging
 import json
 
+from django.utils import timezone
+from django.contrib.auth.models import User
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
+
+
 logger = logging.getLogger(__name__)  # Set up basic logging
 
 
@@ -77,6 +83,46 @@ def dashboard(request):
         percent = 0
 
 
+
+
+
+
+
+    # #Creating test transactions to check if the chart works
+    # # Fetch the user
+    # user = User.objects.get(username='jerry')  # replace 'username_here' with the actual username
+    # first_account = user.bank_accounts.first()
+
+    # # Get the current date
+    # now = timezone.now()
+
+    # # Create transactions for the past three months
+    # for months_ago in range(3, 0, -1):
+    #     # Calculate the date for the required number of months ago
+    #     date = now - relativedelta(months=months_ago)
+    #     # Set the date to the first day of the month
+    #     date = date.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+
+    #     # Create the transaction
+    #     transaction = Transaction(account=first_account, transaction_type='withdrawal', timestamp=date, amount=50.0)
+    #     transaction.save()
+
+    #     print(transaction.timestamp)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     #Add spending limit form
     if request.method == 'POST':
         form = SpendingLimitForm(request.user, request.POST)
@@ -94,7 +140,7 @@ def dashboard(request):
     labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     data = []  # Initialize an empty list to store the sum of transactions for each month
 
-    current_year = datetime.now().year
+    current_year = timezone.now().year
 
     withdrawal_transactions = []
     for month in range(1, 13):
