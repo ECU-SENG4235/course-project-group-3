@@ -54,6 +54,12 @@ from django.http import HttpResponse, FileResponse
 from .models import Transaction, BankAccount
 from django.views.decorators.http import require_POST
 import re
+import json
+
+from django.utils import timezone
+from django.contrib.auth.models import User
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
 
 
 logger = logging.getLogger(__name__)  # Set up basic logging
@@ -91,7 +97,7 @@ def dashboard(request):
 
     form = SpendingLimitForm(request.user)
 
-    sum = 0
+    total = 0
 
     #Check if budget account has been set
     if user_settings.budget_account is not None:
@@ -100,9 +106,9 @@ def dashboard(request):
         if Transaction.objects.filter(account=user_settings.budget_account).count() != 0:
 
             for transaction in Transaction.objects.filter(account=user_settings.budget_account, transaction_type='withdrawal'):
-                sum += transaction.amount
+                total += transaction.amount
 
-            percent = sum / user_settings.budget_account.spending_limit
+            percent = total / user_settings.budget_account.spending_limit
             percent = percent * 100
             
     else:
@@ -110,6 +116,46 @@ def dashboard(request):
 
 
 
+
+
+
+
+    # #Creating test transactions to check if the chart works
+    # # Fetch the user
+    # user = User.objects.get(username='jerry')  # replace 'username_here' with the actual username
+    # first_account = user.bank_accounts.first()
+
+    # # Get the current date
+    # now = timezone.now()
+
+    # # Create transactions for the past three months
+    # for months_ago in range(3, 0, -1):
+    #     # Calculate the date for the required number of months ago
+    #     date = now - relativedelta(months=months_ago)
+    #     # Set the date to the first day of the month
+    #     date = date.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+
+    #     # Create the transaction
+    #     transaction = Transaction(account=first_account, transaction_type='withdrawal', timestamp=date, amount=50.0)
+    #     transaction.save()
+
+    #     print(transaction.timestamp)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    #Add spending limit form
     if request.method == 'POST':
         form = SpendingLimitForm(request.user, request.POST)
         if form.is_valid():
@@ -122,6 +168,31 @@ def dashboard(request):
     else:
         form = SpendingLimitForm(request.user)
 
+    #Creating values for charts
+    labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    data = []  # Initialize an empty list to store the sum of transactions for each month
+
+    current_year = timezone.now().year
+
+    withdrawal_transactions = []
+    for month in range(1, 13):
+        transactions = Transaction.objects.filter(account__user=user,transaction_type='withdrawal', timestamp__year=current_year, timestamp__month=month)
+        withdrawal_transactions.extend(transactions)
+
+        if transactions.exists():
+            # Calculate the sum of transactions for the current month
+            month_sum = sum(transaction.amount for transaction in transactions)
+            data.append(month_sum)
+        else:
+            data.append(0)
+    
+    data = [float(x) for x in data]
+
+    #Convert data to json to pass to template
+    data = json.dumps(data)
+    labels = json.dumps(labels)
+
+
     context = {
         'member': user,
         'settings': user_settings,
@@ -129,7 +200,9 @@ def dashboard(request):
         'annual_income': annual_income,
         'accounts': accounts,
         'form': form,
-        'percent': percent
+        'percent': percent,
+        'labels': labels,
+        'data': data
     }
 
     return render(request, 'accounts/dashboard.html', context)
