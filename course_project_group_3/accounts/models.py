@@ -137,14 +137,36 @@ class BankAccount(models.Model):
         return f"{self.user}'s {self.account_type} Account"
 
 
+
+TRANSACTION_TYPES = [
+        ('deposit', 'Deposit'), 
+        ('withdrawal', 'Withdrawal'),
+        ('transfer', 'Transfer'),
+        ('expense', 'Expense'),
+        ('credit', 'Credit'), 
+        ('debit', 'Debit'),
+    ]
+
+DESCRIPTION_CHOICES = [
+        ('groceries', 'Groceries'),
+        ('dining', 'Dining'),
+        ('transportation', 'Transportation'),
+        ('utilities', 'Utilities'),
+        ('shopping', 'Shopping'),
+        ('entertainment', 'Entertainment'),
+        ('other', 'Other'),
+    ]
+
+
 class Transaction(models.Model):
     account = models.ForeignKey(BankAccount, on_delete=models.CASCADE, related_name='transactions')
-    transaction_type = models.CharField(max_length=50, choices=[('deposit', 'Deposit'), ('withdrawal', 'Withdrawal'), ('transfer', 'Transfer'), ('expense', 'Expense')])
+    transaction_type = models.CharField(max_length=50, choices=TRANSACTION_TYPES)
     transaction_limit = models.DecimalField(max_digits=10, decimal_places=2, default=1000.00)
-    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     img_url = models.URLField(null=True, blank=True)
     timestamp = models.DateTimeField(auto_now=True)
-    description = models.TextField(blank=True)
+    description = models.TextField(blank=True, null=True, choices=DESCRIPTION_CHOICES)
+    
 
     # Additional transaction-related attributes can be added here.
     class Meta:
@@ -153,7 +175,7 @@ class Transaction(models.Model):
         verbose_name_plural = 'Transactions'
 
     def __str__(self):
-        return f"{self.id} - {self.transaction_type} - {self.account.user.username}"
+        return f"{self.id} - {self.transaction_type} - {self.account.user.username} - {self.amount} - {self.description}"
 
 
 class CreditCard(models.Model):

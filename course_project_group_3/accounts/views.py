@@ -53,6 +53,7 @@ from reportlab.lib.styles import getSampleStyleSheet
 from django.http import HttpResponse, FileResponse
 from .models import Transaction, BankAccount
 from django.views.decorators.http import require_POST
+import re
 
 
 logger = logging.getLogger(__name__)  # Set up basic logging
@@ -142,8 +143,6 @@ def dashboard(request):
 #     return render(request, 'accounts/dashboard.html', {'member': member, 'monthly_income': monthly_income, 'annual_income': annual_income})
 
 
-
-
 @require_POST
 def generate_report(request):
     report_type = request.POST.get('reportType')
@@ -160,28 +159,47 @@ def generate_report(request):
 
 def generate_pdf_report(request):
     user = request.user # Get the user object from the request
+    logger.info(f'Generating a PDF report for user: {user.username}')
     print(f'Generating a PDF report for user: {user.username}') # Log the user generating the report
     
-    bank_accounts = BankAccount.objects.filter(user=request.user) # Get the user's bank accounts
-    print(f'User has {len(bank_accounts)} bank accounts') # Log the number of bank accounts
-    
-    accounts = [{'id': account.id, 'last_four': str(account.account_number)[-4:]} for account in bank_accounts] # Extract account data
-    print(f'Extracted account data for {len(accounts)} accounts') # Log the number of accounts
+    transactions = Transaction.objects.filter(account__user=user)
+    logger.info(f'User has {len(transactions)} transactions')    
+    print(f'User has {len(transactions)} transactions') # Log the number of transactions
+
+    # Predefined expense categories with associated keywords/patterns
+    expense_categories = {
+        'Groceries': ['grocery', 'supermarket'],
+        'Dining': ['restaurant', 'cafe', 'food'],
+        'Transportation': ['gas', 'fuel', 'car'],
+        'Utilities': ['electricity', 'water', 'utility'],
+        'Shopping': ['shopping', 'store'],
+        'Other': ['subscription', 'pharmacy', 'haircut', 'salon', 'auto', 'repair'],  # Add other categories
+    }
+    # Preprocess transaction descriptions
+    def preprocess_description(description):
+        description = description.lower()
+        description = re.sub(r'[^\w\s]', '', description)  # Remove punctuation
+        
+        for category, keywords in expense_categories.items():
+            for keyword in keywords:
+                if keyword in description:
+                    return category
+        return 'Other'  # Default category if no match found
     
     # Create a buffer to hold the PDF content
     buffer = io.BytesIO()
-
+    print('Buffer created')
+    
     # Create a PDF document
     doc = SimpleDocTemplate(buffer, pagesize=letter)
     elements = []
-    print('Created PDF document')
-
+    print('PDF document created')
+    
     # Add document title
     styles = getSampleStyleSheet()
     report_title = Paragraph('Transaction Report', styles['Title'])
     elements.append(report_title)
-    print('Added document title')
-
+    logger.info('Added document title')
     elements.append(Spacer(1, 24))
 
     # Add company data section
@@ -194,73 +212,158 @@ def generate_pdf_report(request):
     company_data = "<br/>".join([f"<b>{value}</b>" for value in company_info])
     company_info_paragraph = Paragraph(company_data, styles['Normal'])
     elements.append(company_info_paragraph)
-    print('Added company data section')
-
+    logger.info('Added company data section')
     elements.append(Spacer(1, 24))
+    print('Company data section added')
 
     # Add customer data section
-    user = request.user
     customer_info = [
-        ('Customer Name', f'{user.first_name} {user.last_name}'),
-        ('Account Number', accounts[0].get('last_four')),
+        ('Customer Name:', f'{user.first_name} {user.last_name}'),
+        ('Email Address:', f'{user.email}'), 
+        
+        
+        ('Account Number:', f'{user.bank_accounts.first().account_number}'),
+        ('Account Opened:', f'{user.bank_accounts.first().account_opening_date}'),
+        ('Account Type:', f'{user.bank_accounts.first().account_type}'),
+        
+           
     ]
-    customer_data = "<br/>".join([f"<b>{label}:</b> {value}" for label, value in customer_info])
+    customer_data = "<br/>".join([f"<b>{label}</b> {value}" for label, value in customer_info])
     customer_info_paragraph = Paragraph(customer_data, styles['Normal'])
-    from .models import Transaction  # Import the Transaction model
-
     elements.append(customer_info_paragraph)
-    print('Added customer data section')
-
+    logger.info('Added customer data section')
     elements.append(Spacer(1, 12))
+    print('Customer data section added')
+    
 
     # Format transaction data for inclusion in PDF
-    data = [['Transaction ID', 'Type', 'Amount', 'Date',]]
-    transactions = Transaction.objects.filter(account__user=user)  # Define the "transactions" variable
+    data = [['Transaction ID', 'Type', 'Amount', 'Date', 'Description', 'Category']]
+    
+    
+    transactions = Transaction.objects.filter(account__user=user)
     for transaction in transactions:
-        data.append([transaction.id, transaction.transaction_type, transaction.amount])
+        category = preprocess_description(transaction.description)
+        data.append([transaction.id, transaction.transaction_type, transaction.amount, transaction.timestamp, transaction.description, category])
 
+
+    logger.info(f'User has {len(transactions)} transactions')
+   
+
+    print('Transaction data formatted')
+    
     table = Table(data)
     table.setStyle(TableStyle([('GRID', (0, 0), (-1, -1), 1, colors.black)]))
     elements.append(table)
-    print('Added transaction data section')
+    logger.info('Added transaction data section')
+    print('Transaction data section added')
 
     # Build the PDF document
     doc.build(elements)
+    logger.info('PDF report built')
     print('PDF report built')
 
     # Return the PDF content as a response
     buffer.seek(0)
-    print('Buffer set to beginning')
+    logger.info('Buffer set to beginning')
     return FileResponse(buffer, as_attachment=True, filename="report.pdf")
-    print('Generating a PDF report for account number: {user_account_number}') # Log the account number
-    
-    
-    account_number = request.POST.get('account')
-    print(f'Generating a PDF report for account number: {account_number}') # Log the account number
-
 
     
 def generate_csv_report(request):
     user = request.user # Get the user object from the request
+    logger.info(f'Generating a PDF report for user: {user.username}')
     print(f'Generating a PDF report for user: {user.username}') # Log the user generating the report
     
-    transactions = Transaction.objects.filter(account__user=user) # Retrieve the transactions related to the user
+    transactions = Transaction.objects.filter(account__user=user)
+    logger.info(f'User has {len(transactions)} transactions')    
     print(f'User has {len(transactions)} transactions') # Log the number of transactions
+    
+    # Predefined expense categories with associated keywords/patterns
+    expense_categories = {
+        'Groceries': ['grocery', 'supermarket'],
+        'Dining': ['restaurant', 'cafe', 'food'],
+        'Transportation': ['gas', 'fuel', 'car'],
+        'Utilities': ['electricity', 'water', 'utility'],
+        'Shopping': ['shopping', 'store'],
+        'Other': ['subscription', 'pharmacy', 'haircut', 'salon', 'auto', 'repair'],  # Add other categories
+    }
+    # Preprocess transaction descriptions
+    def preprocess_description(description):
+        description = description.lower()
+        description = re.sub(r'[^\w\s]', '', description)  # Remove punctuation
+        
+        for category, keywords in expense_categories.items():
+            for keyword in keywords:
+                if keyword in description:
+                    return category
+        return 'Other'  # Default category if no match found
+    
     
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="transaction_report.csv"'
 
     writer = csv.writer(response)
 
-    # Write headers
-    writer.writerow(['Transaction ID', 'Type', 'Amount', 'Date'])
+    data = [['Transaction ID', 'Type', 'Amount', 'Date', 'Description', 'Category']]
+    
+    # Write report title
+    writer.writerow(['Transaction Report'])
+    
+    # Write company information
+    company_info = [
+        ('Company Name', 'Heritage Banking'),
+        ('Address', '123 Here Street'),
+        ('City', 'Greenville'),
+        ('State', 'NC'),
+        ('ZIP Code', '27834'),
+        ('Email', 'info@xyzinc.com'),
+    ]
+    
+    writer.writerow([])
+    writer.writerow(['Company Information'])
+    for item in company_info:
+        writer.writerow(item)
+        
+
+    # Write customer information
+    writer.writerow([])
+    writer.writerow(['Customer Information'])
+    customer_info = [
+        ('Customer Name', f'{user.first_name} {user.last_name}'),
+        ('Email Address', user.email),
+        ('Account Number', user.bank_accounts.first().account_number),
+        ('Account Opened', user.bank_accounts.first().account_opening_date),
+        ('Account Type', user.bank_accounts.first().account_type),
+    ]
+    for item in customer_info:
+        writer.writerow(item)
+
 
     # Write transaction data
     for transaction in transactions:
-        writer.writerow([transaction.id, transaction.transaction_type, transaction.amount, transaction.date])
+        category = preprocess_description(transaction.description)
+        data.append([transaction.id, transaction.transaction_type, transaction.amount, transaction.timestamp, transaction.description, category])
 
+    
+     # Write headers
+    writer.writerow([])
+    writer.writerow(['Transaction ID', 'Type', 'Amount', 'Date', 'Description', 'Category'])
+
+    # Write transaction data
+    for transaction in transactions:
+        category = preprocess_description(transaction.description)
+        writer.writerow([
+            transaction.id,
+            transaction.transaction_type,
+            transaction.amount,
+            transaction.timestamp,
+            transaction.description,
+            category
+        ])
+    
     print('CSV report generated')
     return response
+
+
 
 
 # @login_required
