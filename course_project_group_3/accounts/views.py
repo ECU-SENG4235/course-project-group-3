@@ -8,6 +8,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 from django.views import generic
 from django.views.decorators.http import require_POST
+from forex_python.converter import CurrencyRates
 from psycopg2 import IntegrityError
 
 from .forms import CustomUserCreationForm, SpendingLimitForm, generate_unique_account_number
@@ -18,6 +19,9 @@ from .models import Transaction, BankAccount, UserSetting
 from django.utils.crypto import get_random_string
 from django.core.exceptions import ValidationError, ObjectDoesNotExist
 from decimal import Decimal
+
+# Timezone
+from django.utils.timezone import activate
 
 from django.db.models.signals import post_save
 from django.conf import settings
@@ -69,61 +73,22 @@ def dashboard(request):
 
     #Check if budget account has been set
     if user_settings.budget_account is not None:
-        
+
         #check if there are any transactions in the budget account
         if Transaction.objects.filter(account=user_settings.budget_account).count() != 0:
 
-            for transaction in Transaction.objects.filter(account=user_settings.budget_account, transaction_type='withdrawal'):
-                total += transaction.amount
+
+            for transaction in Transaction.objects.filter(account=user_settings.budget_account,
+                                                          transaction_type='withdrawal'):
+                sum += transaction.amount
 
             percent = total / user_settings.budget_account.spending_limit
             percent = percent * 100
-            
+
     else:
         percent = 0
 
 
-
-
-
-
-
-    # #Creating test transactions to check if the chart works
-    # # Fetch the user
-    # user = User.objects.get(username='jerry')  # replace 'username_here' with the actual username
-    # first_account = user.bank_accounts.first()
-
-    # # Get the current date
-    # now = timezone.now()
-
-    # # Create transactions for the past three months
-    # for months_ago in range(3, 0, -1):
-    #     # Calculate the date for the required number of months ago
-    #     date = now - relativedelta(months=months_ago)
-    #     # Set the date to the first day of the month
-    #     date = date.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
-
-    #     # Create the transaction
-    #     transaction = Transaction(account=first_account, transaction_type='withdrawal', timestamp=date, amount=50.0)
-    #     transaction.save()
-
-    #     print(transaction.timestamp)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    #Add spending limit form
     if request.method == 'POST':
         form = SpendingLimitForm(request.user, request.POST)
         if form.is_valid():
@@ -176,7 +141,6 @@ def dashboard(request):
     return render(request, 'accounts/dashboard.html', context)
 
 
-
 # def dashboard(request):
 #     monthly_income = 2000
 #     annual_income = monthly_income * 12
@@ -185,6 +149,10 @@ def dashboard(request):
 
 
 def generate_report(request):
+    # Get the user's timezone
+    user_timezone = request.session.get('user_timezone') or 'UTC'
+    activate(user_timezone)  # activate the user's timezone for this request/view
+
     member = request.user
     report_type = request.POST.get('report_type')
     user_account_number = request.POST.get('account_number')
@@ -249,8 +217,8 @@ def generate_report(request):
 
         # Get the user's highest withdrawal amount
         highest_withdrawal_amount = \
-        Transaction.objects.filter(account=account, transaction_type='withdrawal').aggregate(
-            max=Max('amount'))['max']
+            Transaction.objects.filter(account=account, transaction_type='withdrawal').aggregate(
+                max=Max('amount'))['max']
 
         # Get the user's highest transaction amount
     # transaction = Transaction.objects.get(account=member.bank_accounts.first())  # Get the first transaction
@@ -260,8 +228,27 @@ def generate_report(request):
 
 # @login_required
 def wallet(request):
+    # Get the user's timezone
+    user_timezone = request.session.get('user_timezone') or 'EST'
+    activate(user_timezone)  # Activate the user's timezone for this request/view
+
     user_accounts = request.user.bank_accounts.all()
-    context = {'bank_accounts': user_accounts}
+
+    # Default or requested currency
+    target_currency = request.GET.get('currency', 'USD')  # Get the currency from URL parameter or default to USD
+
+    c = CurrencyRates()
+    for account in user_accounts:
+        account.transactions_converted = []
+        for transaction in account.transactions.all():
+            converted_amount = c.convert('USD', target_currency, transaction.amount)  # Assuming USD as base currency
+            transaction.converted_amount = converted_amount
+            account.transactions_converted.append(transaction)
+
+    context = {
+        'bank_accounts': user_accounts,
+        'target_currency': target_currency
+    }
     return render(request, 'accounts/wallet.html', context)
 
 
@@ -562,11 +549,11 @@ def create_bank_transaction(request):
 
     # Duplicate Transaction Prevention (Simplified)
     if Transaction.objects.filter(
-        account=account,
-        transaction_type=transaction_type,
-        amount=amount,
-        description=description,
-        # Add date comparison if needed
+            account=account,
+            transaction_type=transaction_type,
+            amount=amount,
+            description=description,
+            # Add date comparison if needed
     ).exists():
         print('A similar transaction already exists.')
         messages.warning(request, 'A similar transaction already exists.')
