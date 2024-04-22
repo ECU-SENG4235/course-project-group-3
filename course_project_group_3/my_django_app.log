@@ -2902,3 +2902,328 @@ C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course
 Watching for file changes with StatReloader
 C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
 Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 22574
+"GET /static/img/photo-1560472355-536de3962603.jpg HTTP/1.1" 404 1870
+"GET /static/img/scenery/image1.jpg HTTP/1.1" 404 1825
+"GET /static/main/css/baguetteBox-zoom.min.css HTTP/1.1" 404 1858
+"GET /static/img/scenery/image4.jpg HTTP/1.1" 404 1825
+"GET /static/img/scenery/image6.jpg HTTP/1.1" 404 1825
+"GET /static/img/avatars/avatar1.jpg HTTP/1.1" 404 1828
+"GET /static/img/avatars/avatar2.jpg HTTP/1.1" 404 1828
+"GET /static/img/avatars/avatar3.jpg HTTP/1.1" 404 1828
+"GET /accounts/ HTTP/1.1" 200 52992
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"POST /create_deposit_transaction/ HTTP/1.1" 200 42079
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET / HTTP/1.1" 200 22876
+"GET /static/main/css/baguetteBox-zoom.min.css HTTP/1.1" 404 1858
+"GET /static/img/photo-1560472355-536de3962603.jpg HTTP/1.1" 404 1870
+"GET /static/img/scenery/image4.jpg HTTP/1.1" 404 1825
+"GET /static/img/scenery/image1.jpg HTTP/1.1" 404 1825
+"GET /static/img/scenery/image6.jpg HTTP/1.1" 404 1825
+"GET /static/img/avatars/avatar1.jpg HTTP/1.1" 404 1828
+"GET /static/img/avatars/avatar2.jpg HTTP/1.1" 404 1828
+"GET /static/img/avatars/avatar3.jpg HTTP/1.1" 404 1828
+- Broken pipe from ('127.0.0.1', 64093)
+- Broken pipe from ('127.0.0.1', 64115)
+"GET /accounts/ HTTP/1.1" 200 52992
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"POST /create_deposit_transaction/ HTTP/1.1" 200 42079
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /accounts/ HTTP/1.1" 200 53161
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /accounts/ HTTP/1.1" 200 52992
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET / HTTP/1.1" 200 22574
+"GET /static/main/css/baguetteBox-zoom.min.css HTTP/1.1" 404 1858
+"GET /static/img/photo-1560472355-536de3962603.jpg HTTP/1.1" 404 1870
+"GET /static/img/scenery/image1.jpg HTTP/1.1" 404 1825
+"GET /static/img/scenery/image4.jpg HTTP/1.1" 404 1825
+"GET /static/img/scenery/image6.jpg HTTP/1.1" 404 1825
+"GET /static/img/avatars/avatar1.jpg HTTP/1.1" 404 1828
+"GET /static/img/avatars/avatar2.jpg HTTP/1.1" 404 1828
+"GET /static/img/avatars/avatar3.jpg HTTP/1.1" 404 1828
+- Broken pipe from ('127.0.0.1', 64467)
+"GET /accounts/ HTTP/1.1" 200 52992
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+Internal Server Error: /accounts/
+Traceback (most recent call last):
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py", line 444, in wallet
+    user_accounts = request.user.bank_accounts.all()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\utils\functional.py", line 253, in inner
+    return func(_wrapped, *args)
+           ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AnonymousUser' object has no attribute 'bank_accounts'
+"GET /accounts/ HTTP/1.1" 500 79281
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 4653
+"POST /create_deposit_transaction/ HTTP/1.1" 200 42079
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 22833
+"GET /static/img/scenery/image1.jpg HTTP/1.1" 404 1825
+"GET /static/img/photo-1560472355-536de3962603.jpg HTTP/1.1" 404 1870
+"GET /static/main/css/baguetteBox-zoom.min.css HTTP/1.1" 404 1858
+"GET /static/img/scenery/image4.jpg HTTP/1.1" 404 1825
+"GET /static/img/avatars/avatar1.jpg HTTP/1.1" 404 1828
+"GET /static/img/avatars/avatar2.jpg HTTP/1.1" 404 1828
+"GET /static/img/scenery/image6.jpg HTTP/1.1" 404 1825
+"GET /static/img/avatars/avatar3.jpg HTTP/1.1" 404 1828
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 22574
+"GET /static/img/scenery/image6.jpg HTTP/1.1" 404 1825
+"GET /static/main/css/baguetteBox-zoom.min.css HTTP/1.1" 404 1858
+"GET /static/img/scenery/image1.jpg HTTP/1.1" 404 1825
+"GET /static/img/photo-1560472355-536de3962603.jpg HTTP/1.1" 404 1870
+"GET /static/img/scenery/image4.jpg HTTP/1.1" 404 1825
+"GET /static/img/avatars/avatar1.jpg HTTP/1.1" 404 1828
+"GET /static/img/avatars/avatar2.jpg HTTP/1.1" 404 1828
+"GET /static/img/avatars/avatar3.jpg HTTP/1.1" 404 1828
+"GET /dashboard/ HTTP/1.1" 200 43033
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /accounts/ HTTP/1.1" 200 52992
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"POST /create_deposit_transaction/ HTTP/1.1" 200 42079
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /accounts/
+Traceback (most recent call last):
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: column transactions.category does not exist
+LINE 1: ...tions"."timestamp", "transactions"."description", "transacti...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py", line 447, in wallet
+    return render(request, 'accounts/wallet.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\template\defaulttags.py", line 242, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\template\defaulttags.py", line 326, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\template\defaulttags.py", line 198, in render
+    len_values = len(values)
+                 ^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\curti\anaconda3\envs\Django\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: column transactions.category does not exist
+LINE 1: ...tions"."timestamp", "transactions"."description", "transacti...
+                                                             ^
+
+"GET /accounts/ HTTP/1.1" 500 242517
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /accounts/ HTTP/1.1" 200 52992
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"POST /create_deposit_transaction/ HTTP/1.1" 200 42079
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET / HTTP/1.1" 200 22876
+"GET /static/main/css/baguetteBox-zoom.min.css HTTP/1.1" 404 1858
+"GET /static/img/photo-1560472355-536de3962603.jpg HTTP/1.1" 404 1870
+"GET /static/img/scenery/image1.jpg HTTP/1.1" 404 1825
+"GET /static/img/avatars/avatar1.jpg HTTP/1.1" 404 1828
+"GET /static/img/scenery/image4.jpg HTTP/1.1" 404 1825
+"GET /static/img/scenery/image6.jpg HTTP/1.1" 404 1825
+"GET /static/img/avatars/avatar2.jpg HTTP/1.1" 404 1828
+"GET /static/img/avatars/avatar3.jpg HTTP/1.1" 404 1828
+"GET /accounts/ HTTP/1.1" 200 52992
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"POST /create_deposit_transaction/ HTTP/1.1" 200 42079
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /dashboard/ HTTP/1.1" 200 43033
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /accounts/ HTTP/1.1" 200 53164
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"POST /create_deposit_transaction/ HTTP/1.1" 200 42079
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /dashboard/ HTTP/1.1" 200 43033
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /accounts/ HTTP/1.1" 200 53164
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /dashboard/ HTTP/1.1" 200 43033
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /profile/ HTTP/1.1" 200 31610
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /profile/?username=crystal_lake_killa&email=hockeymask80%40gmail.com&first_name=Jason&last_name=Voorhees HTTP/1.1" 200 31610
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /profile/ HTTP/1.1" 200 31610
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /profile/ HTTP/1.1" 200 31610
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /profile/ HTTP/1.1" 200 31610
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"POST /create_bank_account/ HTTP/1.1" 302 0
+"GET /accounts/ HTTP/1.1" 200 88189
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /accounts/ HTTP/1.1" 200 88003
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /dashboard/ HTTP/1.1" 200 43627
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /accounts/ HTTP/1.1" 200 88003
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /profile/ HTTP/1.1" 200 31610
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822

@@ -240,7 +240,7 @@ def generate_pdf_report(request):
     print(f'User has {len(transactions)} transactions') # Log the number of transactions
 
     # Predefined expense categories with associated keywords/patterns
-    expense_categories = {
+    EXPENSE_CATEGORIES = {
         'Groceries': ['grocery', 'supermarket'],
         'Dining': ['restaurant', 'cafe', 'food'],
         'Transportation': ['gas', 'fuel', 'car'],
@@ -248,12 +248,13 @@ def generate_pdf_report(request):
         'Shopping': ['shopping', 'store'],
         'Other': ['subscription', 'pharmacy', 'haircut', 'salon', 'auto', 'repair'],  # Add other categories
     }
+    
     # Preprocess transaction descriptions
     def preprocess_description(description):
         description = description.lower()
         description = re.sub(r'[^\w\s]', '', description)  # Remove punctuation
         
-        for category, keywords in expense_categories.items():
+        for category, keywords in EXPENSE_CATEGORIES.items():
             for keyword in keywords:
                 if keyword in description:
                     return category
@@ -351,7 +352,7 @@ def generate_csv_report(request):
     print(f'User has {len(transactions)} transactions') # Log the number of transactions
     
     # Predefined expense categories with associated keywords/patterns
-    expense_categories = {
+    EXPENSE_CATEGORIES = {
         'Groceries': ['grocery', 'supermarket'],
         'Dining': ['restaurant', 'cafe', 'food'],
         'Transportation': ['gas', 'fuel', 'car'],
@@ -364,7 +365,7 @@ def generate_csv_report(request):
         description = description.lower()
         description = re.sub(r'[^\w\s]', '', description)  # Remove punctuation
         
-        for category, keywords in expense_categories.items():
+        for category, keywords in EXPENSE_CATEGORIES.items():
             for keyword in keywords:
                 if keyword in description:
                     return category
@@ -774,6 +775,7 @@ def create_bank_transaction(request):
         elif transaction_type == 'transfer':
             if account_from.balance < amount:
                 raise ValueError('Insufficient funds for transfer.')
+            messages.error(request, 'Insufficient funds for transfer')
             account_from.balance -= amount
             account_to.balance += amount
 
