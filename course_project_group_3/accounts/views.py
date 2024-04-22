@@ -77,10 +77,9 @@ def dashboard(request):
         #check if there are any transactions in the budget account
         if Transaction.objects.filter(account=user_settings.budget_account).count() != 0:
 
-
             for transaction in Transaction.objects.filter(account=user_settings.budget_account,
                                                           transaction_type='withdrawal'):
-                sum += transaction.amount
+                total += transaction.amount
 
             percent = total / user_settings.budget_account.spending_limit
             percent = percent * 100
