@@ -8,8 +8,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 from django.views import generic
 from django.views.decorators.http import require_POST
-from forex_python.converter import CurrencyRates
-from psycopg2 import IntegrityError
+# from psycopg2 import IntegrityError
 
 from .forms import CustomUserCreationForm, SpendingLimitForm, generate_unique_account_number
 from django.contrib import messages  # for messages
@@ -233,20 +232,19 @@ def wallet(request):
 
     user_accounts = request.user.bank_accounts.all()
 
-    # Default or requested currency
-    target_currency = request.GET.get('currency', 'USD')  # Get the currency from URL parameter or default to USD
-
-    c = CurrencyRates()
-    for account in user_accounts:
-        account.transactions_converted = []
-        for transaction in account.transactions.all():
-            converted_amount = c.convert('USD', target_currency, transaction.amount)  # Assuming USD as base currency
-            transaction.converted_amount = converted_amount
-            account.transactions_converted.append(transaction)
+    # # Default or requested currency
+    # target_currency = request.GET.get('currency', 'USD')  # Get the currency from URL parameter or default to USD
+    #
+    # c = CurrencyRates()
+    # for account in user_accounts:
+    #     account.transactions_converted = []
+    #     for transaction in account.transactions.all():
+    #         converted_amount = c.convert('USD', target_currency, transaction.amount)  # Assuming USD as base currency
+    #         transaction.converted_amount = converted_amount
+    #         account.transactions_converted.append(transaction)
 
     context = {
         'bank_accounts': user_accounts,
-        'target_currency': target_currency
     }
     return render(request, 'accounts/wallet.html', context)
 
@@ -541,10 +539,6 @@ def create_bank_transaction(request):
 
     account_from = handle_account_number(account_from_number)
     account_to = handle_account_number(account_to_number)
-
-    if not account_from or not account_to:
-        print('Invalid account number(s).')
-        return render(request, 'accounts/dashboard.html')
 
     # Duplicate Transaction Prevention (Simplified)
     if Transaction.objects.filter(
