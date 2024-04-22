@@ -68,3 +68,829 @@ Watching for file changes with StatReloader
 E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\models.py changed, reloading.
 Watching for file changes with StatReloader
 Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 24397
+"GET /static/main/css/baguetteBox-zoom.min.css HTTP/1.1" 404 1858
+"GET /static/main/js/baguetteBox.min.js HTTP/1.1" 200 9583
+"GET /static/main/bootstrap/css/bootstrap.min.css HTTP/1.1" 200 265323
+"GET /static/main/js/theme.js HTTP/1.1" 200 322
+"GET /static/main/js/vanilla-zoom.js HTTP/1.1" 200 3712
+"GET /static/main/css/bs-theme-overrides.css HTTP/1.1" 200 3280
+"GET /static/main/css/vanilla-zoom.min.css HTTP/1.1" 200 629
+"GET /static/img/avatars/avatar3.jpg HTTP/1.1" 404 1828
+"GET /static/img/avatars/avatar1.jpg HTTP/1.1" 404 1828
+"GET /static/img/photo-1560472355-536de3962603.jpg HTTP/1.1" 404 1870
+"GET /static/img/scenery/image6.jpg HTTP/1.1" 404 1825
+"GET /static/img/scenery/image1.jpg HTTP/1.1" 404 1825
+"GET /static/img/avatars/avatar2.jpg HTTP/1.1" 404 1828
+"GET /static/img/scenery/image4.jpg HTTP/1.1" 404 1825
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 4271
+"GET /register/ HTTP/1.1" 200 7540
+- Broken pipe from ('127.0.0.1', 57196)
+- Broken pipe from ('127.0.0.1', 57197)
+- Broken pipe from ('127.0.0.1', 57198)
+"GET /static/main/css/baguetteBox-zoom.min.css HTTP/1.1" 404 1858
+Internal Server Error: /create_new_account/
+Traceback (most recent call last):
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\views.py", line 302, in membership
+    credit_score = int(credit_score)
+ValueError: invalid literal for int() with base 10: ''
+"POST /create_new_account/ HTTP/1.1" 500 71337
+Forbidden (CSRF token from POST incorrect.): /create_new_account/
+"POST /create_new_account/ HTTP/1.1" 403 2518
+"GET /register/ HTTP/1.1" 200 7846
+"GET /static/main/css/baguetteBox-zoom.min.css HTTP/1.1" 404 1858
+"POST /create_new_account/ HTTP/1.1" 302 0
+"GET /accounts/ HTTP/1.1" 200 53474
+"GET /static/css/dash/bs-theme-overrides.css HTTP/1.1" 200 1372
+"GET /static/css/dash/global.css HTTP/1.1" 200 406
+"GET /static/js/dash/bs-init.js HTTP/1.1" 200 241
+"GET /static/css/dash/wallet.css HTTP/1.1" 200 643
+"GET /static/js/dash/theme.js HTTP/1.1" 200 2383
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /static/bs/dash/css/bootstrap.min.css HTTP/1.1" 200 260275
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 22576
+"GET /static/main/css/baguetteBox-zoom.min.css HTTP/1.1" 404 1858
+"GET /static/main/bootstrap/css/bootstrap.min.css HTTP/1.1" 200 265323
+"GET /static/main/css/vanilla-zoom.min.css HTTP/1.1" 200 629
+"GET /static/main/js/baguetteBox.min.js HTTP/1.1" 200 9583
+"GET /static/main/css/bs-theme-overrides.css HTTP/1.1" 200 3280
+"GET /static/img/avatars/avatar3.jpg HTTP/1.1" 404 1828
+"GET /static/img/avatars/avatar2.jpg HTTP/1.1" 404 1828
+"GET /static/main/js/vanilla-zoom.js HTTP/1.1" 200 3712
+"GET /static/img/scenery/image4.jpg HTTP/1.1" 404 1825
+"GET /static/img/photo-1560472355-536de3962603.jpg HTTP/1.1" 404 1870
+"GET /static/main/js/theme.js HTTP/1.1" 200 322
+"GET /static/img/scenery/image1.jpg HTTP/1.1" 404 1825
+"GET /static/img/avatars/avatar1.jpg HTTP/1.1" 404 1828
+"GET /static/img/scenery/image6.jpg HTTP/1.1" 404 1825
+"GET /dashboard/ HTTP/1.1" 200 39830
+"GET /static/css/dash/bs-theme-overrides.css HTTP/1.1" 200 1372
+"GET /static/css/dash/global.css HTTP/1.1" 200 406
+"GET /static/js/dash/bs-init.js HTTP/1.1" 200 241
+"GET /static/css/dash/wallet.css HTTP/1.1" 200 643
+"GET /static/js/dash/theme.js HTTP/1.1" 200 2383
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /static/bs/dash/css/bootstrap.min.css HTTP/1.1" 200 260275
+"GET /accounts/ HTTP/1.1" 200 52994
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /profile/ HTTP/1.1" 200 31612
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 65422)
+E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\course_project_group_3\settings.py changed, reloading.
+Watching for file changes with StatReloader
+E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\course_project_group_3\settings.py changed, reloading.
+Watching for file changes with StatReloader
+E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /accounts/ HTTP/1.1" 200 53454
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 50794)
+- Broken pipe from ('127.0.0.1', 50792)
+- Broken pipe from ('127.0.0.1', 50793)
+"GET /accounts/ HTTP/1.1" 200 53454
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 51136)
+"GET /accounts/ HTTP/1.1" 200 53454
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+Watching for file changes with StatReloader
+"GET /dashboard/ HTTP/1.1" 200 40290
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /accounts/ HTTP/1.1" 200 53454
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /dashboard/ HTTP/1.1" 200 40290
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /accounts/ HTTP/1.1" 200 53454
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"POST /create_deposit_transaction/ HTTP/1.1" 200 39479
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /dashboard/ HTTP/1.1" 200 40290
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /accounts/ HTTP/1.1" 200 53761
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /logout/ HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 24627
+"GET /static/main/css/baguetteBox-zoom.min.css HTTP/1.1" 404 1858
+"GET /static/img/avatars/avatar2.jpg HTTP/1.1" 404 1828
+"GET /static/img/scenery/image4.jpg HTTP/1.1" 404 1825
+"GET /static/img/photo-1560472355-536de3962603.jpg HTTP/1.1" 404 1870
+"GET /static/img/scenery/image6.jpg HTTP/1.1" 404 1825
+"GET /static/img/scenery/image1.jpg HTTP/1.1" 404 1825
+"GET /static/img/avatars/avatar1.jpg HTTP/1.1" 404 1828
+"GET /static/img/avatars/avatar3.jpg HTTP/1.1" 404 1828
+- Broken pipe from ('127.0.0.1', 51462)
+- Broken pipe from ('127.0.0.1', 51463)
+- Broken pipe from ('127.0.0.1', 51461)
+"GET /register/ HTTP/1.1" 200 7540
+"GET /static/main/css/baguetteBox-zoom.min.css HTTP/1.1" 404 1858
+Internal Server Error: /create_new_account/
+Traceback (most recent call last):
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "auth_user_username_key"
+DETAIL:  Key (username)=(kn93) already exists.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\views.py", line 266, in membership
+    user = User.objects.create_user(username, email, password)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\contrib\auth\models.py", line 161, in create_user
+    return self._create_user(username, email, password, **extra_fields)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\contrib\auth\models.py", line 155, in _create_user
+    user.save(using=self._db)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\contrib\auth\base_user.py", line 76, in save
+    super().save(*args, **kwargs)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: duplicate key value violates unique constraint "auth_user_username_key"
+DETAIL:  Key (username)=(kn93) already exists.
+
+"POST /create_new_account/ HTTP/1.1" 500 159729
+"GET / HTTP/1.1" 200 24397
+"GET /static/main/css/baguetteBox-zoom.min.css HTTP/1.1" 404 1858
+"GET /static/img/scenery/image1.jpg HTTP/1.1" 404 1825
+"GET /static/img/photo-1560472355-536de3962603.jpg HTTP/1.1" 404 1870
+"GET /static/img/scenery/image4.jpg HTTP/1.1" 404 1825
+"GET /static/img/avatars/avatar1.jpg HTTP/1.1" 404 1828
+"GET /static/img/scenery/image6.jpg HTTP/1.1" 404 1825
+"GET /static/img/avatars/avatar2.jpg HTTP/1.1" 404 1828
+"GET /static/img/avatars/avatar3.jpg HTTP/1.1" 404 1828
+"GET /register/ HTTP/1.1" 200 7540
+"GET /static/main/css/baguetteBox-zoom.min.css HTTP/1.1" 404 1858
+"POST /create_new_account/ HTTP/1.1" 302 0
+"GET /accounts/ HTTP/1.1" 200 53924
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /accounts/ HTTP/1.1" 200 53444
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /accounts/ HTTP/1.1" 200 53444
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+- Broken pipe from ('127.0.0.1', 51832)
+"GET /admin/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/ HTTP/1.1" 200 3701
+"GET /static/admin/css/base.css HTTP/1.1" 200 21310
+"GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2929
+"GET /static/admin/js/theme.js HTTP/1.1" 200 1943
+"GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2694
+"GET /static/admin/css/login.css HTTP/1.1" 200 958
+"GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+"GET /static/admin/css/responsive.css HTTP/1.1" 200 18559
+"POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 9777
+"GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+"GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+"GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+"GET /admin/accounts/transaction/ HTTP/1.1" 200 32983
+"GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+"GET /static/admin/js/core.js HTTP/1.1" 200 5682
+"GET /static/admin/css/changelists.css HTTP/1.1" 200 6566
+"GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 8943
+"GET /static/admin/js/actions.js HTTP/1.1" 200 7872
+"GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+"GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+"GET /static/admin/js/filters.js HTTP/1.1" 200 978
+"GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 292458
+"GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 232381
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+"GET /admin/accounts/transaction/122/change/ HTTP/1.1" 200 17379
+"GET /static/admin/css/forms.css HTTP/1.1" 200 9090
+"GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+"GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+"GET /static/admin/css/widgets.css HTTP/1.1" 200 11921
+"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+"GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+"GET /accounts/ HTTP/1.1" 200 123845
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 52331)
+"GET /logout/ HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 24627
+"GET /static/main/js/theme.js HTTP/1.1" 200 322
+"GET /static/main/css/baguetteBox-zoom.min.css HTTP/1.1" 404 1858
+"GET /static/img/avatars/avatar1.jpg HTTP/1.1" 404 1828
+"GET /static/img/scenery/image6.jpg HTTP/1.1" 404 1825
+"GET /static/img/avatars/avatar2.jpg HTTP/1.1" 404 1828
+"GET /static/img/scenery/image1.jpg HTTP/1.1" 404 1825
+"GET /static/img/avatars/avatar3.jpg HTTP/1.1" 404 1828
+"GET /static/img/scenery/image4.jpg HTTP/1.1" 404 1825
+"GET /static/img/photo-1560472355-536de3962603.jpg HTTP/1.1" 404 1870
+"GET /admin/accounts/bankaccount/add/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/accounts/bankaccount/add/ HTTP/1.1" 200 4231
+"GET /register/ HTTP/1.1" 200 7540
+"GET /static/main/css/baguetteBox-zoom.min.css HTTP/1.1" 404 1858
+"POST /create_new_account/ HTTP/1.1" 302 0
+"GET /accounts/ HTTP/1.1" 200 53934
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /accounts/ HTTP/1.1" 200 53454
+- Broken pipe from ('127.0.0.1', 52717)
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 52725)
+"GET /dashboard/ HTTP/1.1" 200 40288
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /accounts/ HTTP/1.1" 200 53454
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+Internal Server Error: /accounts/
+Traceback (most recent call last):
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\views.py", line 200, in wallet
+    return render(request, 'accounts/wallet.html', context)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\template\defaulttags.py", line 853, in do_for
+    nodelist_loop = parser.parse(
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\template\defaulttags.py", line 953, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\template\defaulttags.py", line 853, in do_for
+    nodelist_loop = parser.parse(
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\template\base.py", line 484, in parse
+    raise self.error(token, e)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\template\base.py", line 482, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\template\base.py", line 600, in compile_filter
+    return FilterExpression(token, self)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\template\base.py", line 703, in __init__
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '"' from 'transaction.timestamp"'
+"GET /accounts/ HTTP/1.1" 500 289400
+"GET /accounts/ HTTP/1.1" 200 53454
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /accounts/ HTTP/1.1" 200 53454
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /accounts/ HTTP/1.1" 200 53454
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /accounts/ HTTP/1.1" 200 53454
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /accounts/ HTTP/1.1" 200 53469
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /accounts/ HTTP/1.1" 200 53469
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /accounts/ HTTP/1.1" 200 53464
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /accounts/ HTTP/1.1" 200 53466
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"POST /create_deposit_transaction/ HTTP/1.1" 200 39479
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /accounts/ HTTP/1.1" 200 53773
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /accounts/ HTTP/1.1" 200 53466
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /accounts/ HTTP/1.1" 200 53602
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"POST /create_deposit_transaction/ HTTP/1.1" 200 39479
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /accounts/ HTTP/1.1" 200 53769
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"POST /create_deposit_transaction/ HTTP/1.1" 302 0
+"GET /accounts/ HTTP/1.1" 200 56302
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /create_deposit_transaction/ HTTP/1.1" 302 0
+"GET /accounts/ HTTP/1.1" 200 58553
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 55594)
+"GET /dashboard/ HTTP/1.1" 200 40288
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /accounts/ HTTP/1.1" 200 58381
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+- Broken pipe from ('127.0.0.1', 57391)
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 57399)
+Watching for file changes with StatReloader
+"GET /accounts/ HTTP/1.1" 200 58317
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 59196)
+- Broken pipe from ('127.0.0.1', 59194)
+E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /accounts/
+Traceback (most recent call last):
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\views.py", line 215, in wallet
+    account.transactions = sorted(account.transactions.all(), key=lambda x: getattr(x, sort_by))
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\db\models\fields\related_descriptors.py", line 626, in __set__
+    raise TypeError(
+TypeError: Direct assignment to the reverse side of a related set is prohibited. Use transactions.set() instead.
+"GET /accounts/ HTTP/1.1" 500 73555
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 60065)
+E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /accounts/ HTTP/1.1" 200 57961
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 49253)
+Internal Server Error: /accounts/
+Traceback (most recent call last):
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connectionpool.py", line 793, in urlopen
+    response = self._make_request(
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connectionpool.py", line 491, in _make_request
+    raise new_e
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connectionpool.py", line 467, in _make_request
+    self._validate_conn(conn)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connectionpool.py", line 1099, in _validate_conn
+    conn.connect()
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connection.py", line 616, in connect
+    self.sock = sock = self._new_conn()
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connection.py", line 207, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<urllib3.connection.HTTPSConnection object at 0x0000013177B7D270>, 'Connection to theforexapi.com timed out. (connect timeout=None)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connectionpool.py", line 847, in urlopen
+    retries = retries.increment(
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\util\retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='theforexapi.com', port=443): Max retries exceeded with url: /api/latest?base=USD&symbols=EUR&rtype=fpy (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x0000013177B7D270>, 'Connection to theforexapi.com timed out. (connect timeout=None)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\views.py", line 208, in wallet
+    converted_amount = c.convert('USD', target_currency, transaction.amount)  # Assuming USD as base currency
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\forex_python\converter.py", line 95, in convert
+    response = requests.get(source_url, params=payload)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\requests\adapters.py", line 507, in send
+    raise ConnectTimeout(e, request=request)
+requests.exceptions.ConnectTimeout: HTTPSConnectionPool(host='theforexapi.com', port=443): Max retries exceeded with url: /api/latest?base=USD&symbols=EUR&rtype=fpy (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x0000013177B7D270>, 'Connection to theforexapi.com timed out. (connect timeout=None)'))
+"GET /accounts/?currency=EUR HTTP/1.1" 500 174675
+"GET /accounts/ HTTP/1.1" 200 58408
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 51631)
+- Broken pipe from ('127.0.0.1', 51629)
+Internal Server Error: /accounts/
+Traceback (most recent call last):
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connectionpool.py", line 793, in urlopen
+    response = self._make_request(
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connectionpool.py", line 491, in _make_request
+    raise new_e
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connectionpool.py", line 467, in _make_request
+    self._validate_conn(conn)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connectionpool.py", line 1099, in _validate_conn
+    conn.connect()
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connection.py", line 616, in connect
+    self.sock = sock = self._new_conn()
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connection.py", line 207, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<urllib3.connection.HTTPSConnection object at 0x0000013177A50070>, 'Connection to theforexapi.com timed out. (connect timeout=None)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connectionpool.py", line 847, in urlopen
+    retries = retries.increment(
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\util\retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='theforexapi.com', port=443): Max retries exceeded with url: /api/latest?base=USD&symbols=EUR&rtype=fpy (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x0000013177A50070>, 'Connection to theforexapi.com timed out. (connect timeout=None)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\views.py", line 208, in wallet
+    converted_amount = c.convert('USD', target_currency, transaction.amount)  # Assuming USD as base currency
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\forex_python\converter.py", line 95, in convert
+    response = requests.get(source_url, params=payload)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\requests\adapters.py", line 507, in send
+    raise ConnectTimeout(e, request=request)
+requests.exceptions.ConnectTimeout: HTTPSConnectionPool(host='theforexapi.com', port=443): Max retries exceeded with url: /api/latest?base=USD&symbols=EUR&rtype=fpy (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x0000013177A50070>, 'Connection to theforexapi.com timed out. (connect timeout=None)'))
+- Broken pipe from ('127.0.0.1', 51583)
+"GET /accounts/ HTTP/1.1" 200 57961
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 51777)
+"GET /accounts/ HTTP/1.1" 200 58177
+- Broken pipe from ('127.0.0.1', 52740)
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 52747)
+Internal Server Error: /accounts/
+Traceback (most recent call last):
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connectionpool.py", line 793, in urlopen
+    response = self._make_request(
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connectionpool.py", line 491, in _make_request
+    raise new_e
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connectionpool.py", line 467, in _make_request
+    self._validate_conn(conn)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connectionpool.py", line 1099, in _validate_conn
+    conn.connect()
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connection.py", line 616, in connect
+    self.sock = sock = self._new_conn()
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connection.py", line 207, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<urllib3.connection.HTTPSConnection object at 0x0000013177B7EEF0>, 'Connection to theforexapi.com timed out. (connect timeout=None)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connectionpool.py", line 847, in urlopen
+    retries = retries.increment(
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\util\retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='theforexapi.com', port=443): Max retries exceeded with url: /api/latest?base=USD&symbols=GBP&rtype=fpy (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x0000013177B7EEF0>, 'Connection to theforexapi.com timed out. (connect timeout=None)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\views.py", line 208, in wallet
+    converted_amount = c.convert('USD', target_currency, transaction.amount)  # Assuming USD as base currency
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\forex_python\converter.py", line 95, in convert
+    response = requests.get(source_url, params=payload)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\requests\adapters.py", line 507, in send
+    raise ConnectTimeout(e, request=request)
+requests.exceptions.ConnectTimeout: HTTPSConnectionPool(host='theforexapi.com', port=443): Max retries exceeded with url: /api/latest?base=USD&symbols=GBP&rtype=fpy (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x0000013177B7EEF0>, 'Connection to theforexapi.com timed out. (connect timeout=None)'))
+"GET /accounts/?currency=GBP HTTP/1.1" 500 174675
+"GET /admin/login/?next=/admin/accounts/bankaccount/add/ HTTP/1.1" 200 3758
+"GET /static/admin/css/responsive.css HTTP/1.1" 200 18559
+"GET /static/admin/css/base.css HTTP/1.1" 200 21310
+"GET /static/admin/css/login.css HTTP/1.1" 200 958
+"GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2929
+"GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2694
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 52924)
+"GET / HTTP/1.1" 200 22576
+"GET /static/main/css/vanilla-zoom.min.css HTTP/1.1" 200 629
+"GET /static/main/js/theme.js HTTP/1.1" 200 322
+"GET /static/main/css/bs-theme-overrides.css HTTP/1.1" 200 3280
+"GET /static/main/css/baguetteBox-zoom.min.css HTTP/1.1" 404 1858
+"GET /static/main/bootstrap/css/bootstrap.min.css HTTP/1.1" 200 265323
+"GET /static/img/scenery/image6.jpg HTTP/1.1" 404 1825
+"GET /static/img/scenery/image4.jpg HTTP/1.1" 404 1825
+"GET /static/img/photo-1560472355-536de3962603.jpg HTTP/1.1" 404 1870
+"GET /static/img/scenery/image1.jpg HTTP/1.1" 404 1825
+"GET /static/img/avatars/avatar3.jpg HTTP/1.1" 404 1828
+"GET /static/img/avatars/avatar1.jpg HTTP/1.1" 404 1828
+"GET /static/img/avatars/avatar2.jpg HTTP/1.1" 404 1828
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 4271
+"GET /accounts/ HTTP/1.1" 200 58177
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /static/bs/dash/css/bootstrap.min.css HTTP/1.1" 200 260275
+"GET /static/css/dash/wallet.css HTTP/1.1" 200 643
+"GET /static/js/dash/bs-init.js HTTP/1.1" 200 241
+"GET /static/css/dash/bs-theme-overrides.css HTTP/1.1" 200 1372
+- Broken pipe from ('127.0.0.1', 52962)
+Watching for file changes with StatReloader
+Internal Server Error: /accounts/
+Traceback (most recent call last):
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\views.py", line 196, in wallet
+    api = Api('12ff475df0f2fa3b450e36d8eb42a715')
+NameError: name 'Api' is not defined
+"GET /accounts/ HTTP/1.1" 500 67308
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 55620)
+E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /accounts/
+Traceback (most recent call last):
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\views.py", line 199, in wallet
+    api = Api('12ff475df0f2fa3b450e36d8eb42a715')
+NameError: name 'Api' is not defined
+"GET /accounts/ HTTP/1.1" 500 67308
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 56854)
+E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /accounts/ HTTP/1.1" 200 58177
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 58065)
+- Broken pipe from ('127.0.0.1', 58053)
+Internal Server Error: /accounts/
+Traceback (most recent call last):
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connectionpool.py", line 793, in urlopen
+    response = self._make_request(
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connectionpool.py", line 491, in _make_request
+    raise new_e
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connectionpool.py", line 467, in _make_request
+    self._validate_conn(conn)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connectionpool.py", line 1099, in _validate_conn
+    conn.connect()
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connection.py", line 616, in connect
+    self.sock = sock = self._new_conn()
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connection.py", line 207, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<urllib3.connection.HTTPSConnection object at 0x000001D7D613C8B0>, 'Connection to theforexapi.com timed out. (connect timeout=None)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connectionpool.py", line 847, in urlopen
+    retries = retries.increment(
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\util\retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='theforexapi.com', port=443): Max retries exceeded with url: /api/latest?base=USD&symbols=EUR&rtype=fpy (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x000001D7D613C8B0>, 'Connection to theforexapi.com timed out. (connect timeout=None)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\views.py", line 208, in wallet
+    converted_amount = c.convert('USD', target_currency, transaction.amount)  # Assuming USD as base currency
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\forex_python\converter.py", line 95, in convert
+    response = requests.get(source_url, params=payload)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\requests\adapters.py", line 507, in send
+    raise ConnectTimeout(e, request=request)
+requests.exceptions.ConnectTimeout: HTTPSConnectionPool(host='theforexapi.com', port=443): Max retries exceeded with url: /api/latest?base=USD&symbols=EUR&rtype=fpy (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x000001D7D613C8B0>, 'Connection to theforexapi.com timed out. (connect timeout=None)'))
+"GET /accounts/?currency=EUR HTTP/1.1" 500 174675
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 58075)
+Internal Server Error: /accounts/
+Traceback (most recent call last):
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connectionpool.py", line 793, in urlopen
+    response = self._make_request(
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connectionpool.py", line 491, in _make_request
+    raise new_e
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connectionpool.py", line 467, in _make_request
+    self._validate_conn(conn)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connectionpool.py", line 1099, in _validate_conn
+    conn.connect()
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connection.py", line 616, in connect
+    self.sock = sock = self._new_conn()
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connection.py", line 207, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<urllib3.connection.HTTPSConnection object at 0x000001D7D61FCC40>, 'Connection to theforexapi.com timed out. (connect timeout=None)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\connectionpool.py", line 847, in urlopen
+    retries = retries.increment(
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\urllib3\util\retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='theforexapi.com', port=443): Max retries exceeded with url: /api/latest?base=USD&symbols=EUR&rtype=fpy (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x000001D7D61FCC40>, 'Connection to theforexapi.com timed out. (connect timeout=None)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\views.py", line 208, in wallet
+    converted_amount = c.convert('USD', target_currency, transaction.amount)  # Assuming USD as base currency
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\forex_python\converter.py", line 95, in convert
+    response = requests.get(source_url, params=payload)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "E:\Users\Kamron\Documents\GitHub\course-project-group-3\venv\lib\site-packages\requests\adapters.py", line 507, in send
+    raise ConnectTimeout(e, request=request)
+requests.exceptions.ConnectTimeout: HTTPSConnectionPool(host='theforexapi.com', port=443): Max retries exceeded with url: /api/latest?base=USD&symbols=EUR&rtype=fpy (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x000001D7D61FCC40>, 'Connection to theforexapi.com timed out. (connect timeout=None)'))
+"GET /accounts/?currency=EUR HTTP/1.1" 500 174675
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 58169)
+"GET /accounts HTTP/1.1" 301 0
+"GET /accounts/ HTTP/1.1" 200 57603
+- Broken pipe from ('127.0.0.1', 58227)
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"POST /create_bank_account/ HTTP/1.1" 302 0
+"GET /accounts/ HTTP/1.1" 200 92940
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 58270)
+"POST /create_deposit_transaction/ HTTP/1.1" 200 39479
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+E:\Users\Kamron\Documents\GitHub\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /accounts/ HTTP/1.1" 200 92923
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+Not Found: /favicon.ico
+- Broken pipe from ('127.0.0.1', 58681)
+- Broken pipe from ('127.0.0.1', 58671)
+"POST /create_deposit_transaction/ HTTP/1.1" 302 0
+"GET /accounts/ HTTP/1.1" 200 97490
+- Broken pipe from ('127.0.0.1', 58985)
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822

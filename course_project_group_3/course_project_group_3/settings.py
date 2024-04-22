@@ -114,6 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
+# Set default time zone to UTC which is a good practice for stored times
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
