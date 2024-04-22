@@ -894,3 +894,40 @@ Not Found: /favicon.ico
 "GET /accounts/ HTTP/1.1" 200 97490
 - Broken pipe from ('127.0.0.1', 58985)
 "GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\curti\Project Management\Heritage Banking\course-project-group-3\course_project_group_3\accounts\models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 22574
+"GET /static/img/scenery/image1.jpg HTTP/1.1" 404 1825
+"GET /static/main/css/baguetteBox-zoom.min.css HTTP/1.1" 404 1858
+"GET /static/img/photo-1560472355-536de3962603.jpg HTTP/1.1" 404 1870
+"GET /static/img/scenery/image6.jpg HTTP/1.1" 404 1825
+"GET /static/img/scenery/image4.jpg HTTP/1.1" 404 1825
+"GET /static/img/avatars/avatar1.jpg HTTP/1.1" 404 1828
+"GET /static/img/avatars/avatar3.jpg HTTP/1.1" 404 1828
+"GET /static/img/avatars/avatar2.jpg HTTP/1.1" 404 1828
+"GET /dashboard/ HTTP/1.1" 200 43627
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /accounts/ HTTP/1.1" 200 88003
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"POST /create_deposit_transaction/ HTTP/1.1" 200 42079
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"POST /generate_report/ HTTP/1.1" 200 2182
+"POST /generate_report/ HTTP/1.1" 200 2182
+- Broken pipe from ('127.0.0.1', 58635)
+- Broken pipe from ('127.0.0.1', 58639)
+- Broken pipe from ('127.0.0.1', 58649)
+- Broken pipe from ('127.0.0.1', 58653)
+"GET /accounts/ HTTP/1.1" 200 88310
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"GET /dashboard/ HTTP/1.1" 200 43627
+"GET /static/fonts/dash/Nunito.css HTTP/1.1" 404 1822
+"POST /generate_report/ HTTP/1.1" 200 2182
+"POST /generate_report/ HTTP/1.1" 200 2182
+"POST /generate_report/ HTTP/1.1" 200 453

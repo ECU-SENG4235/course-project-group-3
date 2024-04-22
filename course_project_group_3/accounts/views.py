@@ -21,7 +21,6 @@ from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 from django.views import generic
 from django.views.decorators.http import require_POST
-from forex_python.converter import CurrencyRates
 from psycopg2 import IntegrityError
 
 from .forms import CustomUserCreationForm, SpendingLimitForm, generate_unique_account_number
@@ -32,9 +31,6 @@ from .models import Transaction, BankAccount, UserSetting
 from django.utils.crypto import get_random_string
 from django.core.exceptions import ValidationError, ObjectDoesNotExist
 from decimal import Decimal
-
-# Timezone
-from django.utils.timezone import activate
 
 from django.db.models.signals import post_save
 from django.conf import settings
@@ -105,20 +101,61 @@ def dashboard(request):
 
     #Check if budget account has been set
     if user_settings.budget_account is not None:
-
+        
         #check if there are any transactions in the budget account
         if Transaction.objects.filter(account=user_settings.budget_account).count() != 0:
 
-            for transaction in Transaction.objects.filter(account=user_settings.budget_account,
-                                                          transaction_type='withdrawal'):
-                sum += transaction.amount
+            for transaction in Transaction.objects.filter(account=user_settings.budget_account, transaction_type='withdrawal'):
+                total += transaction.amount
 
             percent = total / user_settings.budget_account.spending_limit
             percent = percent * 100
-
+            
     else:
         percent = 0
 
+
+
+
+
+
+
+    # #Creating test transactions to check if the chart works
+    # # Fetch the user
+    # user = User.objects.get(username='jerry')  # replace 'username_here' with the actual username
+    # first_account = user.bank_accounts.first()
+
+    # # Get the current date
+    # now = timezone.now()
+
+    # # Create transactions for the past three months
+    # for months_ago in range(3, 0, -1):
+    #     # Calculate the date for the required number of months ago
+    #     date = now - relativedelta(months=months_ago)
+    #     # Set the date to the first day of the month
+    #     date = date.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+
+    #     # Create the transaction
+    #     transaction = Transaction(account=first_account, transaction_type='withdrawal', timestamp=date, amount=50.0)
+    #     transaction.save()
+
+    #     print(transaction.timestamp)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    #Add spending limit form
     if request.method == 'POST':
         form = SpendingLimitForm(request.user, request.POST)
         if form.is_valid():
@@ -171,6 +208,7 @@ def dashboard(request):
     return render(request, 'accounts/dashboard.html', context)
 
 
+
 # def dashboard(request):
 #     monthly_income = 2000
 #     annual_income = monthly_income * 12
@@ -180,106 +218,231 @@ def dashboard(request):
 
 @require_POST
 def generate_report(request):
-    # Get the user's timezone
-    user_timezone = request.session.get('user_timezone') or 'UTC'
-    activate(user_timezone)  # activate the user's timezone for this request/view
+    report_type = request.POST.get('reportType')
 
-    member = request.user
-    report_type = request.POST.get('report_type')
-    user_account_number = request.POST.get('account_number')
+    if report_type == 'pdf':
+        print('Generating PDF report')
+        return generate_pdf_report(request)
+    elif report_type == 'csv':
+        print('Generating CSV report')
+        return generate_csv_report(request)
+    else:
+        print('Invalid report type selected. Please try again.')
+        return HttpResponse("Invalid report type selected. Please try again.")
 
-    print(f'Report Type: {report_type}')
+def generate_pdf_report(request):
+    user = request.user # Get the user object from the request
+    logger.info(f'Generating a PDF report for user: {user.username}')
+    print(f'Generating a PDF report for user: {user.username}') # Log the user generating the report
+    
+    transactions = Transaction.objects.filter(account__user=user)
+    logger.info(f'User has {len(transactions)} transactions')    
+    print(f'User has {len(transactions)} transactions') # Log the number of transactions
 
-    if request.method == 'POST':
-        print('POST request received')
-        # Get the user's bank account (Checking)
-        account = member.bank_accounts.first()
+    # Predefined expense categories with associated keywords/patterns
+    expense_categories = {
+        'Groceries': ['grocery', 'supermarket'],
+        'Dining': ['restaurant', 'cafe', 'food'],
+        'Transportation': ['gas', 'fuel', 'car'],
+        'Utilities': ['electricity', 'water', 'utility'],
+        'Shopping': ['shopping', 'store'],
+        'Other': ['subscription', 'pharmacy', 'haircut', 'salon', 'auto', 'repair'],  # Add other categories
+    }
+    # Preprocess transaction descriptions
+    def preprocess_description(description):
+        description = description.lower()
+        description = re.sub(r'[^\w\s]', '', description)  # Remove punctuation
+        
+        for category, keywords in expense_categories.items():
+            for keyword in keywords:
+                if keyword in description:
+                    return category
+        return 'Other'  # Default category if no match found
+    
+    # Create a buffer to hold the PDF content
+    buffer = io.BytesIO()
+    print('Buffer created')
+    
+    # Create a PDF document
+    doc = SimpleDocTemplate(buffer, pagesize=letter)
+    elements = []
+    print('PDF document created')
+    
+    # Add document title
+    styles = getSampleStyleSheet()
+    report_title = Paragraph('Transaction Report', styles['Title'])
+    elements.append(report_title)
+    logger.info('Added document title')
+    elements.append(Spacer(1, 24))
 
-        # Get the user's transactions
-        transactions = Transaction.objects.filter(account=account)
+    # Add company data section
+    company_info = [
+        ('Heritage Banking'),
+        ('123 Here Street'),
+        ('Greenville, NC 27834'),
+        ('info@xyzinc.com')
+    ]
+    company_data = "<br/>".join([f"<b>{value}</b>" for value in company_info])
+    company_info_paragraph = Paragraph(company_data, styles['Normal'])
+    elements.append(company_info_paragraph)
+    logger.info('Added company data section')
+    elements.append(Spacer(1, 24))
+    print('Company data section added')
 
-        # Get the user's settings
-        user_settings = UserSetting.objects.get(user=member)
+    # Add customer data section
+    customer_info = [
+        ('Customer Name:', f'{user.first_name} {user.last_name}'),
+        ('Email Address:', f'{user.email}'), 
+        
+        
+        ('Account Number:', f'{user.bank_accounts.first().account_number}'),
+        ('Account Opened:', f'{user.bank_accounts.first().account_opening_date}'),
+        ('Account Type:', f'{user.bank_accounts.first().account_type}'),
+        
+           
+    ]
+    customer_data = "<br/>".join([f"<b>{label}</b> {value}" for label, value in customer_info])
+    customer_info_paragraph = Paragraph(customer_data, styles['Normal'])
+    elements.append(customer_info_paragraph)
+    logger.info('Added customer data section')
+    elements.append(Spacer(1, 12))
+    print('Customer data section added')
+    
 
-        # Get the user's credit score
-        credit_score = user_settings.credit_score
+    # Format transaction data for inclusion in PDF
+    data = [['Transaction ID', 'Type', 'Amount', 'Date', 'Description', 'Category']]
+    
+    
+    transactions = Transaction.objects.filter(account__user=user)
+    for transaction in transactions:
+        category = preprocess_description(transaction.description)
+        data.append([transaction.id, transaction.transaction_type, transaction.amount, transaction.timestamp, transaction.description, category])
 
-        # Get the user's monthly income
-        monthly_income = user_settings.monthly_income
 
-        # Get the user's annual income
-        annual_income = monthly_income * 12
+    logger.info(f'User has {len(transactions)} transactions')
+   
 
-        # Get the user's account balance
-        account_balance = account.balance
+    print('Transaction data formatted')
+    
+    table = Table(data)
+    table.setStyle(TableStyle([('GRID', (0, 0), (-1, -1), 1, colors.black)]))
+    elements.append(table)
+    logger.info('Added transaction data section')
+    print('Transaction data section added')
 
-        # Get the user's total deposits
-        total_deposits = Transaction.objects.filter(account=account, transaction_type='deposit').count()
+    # Build the PDF document
+    doc.build(elements)
+    logger.info('PDF report built')
+    print('PDF report built')
 
-        # Get the user's total withdrawals
-        total_withdrawals = Transaction.objects.filter(account=account, transaction_type='withdrawal').count()
+    # Return the PDF content as a response
+    buffer.seek(0)
+    logger.info('Buffer set to beginning')
+    return FileResponse(buffer, as_attachment=True, filename="report.pdf")
 
-        # Get the user's total transactions
-        total_transactions = total_deposits + total_withdrawals
+    
+def generate_csv_report(request):
+    user = request.user # Get the user object from the request
+    logger.info(f'Generating a PDF report for user: {user.username}')
+    print(f'Generating a PDF report for user: {user.username}') # Log the user generating the report
+    
+    transactions = Transaction.objects.filter(account__user=user)
+    logger.info(f'User has {len(transactions)} transactions')    
+    print(f'User has {len(transactions)} transactions') # Log the number of transactions
+    
+    # Predefined expense categories with associated keywords/patterns
+    expense_categories = {
+        'Groceries': ['grocery', 'supermarket'],
+        'Dining': ['restaurant', 'cafe', 'food'],
+        'Transportation': ['gas', 'fuel', 'car'],
+        'Utilities': ['electricity', 'water', 'utility'],
+        'Shopping': ['shopping', 'store'],
+        'Other': ['subscription', 'pharmacy', 'haircut', 'salon', 'auto', 'repair'],  # Add other categories
+    }
+    # Preprocess transaction descriptions
+    def preprocess_description(description):
+        description = description.lower()
+        description = re.sub(r'[^\w\s]', '', description)  # Remove punctuation
+        
+        for category, keywords in expense_categories.items():
+            for keyword in keywords:
+                if keyword in description:
+                    return category
+        return 'Other'  # Default category if no match found
+    
+    
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="transaction_report.csv"'
 
-        # Get the user's total deposits amount
-        total_deposits_amount = Transaction.objects.filter(account=account, transaction_type='deposit').aggregate(
-            total=Sum('amount'))['total']
+    writer = csv.writer(response)
 
-        # Get the user's total withdrawals amount
-        total_withdrawals_amount = Transaction.objects.filter(account=account, transaction_type='withdrawal').aggregate(
-            total=Sum('amount'))['total']
+    data = [['Transaction ID', 'Type', 'Amount', 'Date', 'Description', 'Category']]
+    
+    # Write report title
+    writer.writerow(['Transaction Report'])
+    
+    # Write company information
+    company_info = [
+        ('Company Name', 'Heritage Banking'),
+        ('Address', '123 Here Street'),
+        ('City', 'Greenville'),
+        ('State', 'NC'),
+        ('ZIP Code', '27834'),
+        ('Email', 'info@xyzinc.com'),
+    ]
+    
+    writer.writerow([])
+    writer.writerow(['Company Information'])
+    for item in company_info:
+        writer.writerow(item)
+        
 
-        # Get the user's total transactions amount
-        total_transactions_amount = total_deposits_amount + total_withdrawals_amount
+    # Write customer information
+    writer.writerow([])
+    writer.writerow(['Customer Information'])
+    customer_info = [
+        ('Customer Name', f'{user.first_name} {user.last_name}'),
+        ('Email Address', user.email),
+        ('Account Number', user.bank_accounts.first().account_number),
+        ('Account Opened', user.bank_accounts.first().account_opening_date),
+        ('Account Type', user.bank_accounts.first().account_type),
+    ]
+    for item in customer_info:
+        writer.writerow(item)
 
-        # Get the user's average deposit amount
-        average_deposit_amount = total_deposits_amount / total_deposits
 
-        # Get the user's average withdrawal amount
-        average_withdrawal_amount = total_withdrawals_amount / total_withdrawals
+    # Write transaction data
+    for transaction in transactions:
+        category = preprocess_description(transaction.description)
+        data.append([transaction.id, transaction.transaction_type, transaction.amount, transaction.timestamp, transaction.description, category])
 
-        # Get the user's average transaction amount
-        average_transaction_amount = total_transactions_amount / total_transactions
+    
+     # Write headers
+    writer.writerow([])
+    writer.writerow(['Transaction ID', 'Type', 'Amount', 'Date', 'Description', 'Category'])
 
-        # Get the user's highest deposit amount
-        highest_deposit_amount = Transaction.objects.filter(account=account, transaction_type='deposit').aggregate(
-            max=Max('amount'))['max']
+    # Write transaction data
+    for transaction in transactions:
+        category = preprocess_description(transaction.description)
+        writer.writerow([
+            transaction.id,
+            transaction.transaction_type,
+            transaction.amount,
+            transaction.timestamp,
+            transaction.description,
+            category
+        ])
+    
+    print('CSV report generated')
+    return response
 
-        # Get the user's highest withdrawal amount
-        highest_withdrawal_amount = \
-            Transaction.objects.filter(account=account, transaction_type='withdrawal').aggregate(
-                max=Max('amount'))['max']
 
-        # Get the user's highest transaction amount
-    # transaction = Transaction.objects.get(account=member.bank_accounts.first())  # Get the first transaction
-    context = {'member': member}
-    return render(request, 'accounts/reports.html', {'member': member})
 
 
 # @login_required
 def wallet(request):
-    # Get the user's timezone
-    user_timezone = request.session.get('user_timezone') or 'EST'
-    activate(user_timezone)  # Activate the user's timezone for this request/view
-
     user_accounts = request.user.bank_accounts.all()
-
-    # Default or requested currency
-    target_currency = request.GET.get('currency', 'USD')  # Get the currency from URL parameter or default to USD
-
-    c = CurrencyRates()
-    for account in user_accounts:
-        account.transactions_converted = []
-        for transaction in account.transactions.all():
-            converted_amount = c.convert('USD', target_currency, transaction.amount)  # Assuming USD as base currency
-            transaction.converted_amount = converted_amount
-            account.transactions_converted.append(transaction)
-
-    context = {
-        'bank_accounts': user_accounts,
-        'target_currency': target_currency
-    }
+    context = {'bank_accounts': user_accounts}
     return render(request, 'accounts/wallet.html', context)
 
 
@@ -580,11 +743,11 @@ def create_bank_transaction(request):
 
     # Duplicate Transaction Prevention (Simplified)
     if Transaction.objects.filter(
-            account=account,
-            transaction_type=transaction_type,
-            amount=amount,
-            description=description,
-            # Add date comparison if needed
+        account=account,
+        transaction_type=transaction_type,
+        amount=amount,
+        description=description,
+        # Add date comparison if needed
     ).exists():
         print('A similar transaction already exists.')
         messages.warning(request, 'A similar transaction already exists.')
@@ -611,7 +774,6 @@ def create_bank_transaction(request):
         elif transaction_type == 'transfer':
             if account_from.balance < amount:
                 raise ValueError('Insufficient funds for transfer.')
-            messages.error(request, 'Insufficient funds for transfer')
             account_from.balance -= amount
             account_to.balance += amount
 
