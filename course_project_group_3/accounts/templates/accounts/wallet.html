@@ -91,7 +91,6 @@
                                                                         {% csrf_token %}
                                                                         <input type="hidden" name="user_id" value="{{ request.user.id }}">
                                                                         <input type="hidden" name="transaction_type" value="deposit">
-                                                                        <input type="hidden" name="account_to_number" value="{{ account.account_number }}">
                                                                         <div class="row">
                                                                             <div class="col-xxl-12 my-2">
                                                                                 <header></header><label class="form-label">Amount</label><input class="form-control" name="amount" type="number">
@@ -365,8 +364,6 @@
                                                     <div class="text-md-end dataTables_filter" id="dataTable_filter"><label class="form-label"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search"></label></div>
                                                 </div>
                                             </div>
-
-
                                             <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                                                 <table class="table my-0" id="dataTable">
                                                     <thead>
@@ -381,8 +378,20 @@
                                                     {% for transaction in account.transactions.all %}
                                                         <tbody>
                                                             <tr title="{{ transaction.timestamp }}">
-                                                                <td>{{ transaction.timestamp|date:"m/d/y - P" }}</td>
+                                                                <td>{{ transaction.timestamp|date:"d/m/y" }}</td>
                                                                 <td class="text-truncate"><img class="rounded-circle me-2" width="30" height="30" src="{{ transaction.profile_img_url }}">{{ transaction.description }}</td>
+<!--                                                                {% if transaction.transaction_type == 'debit' %}-->
+<!--                                                                    <td class="debit-light">{{ transaction.transaction_type }}</td>-->
+<!--                                                                {% elif transaction.transaction_type == 'credit' %}-->
+<!--                                                                    <td class="credit-light">{{ transaction.transaction_type }}</td>-->
+<!--                                                                {% elif transaction.transaction_type == 'transfer' %}-->
+<!--                                                                    <td class="transfer-light">{{ transaction.transaction_type }}</td>-->
+<!--                                                                {% elif transaction.transaction_type == 'deposit' %}-->
+<!--                                                                    <td class="deposit-light">{{ transaction.transaction_type }}</td>-->
+<!--                                                                {% endif %}-->
+
+
+
 
                                                                     {% if transaction.transaction_type == 'debit' %}
                                                                         <td class="debit-light">{{ transaction.transaction_type|title }}</td>
@@ -396,10 +405,13 @@
                                                                     {% elif transaction.transaction_type == 'deposit' %}
                                                                         <td class="deposit-light">{{ transaction.transaction_type|title }}</td>
                                                                         <td>$ {{ transaction.amount }}</td>
-                                                                    {% elif transaction.transaction_type == 'expense' %}
+                                                                {% elif transaction.transaction_type == 'expense' %}
                                                                         <td class="deposit-light">{{ transaction.transaction_type|title }}</td>
                                                                         <td>$ {{ transaction.amount }}</td>
                                                                     {% endif %}
+
+
+
 
 <!--                                                                <td>${{ transaction.balance }}</td>-->
                                                                 <td>
@@ -503,7 +515,6 @@
                                                                             {% csrf_token %}
                                                                             <input type="hidden" name="user_id" value="{{ request.user.id }}">
                                                                             <input type="hidden" name="transaction_type" value="deposit">
-                                                                            <input type="hidden" name="account_to_number" value="{{ account.account_number }}">
                                                                             <div class="row">
                                                                                 <div class="col-xxl-12 my-2">
                                                                                     <header></header><label class="form-label">Amount</label><input class="form-control" name="amount" type="number">
@@ -761,7 +772,7 @@
                                                         {% for transaction in account.transactions.all %}
                                                         <tbody>
                                                             <tr title="{{ transaction.timestamp }}">
-                                                                <td>{{ transaction.timestamp|date:"d/m/Y g:i P" }}</td>
+                                                                <td>{{ transaction.timestamp|date:"d/m/y" }}</td>
                                                                 <td class="text-truncate"><img class="rounded-circle me-2" width="30" height="30" src="{{ transaction.profile_img_url }}">{{ transaction.description }}</td>
 <!--                                                                {% if transaction.transaction_type == 'debit' %}-->
 <!--                                                                    <td class="debit-light">{{ transaction.transaction_type }}</td>-->
@@ -884,7 +895,6 @@
                                                                             {% csrf_token %}
                                                                             <input type="hidden" name="user_id" value="{{ request.user.id }}">
                                                                             <input type="hidden" name="transaction_type" value="deposit">
-                                                                            <input type="hidden" name="account_to_number" value="{{ account.account_number }}">
                                                                             <div class="row">
                                                                                 <div class="col-xxl-12 my-2">
                                                                                     <header></header><label class="form-label">Amount</label><input class="form-control" name="amount" type="number">
@@ -1151,7 +1161,7 @@
                                                         {% for transaction in account.transactions.all %}
                                                             <tbody>
                                                                 <tr>
-                                                                    <td>{{ transaction.timestamp|date:"d/m/y g:i P" }}</td>
+                                                                    <td>{{ transaction.timestamp|date:"F j, Y" }}</td>
                                                                     <td class="text-truncate"><img class="rounded-circle me-2" width="30" height="30" src="{{ transaction.profile_img_url }}">{{ transaction.description }}</td>
     <!--                                                                {% if transaction.transaction_type == 'Debit' %}-->
     <!--                                                                    <td class="debit-light">{{ transaction.transaction_type }}</td>-->
