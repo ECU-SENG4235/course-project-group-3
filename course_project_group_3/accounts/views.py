@@ -512,7 +512,9 @@ def create_bank_transaction(request):
 
     # User and Account Existence Check
     try:
-        account = request.user.bank_accounts.all().first()
+        # Get the user's bank account based on the account number
+        account = request.user.bank_accounts.get(account_number=account_to_number)
+        # account = request.user.bank_accounts.all().first()
         if not account:
             print()
             raise ObjectDoesNotExist('User has no linked bank account.')
@@ -524,13 +526,26 @@ def create_bank_transaction(request):
 
     # Account Number Handling
     def handle_account_number(account_number):
-        if account_number:
+        if account_to_number:
             try:
-                print(f'Account number: {account_number}')
-                return BankAccount.objects.get(account_number=account_number)
+                print(f'Account number: {account_to_number}')
+                return BankAccount.objects.get(account_number=account_to_number)
             except ObjectDoesNotExist:
-                print(f'Account number {account_number} does not exist.')
-                messages.error(request, f'Account number {account_number} does not exist.')
+                print(f'Account number {account_to_number} does not exist.')
+                messages.error(request, f'Account number {account_to_number} does not exist.')
+                return None
+        else:
+            print('Account number is required.')
+            messages.error(request, 'Account number is required.')
+            return None
+
+        if account_from_number:
+            try:
+                print(f'Account number: {account_from_number}')
+                return BankAccount.objects.get(account_number=account_from_number)
+            except ObjectDoesNotExist:
+                print(f'Account number {account_to_number} does not exist.')
+                messages.error(request, f'Account number {account_from_number} does not exist.')
                 return None
         else:
             print('Account number is required.')
@@ -546,6 +561,7 @@ def create_bank_transaction(request):
             transaction_type=transaction_type,
             amount=amount,
             description=description,
+            img_url='https://images.unsplash.com/photo-1593672715438-d88a70629abe?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             # Add date comparison if needed
     ).exists():
         print('A similar transaction already exists.')
@@ -607,8 +623,7 @@ def create_bank_transaction(request):
         logger.exception(f'Unexpected error during transaction: {e}')
         print(f'\n\nUnexpected error during transaction: {e}')
         messages.error(request, 'An unexpected error occurred.')
-
-    return render(request, 'accounts/dashboard.html')
+    return redirect('accounts:wallet')  # Redirect to the wallet page
 
 
 # Create an 'Account' profile automatically when registering new user***
