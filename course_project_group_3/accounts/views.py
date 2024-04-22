@@ -30,7 +30,6 @@ import json
 from django.utils import timezone
 from django.contrib.auth.models import User
 from datetime import datetime
-from dateutil.relativedelta import relativedelta
 
 
 logger = logging.getLogger(__name__)  # Set up basic logging
